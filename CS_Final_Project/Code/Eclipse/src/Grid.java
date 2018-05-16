@@ -27,65 +27,48 @@ public class Grid {
 	}
 	
 	public void setup() {
-	for(int i=myPaths.size()-1;i>=0;i--) {
-		for (int j=0;j<i;j++) {
-			myPaths.get(i).intersects(myPaths.get(j));
-		}
+		
+	
+	for(int i=0;i<myPaths.size();i++) {
+			myPaths.get(i).intersects();
 		 //This is the update loop like in FishTank
 	}
 	
-	/*for(int i=removePaths.size()-1;i>=0;i--) {
-			Path r=removePaths.get(i);
-			myPaths.remove(r);
-			r.getEnd().removePath(r);
-			r.getStart().removePath(r);
-			removePaths.remove(r);
-		
-		 //This is the update loop like in FishTank
-	}*/
 	for(int i=delayQueue.size()-1;i>=0;i--) {
 		myPaths.add(delayQueue.get(i));
 		delayQueue.remove(delayQueue.get(i));
+}
+	
+	for(int i=removePaths.size()-1;i>=0;i--) {
+		Path r=removePaths.get(i);
+		myPaths.remove(r);
+		r.getEnd().removePath(r);
+		r.getStart().removePath(r);
+		removePaths.remove(r);
+	
+	 //This is the update loop like in FishTank
 }
 	for(int i=myIntersections.size()-1;i>=0;i--) {
 		for (int j=0;j<i;j++) {
 			myIntersections.get(i).tryToEat(myIntersections.get(j));
 		}
 	}
-	for(int i=removeIntersections.size()-1;i>=0;i--) {
-		myIntersections.remove(removeIntersections.get(i));
-	}
+	this.removeDelayedInt();
+	
 	
 }
-	public void update() {
-		this.show();
-		/*for(int i=myPaths.size()-1;i>=0;i--) {
-			for (int j=0;j<i;j++) {
-				myPaths.get(i).intersects(myPaths.get(j));
-			}
-			 //This is the update loop like in FishTank
-		}
-		for(int i=removePaths.size()-1;i>=0;i--) {
-				Path r=removePaths.get(i);
-				myPaths.remove(r);
-				r.getEnd().removePath(r);
-				r.getStart().removePath(r);
-				removePaths.remove(r);
-			
-			 //This is the update loop like in FishTank
-		}
-		for(int i=myIntersections.size()-1;i>=0;i--) {
-			for (int j=0;j<i;j++) {
-				myIntersections.get(i).tryToEat(myIntersections.get(j));
-			}
-		}
+	public void removeDelayedInt() {
+		
 		for(int i=removeIntersections.size()-1;i>=0;i--) {
 			myIntersections.remove(removeIntersections.get(i));
-		}*/
+			this.removeIntersections.remove(i);
+		}
+	}
+	public void update() {
+		this.show();
 		for(int i=myPaths.size()-1;i>=0;i--) {
 		myPaths.get(i).update();
 		}
-		myIntersections.get(3).nodify(0);
 		for(int i=myIntersections.size()-1;i>=0;i--) {
 			myIntersections.get(i).update();
 			//System.out.println(myIntersections.get(i).nodeValue());
@@ -97,7 +80,26 @@ public class Grid {
 			myCars.get(i).update();
 			 //This is the update loop like in FishTank
 		}
-		
+		/*for(int aa=0; aa<10000;aa++) {
+			for (int bb=0;bb<5000;bb++) {int c=bb+aa;c=c*c;StdDraw.setPenColor(0,0,0);}
+		}*/
+		StdDraw.show();
+	}
+	public void update2() {
+		this.show();
+		for(int i=myPaths.size()-1;i>=0;i--) {
+		myPaths.get(i).update();
+		}
+		for(int i=myIntersections.size()-1;i>=0;i--) {
+			myIntersections.get(i).update();
+			//System.out.println(myIntersections.get(i).nodeValue());
+			
+			 //This is the update loop like in FishTank
+		}
+		StdDraw.setPenRadius();
+		/*for(int aa=0; aa<10000;aa++) {
+			for (int bb=0;bb<5000;bb++) {int c=bb+aa;c=c*c;StdDraw.setPenColor(0,0,0);}
+		}*/
 		StdDraw.show();
 	}
 	
@@ -124,19 +126,24 @@ public class Grid {
 		this.myCars.remove(c);
 	}
 	public void removePath(Path p) {
+		this.myPaths.remove(p);
+	}
+	public void delayRemovePath(Path p) {
 		this.removePaths.add(p);
 		/*myPaths.remove(p);
 		p.getEnd().removePath(p);
 		p.getStart().removePath(p);
 		removePaths.remove(p);*/
 	}
-	public void removeIntersection(Intersection i) {
+	public void delayRemoveIntersection(Intersection i) {
 		this.removeIntersections.add(i);
 	}
-	
+	public void removeIntersection(Intersection i) {
+		this.myIntersections.remove(i);
+	}
 	
 	public void requestRoute(Car c, Intersection start, Intersection end) {
-		ArrayList<Path> cRoute = c.getOptimalPath(start,end,myPaths,myIntersections);
+		ArrayList<Path> cRoute = c.getOptimalPath();
 		//check for problems with this path and modify this and other paths as necessary
 	
 		this.clock=0;
