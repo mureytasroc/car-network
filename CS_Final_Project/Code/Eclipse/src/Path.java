@@ -3,17 +3,17 @@ import java.util.Collections;
 public class Path {
 	private Intersection start;
 	private Intersection end;
-	private double distance;
-	private double speedLim;
-	private Grid myGrid;
+	private float distance;
+	private float speedLim;
 	
 	ArrayList<Car> myCars; //Experimental -- should each path have a list of cars?
 	
-	Path(Intersection s, Intersection e, double SL,double distance){
-		this.distance=distance;
+	Path(Intersection s, Intersection e, float dist, float SL){
 		this.start=s;
 		this.end=e;
+		this.distance=dist;
 		this.speedLim=SL;
+<<<<<<< HEAD
 		this.myGrid=s.getGrid();
 		this.myGrid.addPath(this);
 		s.addPath(this);
@@ -59,6 +59,12 @@ public class Path {
 	}
 	public double[] getTime(double speed){ //returns {time,maxSpeed}
 		double[] returnAr = new double[2];
+=======
+	}
+	
+	public float[] getTime(float speed){ //returns {time,maxSpeed}
+		float[] returnAr = new float[2];
+>>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 		
 		if(speed>this.speedLim) { //check for speed of slowest car on path? -- this could be factored into dijstra's algo to account for multiple cars in network
 			returnAr[1]=speedLim;
@@ -70,6 +76,7 @@ public class Path {
 		
 		return returnAr;
 	}
+<<<<<<< HEAD
 	public void update() {
 		show();
 	}
@@ -86,12 +93,16 @@ public class Path {
         double[] y = { this.start.getLoc().getPos()[1],(this.start.getLoc().getPos()[1]+this.end.getLoc().getPos()[1])/2+30, this.end.getLoc().getPos()[1], (this.start.getLoc().getPos()[1]+this.end.getLoc().getPos()[1])/2};
         StdDraw.filledPolygon(x, y);*/
 	}
+=======
+	
+>>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 	public Intersection getStart() {
 		return this.start;
 	}
 	public Intersection getEnd() {
 		return this.end;
 	}
+<<<<<<< HEAD
 	public Intersection getOther(Intersection i) {
 		if(i==this.start) {
 			return this.end;
@@ -101,11 +112,15 @@ public class Path {
 		}
 	}
 	public double getDistance() {
+=======
+	public float getDistance() {
+>>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 		return this.distance;
 	}
-	public double getSpeedLim() {
+	public float getSpeedLim() {
 		return this.speedLim;
 	}
+<<<<<<< HEAD
 	public void intersects() {
 		ArrayList<Intersection> crosses=new ArrayList<Intersection>();
 		crosses.add(this.start);
@@ -180,5 +195,7 @@ public class Path {
 		
 	}
 	
+=======
+>>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 	
 }

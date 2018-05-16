@@ -1,31 +1,21 @@
 import java.util.*;
-import java.awt.Color;
 public class Grid {
 	
 	private ArrayList<Car> myCars;
 	private ArrayList<Intersection> myIntersections;
 	private ArrayList<Path> myPaths;
-	private ArrayList<Path> removePaths;
-	private ArrayList<Intersection> removeIntersections;
 	private double clock; // this will reset after a new set of instructions are generated and will be used for all cars to reference
 	
 	private ArrayList<Car> deleteQueue;
-	private ArrayList<Path> delayQueue;
 
 	Grid(){
-		StdDraw.setCanvasSize(800,800);
-		StdDraw.setXscale(0,800);
-        StdDraw.setYscale(0,800);
-		StdDraw.enableDoubleBuffering();
 		this.myCars = new ArrayList<Car>();
 		this.deleteQueue = new ArrayList<Car>();
 		this.myIntersections = new ArrayList<Intersection>();
 		this.myPaths = new ArrayList<Path>();
-		this.delayQueue=new ArrayList<Path>();
-		this.removePaths = new ArrayList<Path>();
-		this.removeIntersections=new ArrayList<Intersection>();
 	}
 	
+<<<<<<< HEAD
 	public void setup() {
 		
 	
@@ -101,28 +91,39 @@ public class Grid {
 			for (int bb=0;bb<5000;bb++) {int c=bb+aa;c=c*c;StdDraw.setPenColor(0,0,0);}
 		}*/
 		StdDraw.show();
+=======
+	
+	public void update() {
+		for(int i=0;i<myCars.size();i++) {
+			myCars.get(i).update();
+			 //This is the update loop like in FishTank
+		}
+		
+		for(int i=deleteQueue.size()-1;i>=0;i--) { //This loop removes all Cars that are queued for delete after the update loop is finished so there is no index confusion inside the update loop
+			myCars.remove(deleteQueue.get(i));
+			deleteQueue.remove(i);
+		}
+		
+		show();
+		
+>>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 	}
 	
 	public void show() {
-		StdDraw.setPenColor(new Color(255,0,0));
-		StdDraw.filledRectangle(500,500,500,500);
+	
+		
+		
+		
+		
+		
 	}
 	
 	
 	public void addCar(Car c) {
 		this.myCars.add(c);
 	}
-	public void addPath(Path p) {
-		this.myPaths.add(p);
-	}
-	public void delayAddPath(Path p) {
-		this.delayQueue.add(p);
-	}
-	public void addIntersection(Intersection i) {
-		this.myIntersections.add(i);
-	}
-	
 	public void removeCar(Car c) {
+<<<<<<< HEAD
 		this.myCars.remove(c);
 	}
 	public void removePath(Path p) {
@@ -137,6 +138,9 @@ public class Grid {
 	}
 	public void delayRemoveIntersection(Intersection i) {
 		this.removeIntersections.add(i);
+=======
+		this.deleteQueue.add(c);
+>>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 	}
 	public void removeIntersection(Intersection i) {
 		this.myIntersections.remove(i);

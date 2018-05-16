@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Collections;
 import java.awt.*;
@@ -124,5 +125,15 @@ public class Intersection implements Comparable {
 		}
 		}
 		return out;
+=======
+
+public class Intersection {
+	private Location loc;
+	Intersection(Location l){
+		this.loc = l;
+	}
+	Intersection(Car c){
+		this.loc=c.getLocation();
+>>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 	}
 }

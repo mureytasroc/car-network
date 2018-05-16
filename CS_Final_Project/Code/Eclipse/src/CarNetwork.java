@@ -5,6 +5,7 @@ public class CarNetwork {
 	public static void main(String args[]) {
 		myGrid = new Grid();
 		
+<<<<<<< HEAD
 		Path s=new Path(new Intersection(new Location(myGrid,100,50)),new Intersection(new Location(myGrid,100,750)),20);
 		Path t=new Path(new Intersection(new Location(myGrid,700,0)),new Intersection(new Location(myGrid,700,750)),20);
 		Path q=new Path(new Intersection(new Location(myGrid,40,700)),new Intersection(new Location(myGrid,700,100)),20);
@@ -23,6 +24,8 @@ public class CarNetwork {
 		while(true){
 		myGrid.update();
 		}
+=======
+>>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 	}
 	
 }

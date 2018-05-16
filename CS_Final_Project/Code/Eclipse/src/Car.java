@@ -1,9 +1,10 @@
 import java.util.*;
-import java.awt.Color;
+
 public class Car{
 	private Grid myGrid;
 	private Location loc;
 	private ArrayList<Path> myRoute;
+<<<<<<< HEAD
 	private ArrayList<Boolean> directions;
 	private Path curPath;
 	private double speed=3.5;
@@ -71,8 +72,17 @@ public class Car{
 		this.curPath=this.loc.snapToPath();
 		
 		myRoute=this.getOptimalPath();
+=======
+	
+	Car(Grid g, Location l){
+		myRoute=new ArrayList<Path>();
+		this.myGrid=g;
+		this.loc=l;
+>>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 	}
+	
 	public void update() {
+<<<<<<< HEAD
 		
 		int t=this.loc.travel(curPath,speed);
 		
@@ -113,13 +123,13 @@ public class Car{
 		}
 		this.show();
 		//CAR UPDATE METHOD
+=======
+>>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
+		
+		//CAR UPDATE METHOD
 		
 	}
-	public void show() {
-		StdDraw.setPenColor(new Color(0,0,255));
-		StdDraw.filledRectangle(this.loc.getPos()[0],this.loc.getPos()[1], 10, 10);
-		
-	}
+<<<<<<< HEAD
 	public ArrayList<Path> getOptimalPath() {
 		for (Intersection i: myGrid.getMyIntersections()) {
 			i.setup();
@@ -127,6 +137,10 @@ public class Car{
 		this.destination.nodify(0);
 		this.myGrid.update2();
 		
+=======
+	
+	public ArrayList<Path> getOptimalPath(Intersection start, Intersection end, ArrayList<Path> paths, ArrayList<Intersection> intersections) {
+>>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 		ArrayList<Path> path = new ArrayList<Path>();
 		Intersection currentIntersection;
 		if (this.curPath.getEnd().nodeValue()<this.curPath.getStart().nodeValue()) {
@@ -174,15 +188,12 @@ public class Car{
 	public Location getLocation() {
 		return this.loc;
 	}
-	/*public Intersection getNextIntersection() {
+	public Intersection getNextIntersection() {
 		return this.myRoute.get(0).getEnd();
 	}
 	public Intersection getDestination() {
 		int lastIndex=this.myRoute.size()-1;
 		return this.myRoute.get(lastIndex).getEnd();
-	}*/
-	public Grid getGrid() {
-		return myGrid;
 	}
 
 }
