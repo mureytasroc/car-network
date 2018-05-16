@@ -5142,30 +5142,30 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <wire x1="2" y1="-2" x2="2" y2="2" width="0.1016" layer="51"/>
 <wire x1="2" y1="2" x2="-2" y2="2" width="0.1016" layer="51"/>
 <wire x1="-2" y1="2" x2="-2" y2="-2" width="0.1016" layer="51"/>
-<smd name="24" x="-2" y="1.25" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
-<smd name="23" x="-2" y="0.75" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
-<smd name="22" x="-2" y="0.25" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
-<smd name="21" x="-2" y="-0.25" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
-<smd name="20" x="-2" y="-0.75" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
-<smd name="19" x="-2" y="-1.25" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
-<smd name="18" x="-1.25" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
-<smd name="17" x="-0.75" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
-<smd name="16" x="-0.25" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
-<smd name="15" x="0.25" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
-<smd name="14" x="0.75" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
-<smd name="13" x="1.25" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
-<smd name="12" x="2" y="-1.25" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
-<smd name="11" x="2" y="-0.75" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
-<smd name="10" x="2" y="-0.25" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
-<smd name="9" x="2" y="0.25" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
-<smd name="8" x="2" y="0.75" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
-<smd name="7" x="2" y="1.25" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
-<smd name="6" x="1.25" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
-<smd name="5" x="0.75" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
-<smd name="4" x="0.25" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
-<smd name="3" x="-0.25" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
-<smd name="2" x="-0.75" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
-<smd name="1" x="-1.25" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
+<smd name="1" x="-2" y="1.25" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
+<smd name="2" x="-2" y="0.75" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
+<smd name="3" x="-2" y="0.25" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
+<smd name="4" x="-2" y="-0.25" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
+<smd name="5" x="-2" y="-0.75" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
+<smd name="6" x="-2" y="-1.25" dx="0.75" dy="0.3" layer="1" stop="no" cream="no"/>
+<smd name="7" x="-1.25" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
+<smd name="8" x="-0.75" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
+<smd name="9" x="-0.25" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
+<smd name="10" x="0.25" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
+<smd name="11" x="0.75" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
+<smd name="12" x="1.25" y="-2" dx="0.75" dy="0.3" layer="1" rot="R90" stop="no" cream="no"/>
+<smd name="13" x="2" y="-1.25" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
+<smd name="14" x="2" y="-0.75" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
+<smd name="15" x="2" y="-0.25" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
+<smd name="16" x="2" y="0.25" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
+<smd name="17" x="2" y="0.75" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
+<smd name="18" x="2" y="1.25" dx="0.75" dy="0.3" layer="1" rot="R180" stop="no" cream="no"/>
+<smd name="19" x="1.25" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
+<smd name="20" x="0.75" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
+<smd name="21" x="0.25" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
+<smd name="22" x="-0.25" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
+<smd name="23" x="-0.75" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
+<smd name="24" x="-1.25" y="2" dx="0.75" dy="0.3" layer="1" rot="R270" stop="no" cream="no"/>
 <smd name="EXP" x="0" y="0" dx="2.7" dy="2.7" layer="1" stop="no" cream="no"/>
 <text x="-1.95" y="2.7" size="1.27" layer="25">&gt;NAME</text>
 <text x="-1.95" y="-4" size="1.27" layer="27">&gt;VALUE</text>
@@ -5249,6 +5249,15 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <pin name="SC3" x="20.32" y="-7.62" length="middle" rot="R180"/>
 <pin name="SD3" x="20.32" y="-10.16" length="middle" rot="R180"/>
 <rectangle x1="0" y1="-12.7" x2="15.24" y2="10.16" layer="94"/>
+<pin name="SC6" x="-5.08" y="-12.7" length="middle"/>
+<pin name="SD6" x="-5.08" y="-15.24" length="middle"/>
+<pin name="SC7" x="-5.08" y="-17.78" length="middle"/>
+<pin name="SD7" x="-5.08" y="-20.32" length="middle"/>
+<pin name="SC4" x="20.32" y="-12.7" length="middle" rot="R180"/>
+<pin name="SD4" x="20.32" y="-15.24" length="middle" rot="R180"/>
+<pin name="SC5" x="20.32" y="-17.78" length="middle" rot="R180"/>
+<pin name="SD5" x="20.32" y="-20.32" length="middle" rot="R180"/>
+<rectangle x1="0" y1="-20.32" x2="15.24" y2="-12.7" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -5259,22 +5268,30 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <devices>
 <device name="" package="QFN24-4X4">
 <connects>
-<connect gate="G$1" pin="A0" pad="1"/>
-<connect gate="G$1" pin="A1" pad="2"/>
-<connect gate="G$1" pin="A2" pad="21"/>
-<connect gate="G$1" pin="GND" pad="12"/>
-<connect gate="G$1" pin="RESET" pad="3"/>
-<connect gate="G$1" pin="SC0" pad="5"/>
-<connect gate="G$1" pin="SC1" pad="7"/>
-<connect gate="G$1" pin="SC2" pad="9"/>
-<connect gate="G$1" pin="SC3" pad="11"/>
-<connect gate="G$1" pin="SCL" pad="22"/>
-<connect gate="G$1" pin="SD0" pad="4"/>
-<connect gate="G$1" pin="SD1" pad="6"/>
-<connect gate="G$1" pin="SD2" pad="8"/>
-<connect gate="G$1" pin="SD3" pad="10"/>
-<connect gate="G$1" pin="SDA" pad="23"/>
-<connect gate="G$1" pin="VCC" pad="24"/>
+<connect gate="G$1" pin="A0" pad="22"/>
+<connect gate="G$1" pin="A1" pad="23"/>
+<connect gate="G$1" pin="A2" pad="18"/>
+<connect gate="G$1" pin="GND" pad="9"/>
+<connect gate="G$1" pin="RESET" pad="24"/>
+<connect gate="G$1" pin="SC0" pad="2"/>
+<connect gate="G$1" pin="SC1" pad="4"/>
+<connect gate="G$1" pin="SC2" pad="6"/>
+<connect gate="G$1" pin="SC3" pad="8"/>
+<connect gate="G$1" pin="SC4" pad="11"/>
+<connect gate="G$1" pin="SC5" pad="13"/>
+<connect gate="G$1" pin="SC6" pad="15"/>
+<connect gate="G$1" pin="SC7" pad="17"/>
+<connect gate="G$1" pin="SCL" pad="19"/>
+<connect gate="G$1" pin="SD0" pad="1"/>
+<connect gate="G$1" pin="SD1" pad="3"/>
+<connect gate="G$1" pin="SD2" pad="5"/>
+<connect gate="G$1" pin="SD3" pad="7"/>
+<connect gate="G$1" pin="SD4" pad="10"/>
+<connect gate="G$1" pin="SD5" pad="12"/>
+<connect gate="G$1" pin="SD6" pad="14"/>
+<connect gate="G$1" pin="SD7" pad="16"/>
+<connect gate="G$1" pin="SDA" pad="20"/>
+<connect gate="G$1" pin="VCC" pad="21"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -5308,10 +5325,8 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="R4" library="microbuilder" deviceset="RESISTOR" device="0805_NOOUTLINE" value="10K"/>
 <part name="U$4" library="microbuilder" deviceset="3.3V" device=""/>
-<part name="R6" library="microbuilder" deviceset="RESISTOR" device="0805_NOOUTLINE" value="10K"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="U$11" library="microbuilder" deviceset="VBAT" device=""/>
-<part name="R7" library="microbuilder" deviceset="RESISTOR" device="0805_NOOUTLINE" value="10K"/>
 <part name="U$5" library="microbuilder" deviceset="3.3V" device=""/>
 <part name="SW1" library="microbuilder" deviceset="SWITCH_TACT_SMT" device="4.6X2.8" value="KMR2"/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
@@ -5336,6 +5351,7 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <part name="J2" library="SparkFun-Connectors" deviceset="CONN_04" device=""/>
 <part name="J3" library="SparkFun-Connectors" deviceset="CONN_04" device=""/>
 <part name="U$1" library="si70xx-10" deviceset="TCA9548A" device=""/>
+<part name="R6" library="adafruit" deviceset="R-US_" device="M0805" value="10k"/>
 </parts>
 <sheets>
 <sheet>
@@ -5376,10 +5392,8 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <instance part="GND3" gate="1" x="101.6" y="106.68"/>
 <instance part="R4" gate="G$1" x="-7.62" y="144.78" rot="R90"/>
 <instance part="U$4" gate="G$1" x="-7.62" y="154.94"/>
-<instance part="R6" gate="G$1" x="20.32" y="127" rot="R90"/>
 <instance part="GND1" gate="1" x="20.32" y="111.76"/>
 <instance part="U$11" gate="G$1" x="-15.24" y="50.8"/>
-<instance part="R7" gate="G$1" x="5.08" y="127" rot="R90"/>
 <instance part="U$5" gate="G$1" x="5.08" y="154.94"/>
 <instance part="SW1" gate="G$1" x="-10.16" y="121.92" rot="R90"/>
 <instance part="GND4" gate="1" x="-7.62" y="114.3"/>
@@ -5406,6 +5420,7 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <instance part="J2" gate="G$1" x="137.16" y="99.06"/>
 <instance part="J3" gate="G$1" x="116.84" y="88.9"/>
 <instance part="U$1" gate="G$1" x="127" y="-5.08"/>
+<instance part="R6" gate="G$1" x="104.14" y="-7.62" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -5435,7 +5450,6 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <pinref part="GND3" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="R6" gate="G$1" pin="1"/>
 <pinref part="GND1" gate="1" pin="GND"/>
 <wire x1="20.32" y1="114.3" x2="20.32" y2="121.92" width="0.1524" layer="91"/>
 </segment>
@@ -5512,6 +5526,11 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <pinref part="J2" gate="G$1" pin="1"/>
 <wire x1="142.24" y1="96.52" x2="144.78" y2="96.52" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="X1" gate="G$1" pin="GPIO15"/>
+<wire x1="101.6" y1="111.76" x2="119.38" y2="111.76" width="0.1524" layer="91"/>
+<label x="106.68" y="111.76" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="3.3V" class="0">
 <segment>
@@ -5534,7 +5553,6 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <wire x1="-7.62" y1="152.4" x2="-7.62" y2="149.86" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="R7" gate="G$1" pin="2"/>
 <pinref part="U$5" gate="G$1" pin="3.3V"/>
 <wire x1="5.08" y1="132.08" x2="5.08" y2="152.4" width="0.1524" layer="91"/>
 </segment>
@@ -5561,13 +5579,6 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <wire x1="68.58" y1="53.34" x2="68.58" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="VCC"/>
-<wire x1="121.92" y1="-12.7" x2="111.76" y2="-12.7" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="RESET"/>
-<wire x1="121.92" y1="-2.54" x2="111.76" y2="-2.54" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="-2.54" x2="111.76" y2="-12.7" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="J3" gate="G$1" pin="4"/>
 <wire x1="121.92" y1="93.98" x2="124.46" y2="93.98" width="0.1524" layer="91"/>
 </segment>
@@ -5578,6 +5589,16 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <segment>
 <pinref part="J2" gate="G$1" pin="4"/>
 <wire x1="142.24" y1="104.14" x2="144.78" y2="104.14" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="X1" gate="G$1" pin="GPIO2"/>
+<wire x1="119.38" y1="114.3" x2="101.6" y2="114.3" width="0.1524" layer="91"/>
+<label x="106.68" y="114.3" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="VCC"/>
+<wire x1="121.92" y1="-12.7" x2="104.14" y2="-12.7" width="0.1524" layer="91"/>
+<pinref part="R6" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="RESET" class="0">
@@ -5655,24 +5676,12 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 </net>
 <net name="GPIO15" class="0">
 <segment>
-<pinref part="X1" gate="G$1" pin="GPIO15"/>
-<wire x1="101.6" y1="111.76" x2="119.38" y2="111.76" width="0.1524" layer="91"/>
-<label x="106.68" y="111.76" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R6" gate="G$1" pin="2"/>
 <wire x1="20.32" y1="132.08" x2="20.32" y2="154.94" width="0.1524" layer="91"/>
 <label x="20.32" y="137.16" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="GPIO2" class="0">
 <segment>
-<pinref part="X1" gate="G$1" pin="GPIO2"/>
-<wire x1="119.38" y1="114.3" x2="101.6" y2="114.3" width="0.1524" layer="91"/>
-<label x="106.68" y="114.3" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R7" gate="G$1" pin="1"/>
 <wire x1="5.08" y1="121.92" x2="5.08" y2="111.76" width="0.1524" layer="91"/>
 <label x="5.08" y="114.3" size="1.778" layer="95" rot="R90"/>
 </segment>
@@ -5830,19 +5839,11 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <pinref part="U$1" gate="G$1" pin="SC0"/>
 <wire x1="147.32" y1="2.54" x2="154.94" y2="2.54" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="J1" gate="G$1" pin="3"/>
-<wire x1="119.38" y1="73.66" x2="121.92" y2="73.66" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="SD0" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="SD0"/>
 <wire x1="147.32" y1="0" x2="154.94" y2="0" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="J1" gate="G$1" pin="2"/>
-<wire x1="119.38" y1="71.12" x2="121.92" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SC1" class="0">
@@ -5850,19 +5851,11 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <pinref part="U$1" gate="G$1" pin="SC1"/>
 <wire x1="147.32" y1="-2.54" x2="154.94" y2="-2.54" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="J2" gate="G$1" pin="3"/>
-<wire x1="142.24" y1="101.6" x2="144.78" y2="101.6" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="SD1" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="SD1"/>
 <wire x1="147.32" y1="-5.08" x2="154.94" y2="-5.08" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="J2" gate="G$1" pin="2"/>
-<wire x1="142.24" y1="99.06" x2="144.78" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SC2" class="0">
@@ -5883,8 +5876,8 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <wire x1="147.32" y1="-12.7" x2="154.94" y2="-12.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="J3" gate="G$1" pin="3"/>
-<wire x1="121.92" y1="91.44" x2="124.46" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="J3" gate="G$1" pin="2"/>
+<wire x1="121.92" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SD3" class="0">
@@ -5893,8 +5886,79 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <wire x1="147.32" y1="-15.24" x2="154.94" y2="-15.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="J3" gate="G$1" pin="2"/>
-<wire x1="121.92" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="J3" gate="G$1" pin="3"/>
+<wire x1="121.92" y1="91.44" x2="124.46" y2="91.44" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SC6" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="SC6"/>
+<wire x1="121.92" y1="-17.78" x2="116.84" y2="-17.78" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="2"/>
+<wire x1="119.38" y1="71.12" x2="121.92" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SD6" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="SD6"/>
+<wire x1="121.92" y1="-20.32" x2="116.84" y2="-20.32" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="3"/>
+<wire x1="119.38" y1="73.66" x2="121.92" y2="73.66" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SC7" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="SC7"/>
+<wire x1="121.92" y1="-22.86" x2="116.84" y2="-22.86" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SD7" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="SD7"/>
+<wire x1="121.92" y1="-25.4" x2="116.84" y2="-25.4" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SC4" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="SC4"/>
+<wire x1="147.32" y1="-17.78" x2="152.4" y2="-17.78" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SD4" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="SD4"/>
+<wire x1="147.32" y1="-20.32" x2="152.4" y2="-20.32" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SC5" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="SC5"/>
+<wire x1="147.32" y1="-22.86" x2="152.4" y2="-22.86" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J2" gate="G$1" pin="2"/>
+<wire x1="142.24" y1="99.06" x2="144.78" y2="99.06" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SD5" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="SD5"/>
+<wire x1="147.32" y1="-25.4" x2="152.4" y2="-25.4" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J2" gate="G$1" pin="3"/>
+<wire x1="142.24" y1="101.6" x2="144.78" y2="101.6" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="RESET"/>
+<wire x1="121.92" y1="-2.54" x2="104.14" y2="-2.54" width="0.1524" layer="91"/>
+<pinref part="R6" gate="G$1" pin="2"/>
 </segment>
 </net>
 </nets>
