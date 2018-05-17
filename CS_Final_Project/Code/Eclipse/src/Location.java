@@ -1,15 +1,19 @@
+import java.util.ArrayList;
 
 public class Location {
+	private Grid myGrid;
+	private double[] coords=new double[2];
 	
-	private float[] coords;
-	
-	Location(float xPos, float yPos){
-		this.coords=snapToPath(xPos,yPos);
+	Location(Grid mG,double xPos, double yPos){
+		this.myGrid=mG;
+		snapToPath();
+		coords[0]=xPos;
+		coords[1]=yPos;
 	}
 	Location(Location l){
+		this.myGrid=l.getGrid();
 		this.coords = l.getPos();
 	}
-<<<<<<< HEAD
 	public Grid getGrid() {
 		return myGrid;
 	}
@@ -126,15 +130,9 @@ public class Location {
 		else {
 			return null;
 		}
-=======
-	
-	public float[] snapToPath(float x, float y) {
-		float[] point = new float[2];
->>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 		//Snap x and y to the closest path
-		return point;
+		
 	}
-<<<<<<< HEAD
 	public Path snapToPath(Path p) {
 		double x=coords[0];
 		double y=coords[1];
@@ -167,10 +165,6 @@ public class Location {
 		
 	}
 	public double[] getPos() {
-=======
-	
-	public float[] getPos() {
->>>>>>> fc4fcc5eae45caab5d7b95a8fd0fbc5f3cb8a5ca
 		return this.coords;
 	}
 	
@@ -178,6 +172,9 @@ public class Location {
 		boolean eq=false;
 		//check if this is the same location as l, watch out for floating point precision
 		return eq;
+	}
+	public double getDistance(Location l) {
+		return Math.pow(Math.pow((l.getPos()[0]-this.coords[0]),2)+Math.pow((l.getPos()[1]-this.coords[1]),2),0.5);
 	}
 	
 }
