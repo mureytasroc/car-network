@@ -86,7 +86,7 @@ public class Grid {
 		}*/
 		StdDraw.show();
 	}
-	public void update2() {
+	/*public void update2() {
 		this.show();
 		for(int i=myPaths.size()-1;i>=0;i--) {
 		myPaths.get(i).update();
@@ -98,11 +98,11 @@ public class Grid {
 			 //This is the update loop like in FishTank
 		}
 		StdDraw.setPenRadius();
-		/*for(int aa=0; aa<10000;aa++) {
-			for (int bb=0;bb<5000;bb++) {int c=bb+aa;c=c*c;StdDraw.setPenColor(0,0,0);}
-		}*/
+		//for(int aa=0; aa<10000;aa++) {
+			//for (int bb=0;bb<5000;bb++) {int c=bb+aa;c=c*c;StdDraw.setPenColor(0,0,0);}
+		//}
 		StdDraw.show();
-	}
+	}*/
 	public void intersectionUpdate(){
         
         
