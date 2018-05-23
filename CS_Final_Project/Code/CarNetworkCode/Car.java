@@ -168,10 +168,12 @@ public class Car{
 		}
 		//this.destination.nodify(0);
         myGrid.intersectionUpdate();
-        this.destination.nodify(0,this);
+        this.start.nodify(0,this,null);
+        
 		
         //myGrid.update2();
-		ArrayList<Path> path = new ArrayList<Path>();
+		ArrayList<Path> path = destination.collectRoute(this.start);
+        
 		Intersection currentIntersection=this.start;
         double projected=this.start.nodeValue();
         
@@ -187,51 +189,7 @@ public class Car{
 		//System.out.println("most");
         double prevmin=-3.14;
         
-		while (min>0) {
-			min=Double.MAX_VALUE;
-			int temp=0;
-			ArrayList<Path> options=currentIntersection.getPaths();
-            //System.out.println(options.size());
-			for (int i=0; i<options.size();i++) {
-                
-				/*if (options.get(i).getOther(currentIntersection).nodeValue()==0) {
-					 temp=i;
-					 min=0;
-					 
-				 }*/
-                //System.out.println("begin list: "+(options.get(i).getOther(currentIntersection).nodeValue()+options.get(i).getDistance(this)));
-				 if ((options.get(i).getOther(currentIntersection).nodeValue()+options.get(i).getDistance(this))<min) {
-                //if (options.get(i).getOther(currentIntersection).nodeValue()+options.get(i).getDistance()<min) {
-					 min=options.get(i).getOther(currentIntersection).nodeValue()+options.get(i).getDistance(this);
-                     
-                    //min=options.get(i).getOther(currentIntersection).nodeValue()+options.get(i).getDistance();
-					 temp=i;
-				 }
-			}
-            //System.out.println("min");
-                //System.out.println(min);
-            min=min-(options.get(temp).getDistance(this));
-            /*if (prevmin!=min)
-                System.out.println("adjusted min");
-                System.out.println(min);
-            prevmin=min;*/
-            //StdDraw.setPenColor(255,255,255);
-            //StdDraw.filledRectangle(currentIntersection.getLoc().getPos()[0],currentIntersection.getLoc().getPos()[1],5,5);
-            //StdDraw.show();
-			path.add(options.get(temp));
-            double startTime=(projected-currentIntersection.nodeValue());
-			if (options.get(temp).getStart()==currentIntersection) {
-				this.directions.add(true);
-                options.get(temp).addOccupation(new Occupation(options.get(temp),startTime, true,this));
-			}
-			else {
-				this.directions.add(false);
-                options.get(temp).addOccupation(new Occupation(options.get(temp),startTime, false,this));
-			}
-			currentIntersection=options.get(temp).getOther(currentIntersection);
-			
-			
-		}
+		
         
 		//System.out.println("all");
         if (!startIsInt) {

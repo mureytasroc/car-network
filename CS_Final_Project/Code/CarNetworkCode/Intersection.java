@@ -8,7 +8,7 @@ public class Intersection implements Comparable {
 	private double nodeValue=Double.MAX_VALUE;
 	private Color col;
 	private boolean edible=true;
-	
+	private Intersection prevIntersection;
 	
 	Intersection(Location l){
 		this.loc = l;
@@ -31,7 +31,7 @@ public class Intersection implements Comparable {
     public void specialize(){
         edible=!edible;
     }
-	public void nodify(double source) {
+	/*public void nodify(double source) {//redacted
 		if (source<nodeValue) {
 			nodeValue=source;
 			for (int i=0; i<myPaths.size();i++) {
@@ -44,21 +44,38 @@ public class Intersection implements Comparable {
 				}
 			}
 		}
-	}
-    public void nodify(double source, Car c) {
-		if (source<nodeValue) {
+	}*/
+    
+    
+    public void nodify(double source, Car c, Intersection leading) {//recursive
+		if (source<this.nodeValue) {
 			nodeValue=source;
-			for (int i=0; i<myPaths.size();i++) {
+            prevIntersection=leading;
+			for (int i=0; i<this.myPaths.size();i++) {
 				Path p=myPaths.get(i);
-				if (this==p.getStart()) {
-					p.getEnd().nodify((nodeValue+p.getDistance(c)),c);
-				}
-				else if (this==p.getEnd()){
-					p.getStart().nodify((nodeValue+p.getDistance(c)),c);
-				}
+					p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,this);
 			}
 		}
 	}
+    public Intersection getPrevIntersection(){
+        return prevIntersection;
+    }
+    
+    public ArrayList<Intersection> collectRoute(Intersection start){
+        
+        if(this == start){
+            ArrayList<Intersection> myList = new ArrayList<Intersection>();
+            myList.add(this);
+            return new myList;
+        }
+        else{
+            ArrayList<Intersection> myList = new ArrayList<Intersection>(this.prevIntersection.collectRoute(start));
+            myList.add(this);
+            return myList;
+        }
+    }
+    
+    
 	public double nodeValue() {
 		return nodeValue;
 	}

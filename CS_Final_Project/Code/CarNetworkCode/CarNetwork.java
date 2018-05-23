@@ -34,6 +34,7 @@ public class CarNetwork {
 		Car c=new Car(l,d);
 		//Car g=new Car(l2,d2);
         //Car e=new Car(ea,ea2);
+        
 		while(true){
 		myGrid.update();
 		}
