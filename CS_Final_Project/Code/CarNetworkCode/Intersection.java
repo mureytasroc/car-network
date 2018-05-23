@@ -66,7 +66,7 @@ public class Intersection implements Comparable {
         if(this == start){
             ArrayList<Intersection> myList = new ArrayList<Intersection>();
             myList.add(this);
-            return new myList;
+            return myList;
         }
         else{
             ArrayList<Intersection> myList = new ArrayList<Intersection>(this.prevIntersection.collectRoute(start));
