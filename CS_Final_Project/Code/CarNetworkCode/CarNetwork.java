@@ -13,7 +13,7 @@ public class CarNetwork {
 		Path u=new Path(new Intersection(new Location(myGrid,40,40)),new Intersection(new Location(myGrid,760,760)),1);
 		Path p=new Path(new Intersection(new Location(myGrid,250,700)),new Intersection(new Location(myGrid,750,700)),2);
 		Path r=new Path(new Intersection(new Location(myGrid,50,100)),new Intersection(new Location(myGrid,750,100)),4);
-		Path pp=new Path(new Intersection(new Location(myGrid,50,400)),new Intersection(new Location(myGrid,750,430)),1);
+		/*Path pp=new Path(new Intersection(new Location(myGrid,50,400)),new Intersection(new Location(myGrid,750,430)),1);
 		Path rr=new Path(new Intersection(new Location(myGrid,200,0)),new Intersection(new Location(myGrid,800,800)),1);
 		Path rrr=new Path(new Intersection(new Location(myGrid,0,300)),new Intersection(new Location(myGrid,750,300)),1);
         Path xx=new Path(new Intersection(new Location(myGrid,200,0)),new Intersection(new Location(myGrid,800,550)),3);
@@ -23,7 +23,7 @@ public class CarNetwork {
         Path pa=new Path(new Intersection(new Location(myGrid,700,700)),new Intersection(new Location(myGrid,550,0)),1);
         Path qaa=new Path(new Intersection(new Location(myGrid,640,200)),new Intersection(new Location(myGrid,300,300)),5);
 		Path uaa=new Path(new Intersection(new Location(myGrid,60,20)),new Intersection(new Location(myGrid,760,760)),1);
-        Path paa=new Path(new Intersection(new Location(myGrid,200,700)),new Intersection(new Location(myGrid,550,400)),1);
+        Path paa=new Path(new Intersection(new Location(myGrid,200,700)),new Intersection(new Location(myGrid,550,400)),1);*/
 		myGrid.setup();
 		Location l=new Location(myGrid,400,490);
         Location l2=new Location(myGrid,200,490);
@@ -32,8 +32,8 @@ public class CarNetwork {
         Location ea=new Location(myGrid,600,490);
         Location ea2=new Location(myGrid,0,490);
 		Car c=new Car(l,d);
-		Car g=new Car(l2,d2);
-        Car e=new Car(ea,ea2);
+		//Car g=new Car(l2,d2);
+        //Car e=new Car(ea,ea2);
 		while(true){
 		myGrid.update();
 		}

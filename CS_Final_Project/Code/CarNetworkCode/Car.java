@@ -79,7 +79,11 @@ public class Car{
 			}
 		}
 		myGrid.removeDelayedInt();
-		
+		/* What happens when the new paths formed by the destination
+        must form further new paths for a start?
+        
+        
+        */
 		if (!destIsInt) {
 		Path b1=new Path(destination,pb.getEnd(),pb.getSpeedLim(),true);
 		Path b2=new Path(pb.getStart(),destination,pb.getSpeedLim(),true);
@@ -181,7 +185,6 @@ public class Car{
 		}*/
 		double min=Double.MAX_VALUE;
 		//System.out.println("most");
-        int timeRequest=0;
         double prevmin=-3.14;
         
 		while (min>0) {
