@@ -18,7 +18,8 @@ public class Location {
 	}
 	Location(Location l){
 		this.myGrid=l.getGrid();
-		this.coords = l.getPos();
+		this.coords[0] = l.getPos()[0];
+        this.coords[1] = l.getPos()[1];
 	}
 	public Grid getGrid() {
 		return myGrid;
