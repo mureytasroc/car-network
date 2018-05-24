@@ -62,21 +62,26 @@ public class Intersection implements Comparable {
 			nodeValue=source;
 			for (int i=0; i<this.myPaths.size();i++) {
 				Path p=myPaths.get(i);
-					p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,p);//getDistance(c,source)
+					p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,p);//getDistance(c,this,source) //where this defines directionality
 			}
 		}
 	}
 
     
-    public ArrayList<Path> collectRoute(Intersection start){
+    public ArrayList<Path> collectRoute(Intersection start, ArrayList<Boolean> dirs){
         
         if(this == start){
             ArrayList<Path> myList = new ArrayList<Path>();
             return myList;
         }
         else{
-            ArrayList<Path> myList = new ArrayList<Path>(this.leadingPath.getOther(this).collectRoute(start));
+            ArrayList<Path> myList = new ArrayList<Path>(this.leadingPath.getOther(this).collectRoute(start,dirs));
             myList.add(this.leadingPath);
+          	Boolean direction=new Boolean(false);
+          	if(leadingPath.getEnd()==this){
+              direction=new Boolean(true);
+            }
+          dirs.add(direction);
             return myList;
         }
     }

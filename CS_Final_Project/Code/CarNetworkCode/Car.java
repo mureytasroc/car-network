@@ -168,11 +168,14 @@ public class Car{
 		}
 		//this.destination.nodify(0);
         myGrid.intersectionUpdate();
+    
+    
+      
         this.start.nodify(0,this,null);
         
 		
-        //myGrid.update2();
-        ArrayList<Path> path = destination.collectRoute(this.start);
+    this.directions = new ArrayList<Boolean>();
+        ArrayList<Path> path = destination.collectRoute(this.start,directions);
         
 		Intersection currentIntersection=this.start;
         double projected=this.start.nodeValue();
