@@ -10,19 +10,19 @@ public class Path {
 	
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no
 	
-	Path(Grid g, Intersection s, Intersection e, double SL,double distance){
+	Path(Intersection s, Intersection e, double SL,double distance){
 		this.distance=distance;
 		this.start=s;
 		this.end=e;
 		this.speedLim=SL;
-		this.myGrid=g//s.getGrid();
-		//this.myGrid.addPath(this);
+		this.myGrid=s.getGrid();
+		this.myGrid.addPath(this);
 		s.addPath(this);
 		e.addPath(this);
 		
 	}
-	/*Path(Intersection s, Intersection e, double SL,boolean add){
-		this.distance=s.getLoc().getDistance(e.getLoc());
+	Path(Intersection s, Intersection e, double SL, double distance, boolean add){
+		this.distance=distance;
 		this.start=s;
 		this.end=e;
 		this.speedLim=SL;
@@ -44,7 +44,20 @@ public class Path {
 		s.addPath(this);
 		e.addPath(this);
 		
-	}*/
+	}
+  Path(Intersection s, Intersection e, double SL, boolean add){
+		this.distance=s.getLoc().getDistance(e.getLoc());
+		this.start=s;
+		this.end=e;
+		this.speedLim=SL;
+		this.myGrid=s.getGrid();
+		if (add) {
+		this.myGrid.addPath(this);
+		}
+		s.addPath(this);
+		e.addPath(this);
+		
+	}
 	public void die() {
 		this.getStart().removePath(this);
 		this.getEnd().removePath(this);

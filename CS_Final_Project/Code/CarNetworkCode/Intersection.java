@@ -9,6 +9,7 @@ public class Intersection implements Comparable {
 	private Color col;
 	private boolean edible=true;
 	private Intersection prevIntersection;
+  private Path leadingPath;
 	
 	Intersection(Location l){
 		this.loc = l;
@@ -45,32 +46,37 @@ public class Intersection implements Comparable {
 			}
 		}
 	}*/
-    
-    
-    public void nodify(double source, Car c, Intersection leading) {//recursive
+    public void nodify(double source, Car c) {//recursive
 		if (source<this.nodeValue) {
 			nodeValue=source;
-            prevIntersection=leading;
 			for (int i=0; i<this.myPaths.size();i++) {
 				Path p=myPaths.get(i);
-					p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,this);
+					p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,p);
 			}
 		}
 	}
-    public Intersection getPrevIntersection(){
-        return prevIntersection;
-    }
+    // In later implementations, source will be passed as a parameter to the getDistance method
+    public void nodify(double source, Car c, Path inPath) {//recursive
+		if (source<this.nodeValue) {
+      this.leadingPath=inPath;
+			nodeValue=source;
+			for (int i=0; i<this.myPaths.size();i++) {
+				Path p=myPaths.get(i);
+					p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,p);//getDistance(c,source)
+			}
+		}
+	}
+
     
-    public ArrayList<Intersection> collectRoute(Intersection start){
+    public ArrayList<Path> collectRoute(Intersection start){
         
         if(this == start){
-            ArrayList<Intersection> myList = new ArrayList<Intersection>();
-            myList.add(this);
+            ArrayList<Path> myList = new ArrayList<Path>();
             return myList;
         }
         else{
-            ArrayList<Intersection> myList = new ArrayList<Intersection>(this.prevIntersection.collectRoute(start));
-            myList.add(this);
+            ArrayList<Path> myList = new ArrayList<Path>(this.leadingPath.getOther(this).collectRoute(start));
+            myList.add(this.leadingPath);
             return myList;
         }
     }

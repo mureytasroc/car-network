@@ -172,8 +172,7 @@ public class Car{
         
 		
         //myGrid.update2();
-		ArrayList<Intersection> ints = destination.collectRoute(this.start);
-        ArrayList<Path> path = new ArrayList<Path>();
+        ArrayList<Path> path = destination.collectRoute(this.start);
         
 		Intersection currentIntersection=this.start;
         double projected=this.start.nodeValue();
