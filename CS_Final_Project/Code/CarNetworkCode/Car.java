@@ -81,9 +81,35 @@ public class Car{
 		myGrid.removeDelayedInt();
 		/* What happens when the new paths formed by the destination
         must form further new paths for a start?
-        
-        
         */
+        if((pb==pb2)&&(!destIsInt)&&(!startIsInt)){
+            
+            System.out.println("HHH");
+            Path b2;
+            Path b1;
+            Path b3;
+            System.out.println("start");
+            if (destination.compareTo(start)>1){
+            b2=new Path(start,destination,pb.getSpeedLim(),false);
+                b1=new Path(destination,pb.getEnd(),pb.getSpeedLim(),false);
+             b3=new Path(pb.getStart(),start,pb.getSpeedLim(),false);
+            }
+            else{
+               b2=new Path(destination,start,pb.getSpeedLim(),false); 
+                b1=new Path(pb.getStart(),destination,pb.getSpeedLim(),false);
+            b3=new Path(start,pb.getEnd(),pb.getSpeedLim(),false);
+            }
+
+            
+            eatenPath2=pb2;
+            //eatenPath=pb;
+            destIsInt=true;
+		  pb2.getEnd().removePath(pb2);
+		  pb2.getStart().removePath(pb2);
+            System.out.println(start.getPaths().size());
+		  
+        }
+        else{
 		if (!destIsInt) {
 		Path b1=new Path(destination,pb.getEnd(),pb.getSpeedLim(),true);
 		Path b2=new Path(pb.getStart(),destination,pb.getSpeedLim(),true);
@@ -101,6 +127,8 @@ public class Car{
 		pb2.getEnd().removePath(pb2);
 		pb2.getStart().removePath(pb2);
 		}
+        }
+        
         //System.out.print(" middle ");
 		//System.out.print(myGrid.getMyIntersections().size());
 		//myGrid.setup();
@@ -196,7 +224,6 @@ public class Car{
         
 		//System.out.println("all");
         if (!startIsInt) {
-					
 				Path p1=start.getPaths().get(0);
 				Path p2=start.getPaths().get(1);
 				p1.getOther(start).addPath(eatenPath2);
@@ -206,9 +233,8 @@ public class Car{
 				myGrid.removeIntersection(start);
                 startIsInt=true;
                 this.curPath=eatenPath2;
-				}
+        }
         if(this.directions.get(this.inc)) {
-			
 			speed=Math.abs(speed);
 		}
         else{

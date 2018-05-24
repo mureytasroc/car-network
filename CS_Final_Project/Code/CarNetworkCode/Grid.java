@@ -65,6 +65,8 @@ public class Grid {
 			this.removeIntersections.remove(i);
 		}
 	}
+    
+    
 	public void update() {
 		this.show();
 		for(int i=myPaths.size()-1;i>=0;i--) {
@@ -81,11 +83,14 @@ public class Grid {
 			myCars.get(i).update();
 			 //This is the update loop like in FishTank
 		}
+        
 		/*for(int aa=0; aa<10000;aa++) {
 			for (int bb=0;bb<5000;bb++) {int c=bb+aa;c=c*c;StdDraw.setPenColor(0,0,0);}
 		}*/
 		StdDraw.show();
 	}
+    
+    
 	/*public void update2() {
 		this.show();
 		for(int i=myPaths.size()-1;i>=0;i--) {
