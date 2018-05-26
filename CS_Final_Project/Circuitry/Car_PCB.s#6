@@ -5380,19 +5380,13 @@ Silk outline shows header location.
 <wire x1="12.7" y1="93.98" x2="12.7" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="116.84" y1="78.74" x2="119.38" y2="78.74" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="4"/>
-<pinref part="J2" gate="G$1" pin="4"/>
-<wire x1="119.38" y1="78.74" x2="121.92" y2="78.74" width="0.1524" layer="91"/>
-<junction x="119.38" y="78.74"/>
-<pinref part="J3" gate="G$1" pin="4"/>
-<wire x1="121.92" y1="78.74" x2="124.46" y2="78.74" width="0.1524" layer="91"/>
-<junction x="121.92" y="78.74"/>
-</segment>
-<segment>
 <pinref part="SERIAL" gate="G$1" pin="1"/>
 <wire x1="76.2" y1="53.34" x2="68.58" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="53.34" x2="68.58" y2="45.72" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J3" gate="G$1" pin="4"/>
+<wire x1="121.92" y1="78.74" x2="121.92" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="RESET" class="0">
@@ -5414,7 +5408,7 @@ Silk outline shows header location.
 <net name="ADC" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="ADC"/>
-<wire x1="66.04" y1="124.46" x2="53.34" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="124.46" x2="50.8" y2="124.46" width="0.1524" layer="91"/>
 <label x="55.88" y="124.46" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -5426,7 +5420,7 @@ Silk outline shows header location.
 <net name="GPIO16" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO16"/>
-<wire x1="66.04" y1="119.38" x2="53.34" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="119.38" x2="50.8" y2="119.38" width="0.1524" layer="91"/>
 <label x="55.88" y="119.38" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -5438,7 +5432,7 @@ Silk outline shows header location.
 <net name="GPIO14" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO14"/>
-<wire x1="53.34" y1="116.84" x2="66.04" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="116.84" x2="66.04" y2="116.84" width="0.1524" layer="91"/>
 <label x="55.88" y="116.84" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -5449,7 +5443,7 @@ Silk outline shows header location.
 <net name="GPIO12" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO12"/>
-<wire x1="66.04" y1="114.3" x2="53.34" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="114.3" x2="50.8" y2="114.3" width="0.1524" layer="91"/>
 <label x="55.88" y="114.3" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -5460,7 +5454,7 @@ Silk outline shows header location.
 <net name="GPIO13" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO13"/>
-<wire x1="53.34" y1="111.76" x2="66.04" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="111.76" x2="66.04" y2="111.76" width="0.1524" layer="91"/>
 <label x="55.88" y="111.76" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -5471,7 +5465,7 @@ Silk outline shows header location.
 <net name="GPIO15" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO15"/>
-<wire x1="101.6" y1="111.76" x2="116.84" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="111.76" x2="119.38" y2="111.76" width="0.1524" layer="91"/>
 <label x="106.68" y="111.76" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -5479,17 +5473,25 @@ Silk outline shows header location.
 <wire x1="20.32" y1="132.08" x2="20.32" y2="154.94" width="0.1524" layer="91"/>
 <label x="20.32" y="137.16" size="1.778" layer="95" rot="R90"/>
 </segment>
+<segment>
+<pinref part="J2" gate="G$1" pin="4"/>
+<wire x1="119.38" y1="78.74" x2="119.38" y2="86.36" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="GPIO2" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO2"/>
-<wire x1="116.84" y1="114.3" x2="101.6" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="114.3" x2="101.6" y2="114.3" width="0.1524" layer="91"/>
 <label x="106.68" y="114.3" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="R7" gate="G$1" pin="1"/>
 <wire x1="5.08" y1="121.92" x2="5.08" y2="111.76" width="0.1524" layer="91"/>
 <label x="5.08" y="114.3" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="4"/>
+<wire x1="116.84" y1="78.74" x2="116.84" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GPIO0" class="0">

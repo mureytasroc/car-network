@@ -5376,6 +5376,7 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <text x="121.92" y="55.88" size="1.778" layer="97">A GPIO12</text>
 <text x="121.92" y="50.8" size="1.778" layer="97">B GPIO13</text>
 <text x="68.58" y="43.18" size="1.778" layer="97">3.3</text>
+<text x="121.92" y="111.76" size="1.778" layer="97">Dont connect GPIO2 and pull down gpio15 with 1k in future versions</text>
 </plain>
 <instances>
 <instance part="GND6" gate="1" x="88.9" y="35.56"/>

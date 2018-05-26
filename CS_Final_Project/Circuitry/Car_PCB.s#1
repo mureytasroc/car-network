@@ -5351,6 +5351,7 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <part name="J2" library="SparkFun-Connectors" deviceset="CONN_04" device=""/>
 <part name="J3" library="SparkFun-Connectors" deviceset="CONN_04" device=""/>
 <part name="U$1" library="si70xx-10" deviceset="TCA9548A" device=""/>
+<part name="R6" library="adafruit" deviceset="R-US_" device="M0805" value="10k"/>
 </parts>
 <sheets>
 <sheet>
@@ -5419,6 +5420,7 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <instance part="J2" gate="G$1" x="137.16" y="99.06"/>
 <instance part="J3" gate="G$1" x="116.84" y="88.9"/>
 <instance part="U$1" gate="G$1" x="127" y="-5.08"/>
+<instance part="R6" gate="G$1" x="104.14" y="-7.62" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -5589,16 +5591,14 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <wire x1="142.24" y1="104.14" x2="144.78" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="VCC"/>
-<wire x1="121.92" y1="-12.7" x2="104.14" y2="-12.7" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="RESET"/>
-<wire x1="104.14" y1="-2.54" x2="121.92" y2="-2.54" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="-12.7" x2="104.14" y2="-2.54" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="X1" gate="G$1" pin="GPIO2"/>
 <wire x1="119.38" y1="114.3" x2="101.6" y2="114.3" width="0.1524" layer="91"/>
 <label x="106.68" y="114.3" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="VCC"/>
+<wire x1="121.92" y1="-12.7" x2="104.14" y2="-12.7" width="0.1524" layer="91"/>
+<pinref part="R6" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="RESET" class="0">
@@ -5952,6 +5952,13 @@ Source: &lt;a href="http://www.silabs.com/Support%20Documents/TechnicalDocs/Si70
 <segment>
 <pinref part="J2" gate="G$1" pin="3"/>
 <wire x1="142.24" y1="101.6" x2="144.78" y2="101.6" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="RESET"/>
+<wire x1="121.92" y1="-2.54" x2="104.14" y2="-2.54" width="0.1524" layer="91"/>
+<pinref part="R6" gate="G$1" pin="2"/>
 </segment>
 </net>
 </nets>

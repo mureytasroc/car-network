@@ -5202,7 +5202,7 @@ Silk outline shows header location.
 <text x="121.92" y="53.34" size="1.778" layer="97">COmmon gnd</text>
 <text x="121.92" y="55.88" size="1.778" layer="97">A GPIO12</text>
 <text x="121.92" y="50.8" size="1.778" layer="97">B GPIO13</text>
-<text x="68.58" y="45.72" size="1.778" layer="97">vbat</text>
+<text x="68.58" y="43.18" size="1.778" layer="97">3.3</text>
 </plain>
 <instances>
 <instance part="GND6" gate="1" x="88.9" y="35.56"/>
@@ -5389,6 +5389,11 @@ Silk outline shows header location.
 <wire x1="121.92" y1="78.74" x2="124.46" y2="78.74" width="0.1524" layer="91"/>
 <junction x="121.92" y="78.74"/>
 </segment>
+<segment>
+<pinref part="SERIAL" gate="G$1" pin="1"/>
+<wire x1="76.2" y1="53.34" x2="68.58" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="53.34" x2="68.58" y2="45.72" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="RESET" class="0">
 <segment>
@@ -5564,11 +5569,6 @@ Silk outline shows header location.
 <segment>
 <pinref part="JP2" gate="A" pin="2"/>
 <wire x1="-38.1" y1="66.04" x2="-45.72" y2="66.04" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="SERIAL" gate="G$1" pin="1"/>
-<wire x1="76.2" y1="53.34" x2="68.58" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="68.58" y1="53.34" x2="68.58" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
