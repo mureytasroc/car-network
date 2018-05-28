@@ -1,74 +1,34 @@
-/*
- *  Simple HTTP get webclient test
- */
- 
-#include <ESP8266WiFi.h>
- 
-const char* ssid     = "DVW3201BE8";
-const char* password = "DVW3201BB69FE8";
- 
-const char* host = "wifitest.adafruit.com";
- 
+#include <ESP8266WiFi.h>        // Include the Wi-Fi library
+#include <ESP8266WiFiMulti.h>   // Include the Wi-Fi-Multi library
+#include <ESP8266mDNS.h>        // Include the mDNS library
+
+ESP8266WiFiMulti wifiMulti;     // Create an instance of the ESP8266WiFiMulti class, called 'wifiMulti'
+
 void setup() {
-  Wire.begin();
-  Wire.pins(5, 4);
-  Serial.begin(115200);
-  delay(100);
- 
-  // We start by connecting to a WiFi network
- 
-  Serial.println();
-  Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
-  
-  WiFi.begin(ssid, password);
-  
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
+  Serial.begin(115200);         // Start the Serial communication to send messages to the computer
+  delay(10);
+  Serial.println('\n');
+
+  wifiMulti.addAP("DVW3201BE8", "DVW3201BB69FE8");   // add Wi-Fi networks you want to connect to
+  wifiMulti.addAP("Trinity", "wirelesskey");
+  //wifiMulti.addAP("ssid_from_AP_3", "your_password_for_AP_3");
+
+  Serial.println("Connecting ...");
+  int i = 0;
+  while (wifiMulti.run() != WL_CONNECTED) { // Wait for the Wi-Fi to connect: scan for Wi-Fi networks, and connect to the strongest of the networks above
+    delay(1000);
+    Serial.print(++i); Serial.print(' ');
   }
- 
-  Serial.println("");
-  Serial.println("WiFi connected");  
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
+  Serial.println('\n');
+  Serial.print("Connected to ");
+  Serial.println(WiFi.SSID());              // Tell us what network we're connected to
+  Serial.print("IP address:\t");
+  Serial.println(WiFi.localIP());           // Send the IP address of the ESP8266 to the computer
+
+  if (!MDNS.begin("esp8266")) {             // Start the mDNS responder for esp8266.local
+    Serial.println("Error setting up MDNS responder!");
+  }
+  Serial.println("mDNS responder started");
 }
- 
-int value = 0;
- 
-void loop() {
-  delay(5000);
-  ++value;
- 
-  Serial.print("connecting to ");
-  Serial.println(host);
-  
-  // Use WiFiClient class to create TCP connections
-  WiFiClient client;
-  const int httpPort = 80;
-  if (!client.connect(host, httpPort)) {
-    Serial.println("connection failed");
-    return;
-  }
-  
-  // We now create a URI for the request
-  String url = "/testwifi/index.html";
-  Serial.print("Requesting URL: ");
-  Serial.println(url);
-  
-  // This will send the request to the server
-  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
-               "Host: " + host + "\r\n" + 
-               "Connection: close\r\n\r\n");
-  delay(500);
-  
-  // Read all the lines of the reply from server and print them to Serial
-  while(client.available()){
-    String line = client.readStringUntil('\r');
-    Serial.print(line);
-  }
-  
-  Serial.println();
-  Serial.println("closing connection");
-}
+
+void loop() { }
