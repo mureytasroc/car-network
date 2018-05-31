@@ -45,7 +45,7 @@ public class Intersection implements Comparable {
 				}
 			}
 		}
-	}*/
+	}
     public void nodify(double source, Car c) {//recursive
 		if (source<this.nodeValue) {
 			nodeValue=source;
@@ -54,21 +54,21 @@ public class Intersection implements Comparable {
 					p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,p);
 			}
 		}
-	}
+	}*/
     // In later implementations, source will be passed as a parameter to the getDistance method
     public void nodify(double source, Car c, Path inPath) {//recursive
 		if (source<this.nodeValue) {
-      this.leadingPath=inPath;
+            this.leadingPath=inPath;
 			nodeValue=source;
 			for (int i=0; i<this.myPaths.size();i++) {
 				Path p=myPaths.get(i);
-					p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,p);//getDistance(c,this,source) //where this defines directionality
+				p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,p);//getDistance(c,this,source) //where this defines directionality
 			}
 		}
 	}
 
     
-    public ArrayList<Path> collectRoute(Intersection start, ArrayList<Boolean> dirs){
+    public ArrayList<Path> collectRoute(Intersection start, ArrayList<Boolean> dirs, Car c){
         
         if(this == start){
             ArrayList<Path> myList = new ArrayList<Path>();
@@ -76,13 +76,13 @@ public class Intersection implements Comparable {
         }
         else{
             System.out.println("this far");
-            System.out.println(this.leadingPath);
-            ArrayList<Path> myList = new ArrayList<Path>(this.leadingPath.getOther(this).collectRoute(start,dirs));
+            ArrayList<Path> myList = new ArrayList<Path>(this.leadingPath.getOther(this).collectRoute(start,dirs,c));
             myList.add(this.leadingPath);
           	Boolean direction=Boolean.valueOf(false);
           	if(leadingPath.getEnd()==this){
               direction=Boolean.valueOf(true);
             }
+            new Occupation(this.leadingPath,this.leadingPath.getOther(this).nodeValue(),direction,c);
           dirs.add(direction);
             return myList;
         }

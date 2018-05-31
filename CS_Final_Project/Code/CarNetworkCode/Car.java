@@ -121,7 +121,7 @@ public class Car{
 				p1.die();
 				p2.die();
                 if(killMe){
-                    tempPath.die();
+                    tempPath1.die();
                     killMe=false;
                 }
 				myGrid.removeIntersection(destination);
@@ -175,13 +175,14 @@ public class Car{
         
 		
         this.directions = new ArrayList<Boolean>();
-        ArrayList<Path> path = destination.collectRoute(this.start,directions);
+        ArrayList<Path> path = destination.collectRoute(this.start,directions,this);
 
         if (!startIsInt) {
 				Path p1=start.getPaths().get(0);
 				Path p2=start.getPaths().get(1);
                 this.curPath=eatenPath2;
                 if (p1.getOther(start)==destination){
+                        Path a;
                         if (start.compareTo(destination)<0){
                         a=new Path(start,destination,p1.getSpeedLim());
                         }
@@ -189,7 +190,7 @@ public class Car{
                         a=new Path(destination,start, p1.getSpeedLim());
                         }
                         this.curPath=a;
-                        tempPath=a;
+                        tempPath1=a;
                     killMe=true;
                     System.out.println("yes");
                 }
