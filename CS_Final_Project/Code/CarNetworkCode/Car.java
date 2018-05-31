@@ -6,7 +6,7 @@ public class Car{
 	private ArrayList<Path> myRoute;
 	private ArrayList<Boolean> directions;
 	private Path curPath;
-	private double speed=3;
+	private double speed=1;
 	private Intersection destination;
     private Intersection start;
 	private int inc=0;
@@ -15,6 +15,10 @@ public class Car{
 	private boolean destIsInt=false;
     private boolean startIsInt=false;
     private Path eatenPath2;
+    private boolean killMe=false;
+    private Path tempPath1;
+    private Path tempPath2;
+    private Path tempPath3;
 	Car(Location l){
 		this.myRoute=new ArrayList<Path>();
 		this.directions=new ArrayList<Boolean>();
@@ -46,25 +50,19 @@ public class Car{
         return this.speed;
     }
 	public void setup(Location l,Location d) {
-        //System.out.print("start ");
-        //System.out.print(myGrid.getMyIntersections().size());
 		this.loc=l;
-		
 		Path pb=d.snapToPath();
         Path pb2=l.snapToPath();
         if (destination!=null)
             destination.specialize();
+         if (start!=null)
+            start.specialize();
 		this.destination=new Intersection(d,true);
-        
 		destIsInt=false;
-        
-		/*myGrid.update2();
-		long start = System.currentTimeMillis();
-		while(System.currentTimeMillis()<start+1000) {}*/
-		
 		for (int i=0; i<myGrid.getMyIntersections().size()-1;i++) {
 			if(myGrid.getMyIntersections().get(i).tryToEat(destination)) {
 				destIsInt=true;
+                destination.specialize();
 				destination=myGrid.getMyIntersections().get(i);
                 destination.specialize();
 			}
@@ -75,39 +73,12 @@ public class Car{
         for (int i=0; i<myGrid.getMyIntersections().size()-1;i++) {
 			if(myGrid.getMyIntersections().get(i).tryToEat(start)) {
 				startIsInt=true;
+                start.specialize();
 				start=myGrid.getMyIntersections().get(i);
+                start.specialize();
 			}
 		}
 		myGrid.removeDelayedInt();
-		/* What happens when the new paths formed by the destination
-        must form further new paths for a start?
-        */
-        if((pb==pb2)&&(!destIsInt)&&(!startIsInt)){
-            System.out.println(start.getPaths().size());
-            System.out.println("hey?");
-            Path b2;
-            Path b1;
-            Path b3;
-            if (destination.compareTo(start)>0){
-            b1=new Path(start,destination,pb.getSpeedLim(),false);
-                b2=new Path(pb.getStart(),start,pb.getSpeedLim(),false);
-                b3=new Path(destination,pb.getEnd(),pb.getSpeedLim(),false);
-             
-            }
-            else{
-               b1=new Path(destination,start,pb.getSpeedLim(),false); 
-                b2=new Path(start,pb.getEnd(),pb.getSpeedLim(),false);
-                b3=new Path(pb.getStart(),destination,pb.getSpeedLim(),false);
-            
-            }
-            eatenPath2=pb2;
-            eatenPath=pb;
-		  pb2.getEnd().removePath(pb2);
-		  pb2.getStart().removePath(pb2);
-            
-		  
-        }
-        else{
 		if (!destIsInt) {
 		Path b1=new Path(destination,pb.getEnd(),pb.getSpeedLim(),false);
 		Path b2=new Path(pb.getStart(),destination,pb.getSpeedLim(),false);
@@ -124,7 +95,6 @@ public class Car{
 		eatenPath2=pb2;
 		pb2.getEnd().removePath(pb2);
 		pb2.getStart().removePath(pb2);
-		}
         }
         
         //System.out.print(" middle ");
@@ -150,6 +120,10 @@ public class Car{
 				p2.getOther(destination).addPath(eatenPath);
 				p1.die();
 				p2.die();
+                if(killMe){
+                    tempPath.die();
+                    killMe=false;
+                }
 				myGrid.removeIntersection(destination);
 				}
                 
@@ -192,7 +166,7 @@ public class Car{
 		for (Intersection i: myGrid.getMyIntersections()) {
 			i.setup();
 		}
-		//this.destination.nodify(0);
+		
         myGrid.intersectionUpdate();
     
     
@@ -202,19 +176,22 @@ public class Car{
 		
         this.directions = new ArrayList<Boolean>();
         ArrayList<Path> path = destination.collectRoute(this.start,directions);
+
         if (!startIsInt) {
 				Path p1=start.getPaths().get(0);
 				Path p2=start.getPaths().get(1);
                 this.curPath=eatenPath2;
                 if (p1.getOther(start)==destination){
-                        Path a;
-                        if(start.compareTo(destination)>0){
-                        a=new Path(p2.getOther(start),destination,2);
+                        if (start.compareTo(destination)<0){
+                        a=new Path(start,destination,p1.getSpeedLim());
                         }
                         else{
-                        a=new Path(destination,p2.getOther(start),2);  
+                        a=new Path(destination,start, p1.getSpeedLim());
                         }
                         this.curPath=a;
+                        tempPath=a;
+                    killMe=true;
+                    System.out.println("yes");
                 }
             p1.die();
             p2.getOther(start).addPath(eatenPath2);
@@ -226,11 +203,14 @@ public class Car{
         }
         if(this.directions.get(this.inc)) {
 			speed=Math.abs(speed);
+            int t=this.loc.travel(curPath,speed,true);
 		}
         else{
             speed=-Math.abs(speed);
+            int t=this.loc.travel(curPath,speed,true);
         }
         inc++;
+        this.destination.nodify(0,this,null);//bug checking
 		return path;
 	}
 	public Location getLocation() {

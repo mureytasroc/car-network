@@ -75,11 +75,13 @@ public class Intersection implements Comparable {
             return myList;
         }
         else{
+            System.out.println("this far");
+            System.out.println(this.leadingPath);
             ArrayList<Path> myList = new ArrayList<Path>(this.leadingPath.getOther(this).collectRoute(start,dirs));
             myList.add(this.leadingPath);
-          	Boolean direction=new Boolean(false);
+          	Boolean direction=Boolean.valueOf(false);
           	if(leadingPath.getEnd()==this){
-              direction=new Boolean(true);
+              direction=Boolean.valueOf(true);
             }
           dirs.add(direction);
             return myList;
@@ -148,9 +150,10 @@ public class Intersection implements Comparable {
 		if(!this.edible) {StdDraw.setPenColor(255,255,0); StdDraw.filledRectangle(this.loc.getPos()[0], this.loc.getPos()[1], 15, 15);}
 		StdDraw.setPenColor(0,0,0);
         StdDraw.setPenRadius(0.03);
-		StdDraw.text(this.loc.getPos()[0], this.loc.getPos()[1], (new Integer((int)(nodeValue))).toString() );
+		StdDraw.text(this.loc.getPos()[0], this.loc.getPos()[1], (Integer.valueOf((int)(nodeValue))).toString() );
+        System.out.println(nodeValue);
 		/*System.out.println("hey");
-		System.out.println(nodeValue);
+		
 		for(int i=0; i<this.myPaths.size();i++) {
 			System.out.println("intr");
 		System.out.println(this.myPaths.get(i).getDistance());
