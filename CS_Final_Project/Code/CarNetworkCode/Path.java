@@ -112,6 +112,18 @@ public class Path {
 		show();
         }
 	}
+    public double getTime(Car c,Intersection i, double source){
+        
+        double s=Math.abs(c.getSpeed());
+        if (s>this.getSpeedLim()){
+            s=this.getSpeedLim();
+        }
+		double projected=Math.abs((this.distance/s));
+        for(Occupation o: this.occupations){
+            if o.
+        }
+        return projected;
+    }
 	public double getSlope() {
 		return( (this.end.getLoc().getPos()[1]-this.start.getLoc().getPos()[1])/(this.end.getLoc().getPos()[0]-this.start.getLoc().getPos()[0]));
 	}

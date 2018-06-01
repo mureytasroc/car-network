@@ -1,15 +1,16 @@
 public class Occupation{
     private double speed;
     private boolean direction;
-    private int beginTime;
-    private int endTime;
+    private double beginTime;
+    private double endTime;
     private Path myPath;
     public Occupation(Path myPath,double time, boolean direction,Car c){
         this.speed=c.getSpeed();
         this.direction=direction;
-        this.beginTime=(int)time;
-        this.endTime=beginTime+(int)(myPath.getDistance(c)/this.speed)+1;
+        this.beginTime=time;
+        this.endTime=beginTime+(myPath.getDistance(c)/this.speed);
         this.myPath=myPath;
+        this.myPath.addOccupation(this);
     }
     public void update(){
         this.endTime-=1;
@@ -17,6 +18,18 @@ public class Occupation{
         if (this.endTime<0){
             myPath.removeOccupation(this);
         }
+    }
+    public boolean hasCrash(double startTime,double velocity){
+        
+        if (startTime>endTime){
+            return false;
+        }
+        double distance=myPath.getDistance();
+        finishTime=startTime+distance/velocity;
+        if(finishTime<beginTime){
+            return false;
+        }
+        if startTime
     }
     
 }

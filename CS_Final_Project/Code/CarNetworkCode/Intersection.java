@@ -62,7 +62,9 @@ public class Intersection implements Comparable {
 			nodeValue=source;
 			for (int i=0; i<this.myPaths.size();i++) {
 				Path p=myPaths.get(i);
-				p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,p);//getDistance(c,this,source) //where this defines directionality
+				//p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,p);
+                p.getOther(this).nodify((nodeValue+p.getTime(c,this,source)),c,p);
+                //getDistance(c,this,source) //where this defines directionality
 			}
 		}
 	}
