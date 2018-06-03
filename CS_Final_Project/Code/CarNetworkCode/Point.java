@@ -9,18 +9,29 @@ public class Point{
         double m=0;
         double dY=p.getY()-this.y;
         double dX=p.getX()-this.x;
-        if(Math.abs(dX)<Math.abs(dY/(double.MAX_VALUE))){
-            return null;
+        if(dX==0){
+            if(dY==0){
+                return Double.POSITIVE_INFINITY;
+            }
+            if(dY>0){
+                return Double.POSITIVE_INFINITY;
+            }
+            if(dY<0){
+                return Double.NEGATIVE_INFINITY;
+            }
         }
-        else{
             return dY/dX;
-        }
     }
     public double getX(){
         return this.x;
     }
     public double getY(){
         return this.y;
+    }
+    public String toString(){
+        String xs=Double.toString((this.x));
+        String ys=Double.toString((this.y));
+        return ("("+xs+", "+ys+")");
     }
 }
 

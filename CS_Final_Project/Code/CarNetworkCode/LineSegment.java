@@ -7,5 +7,12 @@ public class LineSegment{
         this.p1=inP1;
         this.p2=inP2;
     }
+    public Line getLine(){
+        return new Line(p1,p2);
+    }
+    public double getSlope(){
+        return p1.getSlope(p2);
+    }
+    
     
 }
