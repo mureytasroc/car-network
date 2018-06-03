@@ -1,3 +1,5 @@
+import java.util.*;
+import java.util.Collections;
 public class Occupation{
     private double speed;
     private boolean direction;
@@ -19,17 +21,25 @@ public class Occupation{
             myPath.removeOccupation(this);
         }
     }
-    public boolean hasCrash(double startTime,double velocity){
+    public double[] hasCrash(double startTime,double velocity){
         
         if (startTime>endTime){
-            return false;
+            return null;
         }
+        else{
         double distance=myPath.getDistance();
-        finishTime=startTime+distance/velocity;
+        double finishTime=startTime+distance/velocity;
         if(finishTime<beginTime){
-            return false;
+            return null;
         }
-        if startTime
+            else{
+                double xInt = (velocity*startTime-speed*beginTime)/(velocity-speed);
+                double yInt = velocity*(xInt-startTime);
+                return new double[]{xInt,yInt};
+            }
+            
+        }
+        
     }
     
 }

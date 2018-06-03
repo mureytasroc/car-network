@@ -119,8 +119,16 @@ public class Path {
             s=this.getSpeedLim();
         }
 		double projected=Math.abs((this.distance/s));
+        ArrayList<Occupation> ls = new ArrayList<Occupation>();
+        double[2] lowestInt=new double[]{double.MAX_VALUE,double.MAX_VALUE};
         for(Occupation o: this.occupations){
-            if o.
+            double[2] intersec = o.hasCrash();
+            if(intersec!=null){
+                ls.add(o);
+                if(intersec[1]<lowestInt[1]){
+                    lowestInt=intersec;
+                }
+            }
         }
         return projected;
     }
