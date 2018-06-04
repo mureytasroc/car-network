@@ -23,7 +23,7 @@ public class Occupation{
         
     }
     
-    private intersect
+    //private intersect
         
     public double getEndTime(){
         

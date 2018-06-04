@@ -13,8 +13,14 @@ public class Path {
 	
 	Path(Intersection s, Intersection e, double SL,double distance){
 		this.distance=distance;
+        if(s.compareTo(e)>0){
+            this.start=e;
+            this.end=s;
+        }
+        else{
 		this.start=s;
-		this.end=e;
+        this.end=e;
+        }
 		this.speedLim=SL;
 		this.myGrid=s.getGrid();
 		this.myGrid.addPath(this);
@@ -24,8 +30,14 @@ public class Path {
 	}
 	Path(Intersection s, Intersection e, double SL, double distance, boolean add){
 		this.distance=distance;
+		if(s.compareTo(e)>0){
+            this.start=e;
+            this.end=s;
+        }
+        else{
 		this.start=s;
-		this.end=e;
+        this.end=e;
+        }
 		this.speedLim=SL;
 		this.myGrid=s.getGrid();
 		if (add) {
@@ -37,8 +49,14 @@ public class Path {
 	}
 	Path(Intersection s, Intersection e, double SL){
 		this.distance=s.getLoc().getDistance(e.getLoc());
+		if(s.compareTo(e)>0){
+            this.start=e;
+            this.end=s;
+        }
+        else{
 		this.start=s;
-		this.end=e;
+        this.end=e;
+        }
 		this.speedLim=SL;
 		this.myGrid=s.getGrid();
 		this.myGrid.addPath(this);

@@ -16,10 +16,7 @@ public class Car{
 	private boolean destIsInt=false;
     private boolean startIsInt=false;
     private Path eatenPath2;
-    private boolean killMe=false;
-    private Path tempPath1;
-    private Path tempPath2;
-    private Path tempPath3;
+    private Path tempPath;
     private double trailingDistance;
     
     private double startTime;//in seconds with millisecond precision
@@ -119,7 +116,15 @@ public class Car{
 		
 		int t=this.loc.travel(curPath,speed,true);
 		if(t>0) {
+             if(tempPath!=null){
+                myGrid.removeIntersection(start);
+                tempPath.die();
+                tempPath=null;
+                
+                
+            }
 			if (this.inc==myRoute.size()) {
+                
 				if (!destIsInt) {
 					
 				Path p1=destination.getPaths().get(0);
@@ -128,10 +133,6 @@ public class Car{
 				p2.getOther(destination).addPath(eatenPath);
 				p1.die();
 				p2.die();
-                if(killMe){
-                    tempPath1.die();
-                    killMe=false;
-                }
 				myGrid.removeIntersection(destination);
 				}
                 
@@ -192,27 +193,16 @@ public class Car{
         ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
 
         if (!startIsInt) {
+            if (tempPath==null){
 				Path p1=start.getPaths().get(0);
 				Path p2=start.getPaths().get(1);
                 this.curPath=eatenPath2;
-                if (p1.getOther(start)==destination){
-                        Path a;
-                        if (start.compareTo(destination)<0){
-                        a=new Path(start,destination,p1.getSpeedLim());
-                        }
-                        else{
-                        a=new Path(destination,start, p1.getSpeedLim());
-                        }
-                        this.curPath=a;
-                        tempPath1=a;
-                    killMe=true;
-                    System.out.println("yes");
-                }
             p1.die();
             p2.getOther(start).addPath(eatenPath2);
             p2.die();
             p1.getOther(start).addPath(eatenPath2);
             myGrid.removeIntersection(start);
+            }
 				
                 
         }
