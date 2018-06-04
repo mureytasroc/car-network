@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.awt.*;
+
+
 public class Intersection implements Comparable {
 	private Location loc;
 	private Grid myGrid;
@@ -56,38 +58,48 @@ public class Intersection implements Comparable {
 		}
 	}*/
     // In later implementations, source will be passed as a parameter to the getDistance method
-    public void nodify(double source, Car c, Path inPath) {//recursive
+    public void nodify(double source, Car c, Path inPath, double startTime) {//recursive
 		if (source<this.nodeValue) {
             this.leadingPath=inPath;
 			nodeValue=source;
 			for (int i=0; i<this.myPaths.size();i++) {
 				Path p=myPaths.get(i);
 				//p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,p);
-                p.getOther(this).nodify((nodeValue+p.getTime(c,this,source)),c,p);
+                Boolean direction=Boolean.valueOf(false);
+          	if(p.getStart()==this){
+              direction=Boolean.valueOf(true);
+            }
+                
+                p.getOther(this).nodify((nodeValue+p.getTime(c,direction,startTime+source)),c,p);
                 //getDistance(c,this,source) //where this defines directionality
 			}
 		}
 	}
 
     
-    public ArrayList<Path> collectRoute(Intersection start, ArrayList<Boolean> dirs, Car c){
+    public ArrayList<Path> collectRoute(Intersection start, ArrayList<Boolean> dirs, Car c, double startTime){
         
         if(this == start){
             ArrayList<Path> myList = new ArrayList<Path>();
             return myList;
         }
         else{
-            System.out.println("this far");
+            //System.out.println("this far");
             ArrayList<Path> myList = new ArrayList<Path>(this.leadingPath.getOther(this).collectRoute(start,dirs,c));
             myList.add(this.leadingPath);
           	Boolean direction=Boolean.valueOf(false);
           	if(leadingPath.getEnd()==this){
               direction=Boolean.valueOf(true);
             }
-            new Occupation(this.leadingPath,this.leadingPath.getOther(this).nodeValue(),direction,c);
-          dirs.add(direction);
+            this.leadingPath.confirmPossibleOccupation(c,myList.size()-1);
+            /*new Occupation(this.leadingPath,this.leadingPath.getOther(this).nodeValue(),direction,c);
+          dirs.add(direction);*/
             return myList;
         }
+    }
+    
+    public void occupyIntersection(double startTime, double endTime){
+        //add a horizontal occupation at appropriate end of each applicable path's occupation graph
     }
     
     

@@ -5,6 +5,7 @@ public class Car{
 	private Location loc;
 	private ArrayList<Path> myRoute;
 	private ArrayList<Boolean> directions;
+    private ArrayList<ArrayList<LineSegment>> speedProfile;//speed profile for each path
 	private Path curPath;
 	private double speed=1;
 	private Intersection destination;
@@ -19,7 +20,12 @@ public class Car{
     private Path tempPath1;
     private Path tempPath2;
     private Path tempPath3;
+    private double trailingDistance;
+    
+    private double startTime;//in seconds with millisecond precision
 	Car(Location l){
+        this.trailingDistance=0.4064;
+        
 		this.myRoute=new ArrayList<Path>();
 		this.directions=new ArrayList<Boolean>();
 		this.myGrid=l.getGrid();
@@ -31,6 +37,8 @@ public class Car{
 		this.myGrid.addCar(this);
 	}
 	Car(Location l,Location d){
+        this.trailingDistance=0.4064;
+        
 		this.myRoute=new ArrayList<Path>();
 		this.directions=new ArrayList<Boolean>();
 		this.myGrid=l.getGrid();
@@ -161,7 +169,13 @@ public class Car{
 		StdDraw.filledRectangle(this.loc.getPos()[0],this.loc.getPos()[1], 10, 10);
 		
 	}
+    
+    public void setPathOccupation(int num, ArrayList<Occupation> occ){
+        this.speedProfile.set(num,occ);
+    }
 	public ArrayList<Path> getOptimalPath() {
+        
+        this.startTime=this.myGrid.getTime()+3;//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
         
 		for (Intersection i: myGrid.getMyIntersections()) {
 			i.setup();
@@ -171,11 +185,11 @@ public class Car{
     
     
       
-        this.start.nodify(0,this,null);
+        this.start.nodify(0,this,null,startTime);
         
 		
         this.directions = new ArrayList<Boolean>();
-        ArrayList<Path> path = destination.collectRoute(this.start,directions,this);
+        ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
 
         if (!startIsInt) {
 				Path p1=start.getPaths().get(0);

@@ -6,7 +6,8 @@ public class Path {
 	private double distance;
 	private double speedLim;
 	private Grid myGrid;
-    private ArrayList<Occupation> occupations=new ArrayList<Occupation>();
+    private Occupation occupation;
+    private Occupation possibleOccupation;
 	
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no
 	
@@ -112,26 +113,30 @@ public class Path {
 		show();
         }
 	}
-    public double getTime(Car c,Intersection i, double source){
+    public double getTime(Car c,Boolean direction, double enterTime){
+        
         
         double s=Math.abs(c.getSpeed());
         if (s>this.getSpeedLim()){
             s=this.getSpeedLim();
         }
 		double projected=Math.abs((this.distance/s));
-        ArrayList<Occupation> ls = new ArrayList<Occupation>();
-        double[2] lowestInt=new double[]{double.MAX_VALUE,double.MAX_VALUE};
-        for(Occupation o: this.occupations){
-            double[2] intersec = o.hasCrash();
-            if(intersec!=null){
-                ls.add(o);
-                if(intersec[1]<lowestInt[1]){
-                    lowestInt=intersec;
-                }
-            }
-        }
+        
+        
+        //make line segment graph for this path, set possibleOccupation
+        this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()));
+        
+        projected=this.possibleOccupation.getEndTime()-enterTime;
+        
         return projected;
     }
+    public void confirmPossibleOccupation(Car c, int pathNum){
+        c.setPathOccupation(pathNum,this.possibleOccupation);
+        //add possibleOccupation to occupations, delete all redundant occupations (ones that have a point with an x value less than the possibleOccupation's end x value )
+        
+    }
+    
+    
 	public double getSlope() {
 		return( (this.end.getLoc().getPos()[1]-this.start.getLoc().getPos()[1])/(this.end.getLoc().getPos()[0]-this.start.getLoc().getPos()[0]));
 	}

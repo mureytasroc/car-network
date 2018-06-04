@@ -1,7 +1,11 @@
 import java.util.*;
 import java.awt.Color;
+import java.util.Date;
+
+
 public class Grid {
 	
+    
 	private ArrayList<Car> myCars;
 	private ArrayList<Intersection> myIntersections;
 	private ArrayList<Path> myPaths;
@@ -11,8 +15,12 @@ public class Grid {
 	
 	private ArrayList<Car> deleteQueue;
 	private ArrayList<Path> delayQueue;
+    private long startTime;//in ms since 1970 12am January 1
+    private double time;//in seconds
 
 	Grid(){
+        this.startTime=System.currentTimeMillis();
+        this.time=0;
 		StdDraw.setCanvasSize(900,900);
 		StdDraw.setXscale(0,800);
         StdDraw.setYscale(0,800);
@@ -68,6 +76,8 @@ public class Grid {
     
     
 	public void update() {
+        this.time=(double)(System.currentTimeMillis()-startTime);
+            
 		this.show();
 		for(int i=myPaths.size()-1;i>=0;i--) {
 		myPaths.get(i).update();
@@ -89,6 +99,10 @@ public class Grid {
 		}*/
 		StdDraw.show();
 	}
+    
+    public double getTime(){
+        return this.time;
+    }
     
     
 	/*public void update2() {
