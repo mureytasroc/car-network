@@ -6,9 +6,8 @@ public class Path {
 	private double distance;
 	private double speedLim;
 	private Grid myGrid;
-    private Occupation occupation=new Occupation();
-    private Occupation possibleOccupationTru=new Occupation();
-    private Occupation possibleOccupationFalse=new Occupation();
+    private Occupation occupation;
+    private Occupation possibleOccupation=new Occupation();
 	
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no
 	
@@ -117,30 +116,18 @@ public class Path {
         }
 		double projected=Math.abs((this.distance/s));
         
-        Occupation possibleOccupation=new Occupation();
-        //make line segment graph for this path, set possibleOccupation
-        this.possibleOccupation.add(new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed())));
-        
+        this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()));
         projected=this.possibleOccupation.getEndTime()-enterTime;
-        this.getOther(origin).addPotentialOccupation(this,projected);
+        //this.getOther(origin).addPotentialOccupation(this,projected);
         
         return projected;
     }
     
     public void confirmPossibleOccupation(Car c, int pathNum, boolean direction){
         c.setPathOccupation(pathNum,this.possibleOccupation);
-        this.occupation.add(getRightPO(direction));
+        this.occupation.add(possibleOccupation);
         //add possibleOccupation to occupations, delete all redundant occupations (ones that have a point with an x value less than the possibleOccupation's end x value )
         
-    }
-    
-    public Occupation getRightPO(boolean dir){
-        if(dir){
-            return possibleOccupationTru;
-        }
-        else{
-            return possibleOccupationFalse;
-        }
     }
     
     

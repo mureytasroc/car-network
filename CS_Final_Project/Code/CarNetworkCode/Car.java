@@ -172,7 +172,7 @@ public class Car{
 		
 	}
     
-    public void setPathOccupation(int num, ArrayList<Occupation> occ){
+    public void setPathOccupation(int num, Occupation occ){
         this.speedProfile.set(num,occ);
     }
 	public ArrayList<Path> getOptimalPath() {
