@@ -6,21 +6,15 @@ public class Path {
 	private double distance;
 	private double speedLim;
 	private Grid myGrid;
-    private Occupation occupation;
-    private Occupation possibleOccupation;
+    private Occupation occupation=new Occupation();
+    private Occupation possibleOccupation=new Occupation();
 	
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no
 	
 	Path(Intersection s, Intersection e, double SL,double distance){
 		this.distance=distance;
-        if(s.compareTo(e)>0){
-            this.start=e;
-            this.end=s;
-        }
-        else{
 		this.start=s;
-        this.end=e;
-        }
+		this.end=e;
 		this.speedLim=SL;
 		this.myGrid=s.getGrid();
 		this.myGrid.addPath(this);
@@ -30,14 +24,8 @@ public class Path {
 	}
 	Path(Intersection s, Intersection e, double SL, double distance, boolean add){
 		this.distance=distance;
-		if(s.compareTo(e)>0){
-            this.start=e;
-            this.end=s;
-        }
-        else{
 		this.start=s;
-        this.end=e;
-        }
+		this.end=e;
 		this.speedLim=SL;
 		this.myGrid=s.getGrid();
 		if (add) {
@@ -49,14 +37,8 @@ public class Path {
 	}
 	Path(Intersection s, Intersection e, double SL){
 		this.distance=s.getLoc().getDistance(e.getLoc());
-		if(s.compareTo(e)>0){
-            this.start=e;
-            this.end=s;
-        }
-        else{
 		this.start=s;
-        this.end=e;
-        }
+		this.end=e;
 		this.speedLim=SL;
 		this.myGrid=s.getGrid();
 		this.myGrid.addPath(this);
@@ -90,14 +72,7 @@ public class Path {
 		this.end=i;
 		this.distance=start.getLoc().getDistance(end.getLoc());
 	}
-    /*public void removeOccupation(Occupation o){
-        this.occupations.remove(o);
-        
-    }
-    public void addOccupation(Occupation o){
-        this.occupations.add(o);
-        
-    }*/
+
 	public double[] getTime(double speed){ //returns {time,maxSpeed}
 		double[] returnAr = new double[2];
 		
@@ -131,7 +106,7 @@ public class Path {
 		show();
         }
 	}
-    public double getTime(Car c,Boolean direction, double enterTime){
+    public double getTime(Car c,Intersection origin,Boolean direction, double enterTime){
         
         
         double s=Math.abs(c.getSpeed());
@@ -142,17 +117,18 @@ public class Path {
         
         
         //make line segment graph for this path, set possibleOccupation
-        //this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()));
+        this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()));
         
-        //projected=this.possibleOccupation.getEndTime()-enterTime;
+        projected=this.possibleOccupation.getEndTime()-enterTime;
+        this.getOther(origin).addPotentialOccupation(this,projected);
         
         return projected;
     }
-    /*public void confirmPossibleOccupation(Car c, int pathNum){
+    public void confirmPossibleOccupation(Car c, int pathNum){
         c.setPathOccupation(pathNum,this.possibleOccupation);
         //add possibleOccupation to occupations, delete all redundant occupations (ones that have a point with an x value less than the possibleOccupation's end x value )
         
-    }*/
+    }
     
     
 	public double getSlope() {

@@ -1,6 +1,14 @@
-public class LineSegment{
+import java.lang.*;
+public class LineSegment implements Comparable{
     
-    public static void main(String[] args){
+    public static void main(String[] args){//tester code
+        /*
+        //compareTo test
+        LineSegment l1 = new LineSegment(new Point(-1,0),new Point(1,0));
+        LineSegment l2 = new LineSegment(new Point(0,-1),new Point(0,1));
+        System.out.println(l1);
+        System.out.println(l2);
+        System.out.println(l1.compareTo(l2));*/
         LineSegment l1 = new LineSegment(new Point(4,3),new Point(7,5));
         LineSegment l2 = new LineSegment(new Point(5,0),new Point(10,6));
         System.out.println(l1);
@@ -116,6 +124,43 @@ public class LineSegment{
         }
         ls+=add;
         return ls;
+    }
+    
+    public double getAvgX(){
+        return (this.p1.getX()/2.0+this.p2.getX()/2.0);
+    }
+    public double getAvgY(){
+        return (this.p1.getY()/2.0+this.p2.getY()/2.0);
+    }
+    
+    public int compareTo(Object ob){
+        if ( ! (ob instanceof LineSegment) ){
+            return -1;}
+        LineSegment ls = (LineSegment)ob;
+        double x1=this.getAvgX();
+        double y1=this.getAvgY();
+        double x2=ls.getAvgX();
+        double y2=ls.getAvgY();
+        if(x1==x2){
+            if(y1==y2){
+                return 0;
+            }
+            else if(y1<y2){
+                return 1;
+            }
+            else{
+                return -1;
+            }
+        }
+        else{
+            if(x1>x2){
+                return 1;
+            }
+            else{
+                return -1;
+            }
+        }
+        
     }
     
     

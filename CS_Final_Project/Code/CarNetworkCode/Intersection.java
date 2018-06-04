@@ -58,7 +58,7 @@ public class Intersection implements Comparable {
 		}
 	}*/
     // In later implementations, source will be passed as a parameter to the getDistance method
-    public void nodify(double source, Car c, Path inPath) {//recursive
+    public void nodify(double source, Car c, Path inPath, double startTime) {//recursive
 		if (source<this.nodeValue) {
             this.leadingPath=inPath;
 			nodeValue=source;
@@ -70,14 +70,14 @@ public class Intersection implements Comparable {
               direction=Boolean.valueOf(true);
             }
                 
-                p.getOther(this).nodify((nodeValue+p.getTime(c,direction,source)),c,p);
+                p.getOther(this).nodify((nodeValue+p.getTime(c,this,direction,startTime+source)),c,p);
                 //getDistance(c,this,source) //where this defines directionality
 			}
 		}
 	}
 
     
-    public ArrayList<Path> collectRoute(Intersection start, ArrayList<Boolean> dirs, Car c){
+    public ArrayList<Path> collectRoute(Intersection start, ArrayList<Boolean> dirs, Car c, double startTime){
         
         if(this == start){
             ArrayList<Path> myList = new ArrayList<Path>();
@@ -91,16 +91,16 @@ public class Intersection implements Comparable {
           	if(leadingPath.getEnd()==this){
               direction=Boolean.valueOf(true);
             }
-            dirs.add(direction);
-            //this.leadingPath.confirmPossibleOccupation(c,myList.size()-1);
+            this.leadingPath.confirmPossibleOccupation(c,myList.size()-1);
             /*new Occupation(this.leadingPath,this.leadingPath.getOther(this).nodeValue(),direction,c);
-          */
+          dirs.add(direction);*/
             return myList;
         }
     }
     
-    public void occupyIntersection(double startTime, double endTime){
-        //add a horizontal occupation at appropriate end of each applicable path's occupation graph
+    public void addPotentialIntersection(Path pdouble reachTime){
+        
+        //add a potential horizontal occupation at appropriate end of each applicable path's occupation graph
     }
     
     
@@ -166,7 +166,7 @@ public class Intersection implements Comparable {
 		StdDraw.setPenColor(0,0,0);
         StdDraw.setPenRadius(0.03);
 		StdDraw.text(this.loc.getPos()[0], this.loc.getPos()[1], (Integer.valueOf((int)(nodeValue))).toString() );
-        //System.out.println(nodeValue);
+        System.out.println(nodeValue);
 		/*System.out.println("hey");
 		
 		for(int i=0; i<this.myPaths.size();i++) {

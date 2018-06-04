@@ -3,27 +3,22 @@ import java.util.Collections;
 public class ExtraMethods{
     public static void main(String args[]){
         
-        /*
+        
         //sortAddAsc test code
         ArrayList<Integer> l = new ArrayList<Integer>();
-        l.add(0);
-        l.add(2);
         l.add(3);
-        l.add(5);
-        l.add(6);
-        l.add(6);
-        l.add(9);
         Integer b = new Integer(2);
         sortAddAsc(b,l);
         for(int i=0;i<l.size();i++){
             System.out.print(l.get(i)+", ");
         }
-        */
+        
         
         
         
     }
     public static void sortAddAsc(Comparable add, ArrayList list){ //sorted add ascengind
+        if(list.size()!=0){
         int ind = recurse(add,list,0,list.size()-1);
         
         int index=ind;
@@ -50,7 +45,12 @@ public class ExtraMethods{
                 list.add(index,add);
             }
         }
-                    System.out.println(index);
+                    }
+        else{
+            list.add(add);
+        }
+        
+        
 
     }
     
