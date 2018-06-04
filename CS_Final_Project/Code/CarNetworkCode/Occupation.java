@@ -43,24 +43,24 @@ public class Occupation{
             if(dir){
                 start=new Point(enterTime,0);
                 end = new Line(new Point(0,p.getDistance()),0);
-                thisL = new Line(new Point(enterTime,0),sp)
+                thisL = new Line(new Point(enterTime,0),sp);
             }
             else{
                 start=new Point(enterTime,p.getDistance());
                 end = new Line(new Point(0,0),0);
-                thisL = new Line(start,-sp)
+                thisL = new Line(start,-sp);
             }
             Point endP=end.getIntersection(thisL);
-            thisLineSeg=new LineSegment(start,endP)
+            thisLineSeg=new LineSegment(start,endP);
             lineSegs.sortedAdd(thisLineSeg);
         }
         else{//there are existing occupations
             Point jaggedEnd;
         while(jaggedEnd.getY()<p.getDistance()){
-        for(int i=0;i<EOlineSegs.size()){
+        for(int i=0;i<EOlineSegs.size();i++){
             Point intP = thisLineSeg.getIntersection(EOlineSegs.get(i));
             if(intP!=null){
-                firstInt=intP
+                firstInt=intP;
                 break;
             }
         }
@@ -77,7 +77,7 @@ public class Occupation{
             firstInt=new Point(firstInt.getX(),firstInt.getY()-c.getTD());
             
             lineSegs.sortedAdd(new LineSegment(start,firstInt));
-            lineSegs
+            //lineSegs
             
             LineSegment firstLS = new LineSegment(new Point(),new Point());
             lineSegs.sortedAdd();

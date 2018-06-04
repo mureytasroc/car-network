@@ -117,7 +117,7 @@ public class Path {
         }
 		double projected=Math.abs((this.distance/s));
         
-        
+        Occupation possibleOccupation=new Occupation();
         //make line segment graph for this path, set possibleOccupation
         this.possibleOccupation.add(new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed())));
         

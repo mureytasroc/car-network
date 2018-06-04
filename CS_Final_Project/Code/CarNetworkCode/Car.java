@@ -187,7 +187,7 @@ public class Car{
     
     
       
-        this.start.nodify(0,this,null,startTime);
+        this.start.nodify(this,null,startTime);
         
 		
         this.directions = new ArrayList<Boolean>();
