@@ -90,14 +90,14 @@ public class Path {
 		this.end=i;
 		this.distance=start.getLoc().getDistance(end.getLoc());
 	}
-    public void removeOccupation(Occupation o){
+    /*public void removeOccupation(Occupation o){
         this.occupations.remove(o);
         
     }
     public void addOccupation(Occupation o){
         this.occupations.add(o);
         
-    }
+    }*/
 	public double[] getTime(double speed){ //returns {time,maxSpeed}
 		double[] returnAr = new double[2];
 		
@@ -142,17 +142,17 @@ public class Path {
         
         
         //make line segment graph for this path, set possibleOccupation
-        this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()));
+        //this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()));
         
-        projected=this.possibleOccupation.getEndTime()-enterTime;
+        //projected=this.possibleOccupation.getEndTime()-enterTime;
         
         return projected;
     }
-    public void confirmPossibleOccupation(Car c, int pathNum){
+    /*public void confirmPossibleOccupation(Car c, int pathNum){
         c.setPathOccupation(pathNum,this.possibleOccupation);
         //add possibleOccupation to occupations, delete all redundant occupations (ones that have a point with an x value less than the possibleOccupation's end x value )
         
-    }
+    }*/
     
     
 	public double getSlope() {

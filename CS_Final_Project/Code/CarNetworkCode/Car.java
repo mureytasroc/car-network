@@ -84,6 +84,11 @@ public class Car{
 			}
 		}
 		myGrid.removeDelayedInt();
+          if(pb==pb2){
+            tempPath=new Path(destination,start,pb.getSpeedLim(),true);
+            curPath=tempPath;
+        }
+        else{
 		if (!destIsInt) {
 		Path b1=new Path(destination,pb.getEnd(),pb.getSpeedLim(),false);
 		Path b2=new Path(pb.getStart(),destination,pb.getSpeedLim(),false);
@@ -108,7 +113,7 @@ public class Car{
 		//System.out.print(" end ");
 		//System.out.println(myGrid.getMyIntersections().size());
 		this.curPath=this.loc.snapToPath();
-		
+        }
 		myRoute=this.getOptimalPath();
 	}
 	public void update() {
@@ -171,9 +176,9 @@ public class Car{
 		
 	}
     
-    public void setPathOccupation(int num, ArrayList<Occupation> occ){
+    /*public void setPathOccupation(int num, ArrayList<Occupation> occ){
         this.speedProfile.set(num,occ);
-    }
+    }*/
 	public ArrayList<Path> getOptimalPath() {
         
         this.startTime=this.myGrid.getTime()+3;//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
@@ -186,11 +191,11 @@ public class Car{
     
     
       
-        this.start.nodify(0,this,null,startTime);
+        this.start.nodify(0,this,null);
         
 		
         this.directions = new ArrayList<Boolean>();
-        ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
+        ArrayList<Path> path = destination.collectRoute(this.start,directions,this);
 
         if (!startIsInt) {
             if (tempPath==null){
@@ -206,6 +211,7 @@ public class Car{
 				
                 
         }
+        System.out.println(this.directions.size());
         if(this.directions.get(this.inc)) {
 			speed=Math.abs(speed);
             int t=this.loc.travel(curPath,speed,true);

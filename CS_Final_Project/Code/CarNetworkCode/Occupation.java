@@ -20,13 +20,13 @@ public class Occupation{
         
     }
     private Point firstInt(Occupation occ){
-        
+        return null;
     }
     
     //private intersect
         
     public double getEndTime(){
-        
+        return 69.42;
     }
     
 }
