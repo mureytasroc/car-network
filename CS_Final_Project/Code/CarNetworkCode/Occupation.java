@@ -3,7 +3,7 @@ import java.util.Collections;
 public class Occupation{
     
     //vvv below variables are for continuous occupation
-    private double speed;
+    //private double speed;
     private boolean direction;
     private double beginTime;
     private double endTime;
@@ -16,6 +16,12 @@ public class Occupation{
     public Occupation(){
         continuous=false;
         lineSegs=new ArrayList<LineSegment>();
+    }
+    
+    public void add(Occupation addend){
+        for(LineSegment l: addend.getLS()){
+            ExtraMethods.sortAddAsc(l,this.lineSegs);
+        }
     }
     
     public Occupation(Path p,Occupation existingOcc,double enterTime,Boolean dir,double sp){ //continuous occupation constructor from Path getTime
@@ -49,6 +55,8 @@ public class Occupation{
             lineSegs.sortedAdd(thisLineSeg);
         }
         else{//there are existing occupations
+            Point jaggedEnd;
+        while(jaggedEnd.getY()<p.getDistance()){
         for(int i=0;i<EOlineSegs.size()){
             Point intP = thisLineSeg.getIntersection(EOlineSegs.get(i));
             if(intP!=null){
@@ -56,17 +64,23 @@ public class Occupation{
                 break;
             }
         }
-        if(firstInt==null){
+            
+            
+        }
+        if(firstInt==null){//no intersections
             lineSegs.sortedAdd(thisLineSeg);
         }
-        else{//there is at least one collision that needs to be managed
+        else{//there is at least one collision that needs to be managed //check if intersected line is opposite sign slope (if it is set endtime to infinity)
+            
+            
+            
             firstInt=new Point(firstInt.getX(),firstInt.getY()-c.getTD());
             
             lineSegs.sortedAdd(new LineSegment(start,firstInt));
             lineSegs
             
             LineSegment firstLS = new LineSegment(new Point(),new Point());
-            lineSegs.sortedAdd()
+            lineSegs.sortedAdd();
         }
         //calculate occupation here
         
@@ -74,7 +88,6 @@ public class Occupation{
         }
         
     }
-    private ArrayList<LineSegment> recurse(ArrayList<LineSegment> EOlineSegs, )
     
         
     public double getEndTime(){

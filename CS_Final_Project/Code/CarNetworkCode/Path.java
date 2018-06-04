@@ -7,7 +7,8 @@ public class Path {
 	private double speedLim;
 	private Grid myGrid;
     private Occupation occupation=new Occupation();
-    private Occupation possibleOccupation=new Occupation();
+    private Occupation possibleOccupationTru=new Occupation();
+    private Occupation possibleOccupationFalse=new Occupation();
 	
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no
 	
@@ -106,6 +107,7 @@ public class Path {
 		show();
         }
 	}
+    
     public double getTime(Car c,Intersection origin,Boolean direction, double enterTime){
         
         
@@ -117,17 +119,28 @@ public class Path {
         
         
         //make line segment graph for this path, set possibleOccupation
-        this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()));
+        this.possibleOccupation.add(new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed())));
         
         projected=this.possibleOccupation.getEndTime()-enterTime;
         this.getOther(origin).addPotentialOccupation(this,projected);
         
         return projected;
     }
-    public void confirmPossibleOccupation(Car c, int pathNum){
+    
+    public void confirmPossibleOccupation(Car c, int pathNum, boolean direction){
         c.setPathOccupation(pathNum,this.possibleOccupation);
+        this.occupation.add(getRightPO(direction));
         //add possibleOccupation to occupations, delete all redundant occupations (ones that have a point with an x value less than the possibleOccupation's end x value )
         
+    }
+    
+    public Occupation getRightPO(boolean dir){
+        if(dir){
+            return possibleOccupationTru;
+        }
+        else{
+            return possibleOccupationFalse;
+        }
     }
     
     
