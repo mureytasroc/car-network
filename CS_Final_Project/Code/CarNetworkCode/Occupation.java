@@ -26,27 +26,27 @@ public class Occupation{
     
     public Occupation(Path p,Occupation existingOcc,double enterTime,Boolean dir,double sp){ //continuous occupation constructor from Path getTime
         continuous=true;
-        lineSegs=new ArrayList<LineSegment>(existingOcc.getLS());
+        EOlineSegs=new ArrayList<LineSegment>(existingOcc.getLS());
         this.beginTime=enterTime;
         this.direction=dir;
         this.myPath=p;
         this.speed=sp;
-        LineSegment thisLineSeg;
+        this.lineSegs=new ArrayList<LineSegment>();
         Point firstInt=null;
         Point start;
         Line end;
         Line thisL;
         
-        if(lineSegs.size()==0){//if there are no existing occupations
+        if(EOlineSegs.size()==0){//if there are no existing occupations
             if(dir){
                 start=new Point(enterTime,0);
-                end = new Line(new Point(0,p.getDistance()),0);
-                thisL = new Line(new Point(enterTime,0),sp);
+                end = new Point(enterTime+p.getDistance()/sp,p.getDistance());
+                lineSegs.add(new Line(start,end));
             }
             else{
                 start=new Point(enterTime,p.getDistance());
-                end = new Line(new Point(0,0),0);
-                thisL = new Line(start,-sp);
+                end = new Point(enterTime+p.getDistance()/sp,0);
+                lineSegs.add(new Line(start,-sp));
             }
             Point endP=end.getIntersection(thisL);
             thisLineSeg=new LineSegment(start,endP);
@@ -56,8 +56,8 @@ public class Occupation{
         else{//there are existing occupations
             Point jaggedEnd;
         while(jaggedEnd.getY()<p.getDistance()){
-        for(int i=0;i<lineSegs.size();i++){
-            Point intP = thisLineSeg.getIntersection(lineSegs.get(i));
+        for(int i=0;i<EOlineSegs.size();i++){
+            Point intP = thisLineSeg.getIntersection(EOlineSegs.get(i));
             if(intP!=null){
                 firstInt=intP;
                 break;
