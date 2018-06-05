@@ -70,7 +70,7 @@ public class Intersection implements Comparable {
               direction=Boolean.valueOf(true);
             }
                 
-                p.getOther(this).nodify((nodeValue+p.getTime(c,this,direction,startTime+source)),c,p);
+                p.getOther(this).nodify((nodeValue+p.getTime(c,this,direction,startTime+source)),c,p,startTime);
                 //getDistance(c,this,source) //where this defines directionality
 			}
 		}
@@ -85,20 +85,20 @@ public class Intersection implements Comparable {
         }
         else{
             //System.out.println("this far");
-            ArrayList<Path> myList = new ArrayList<Path>(this.leadingPath.getOther(this).collectRoute(start,dirs,c));
+            ArrayList<Path> myList = new ArrayList<Path>(this.leadingPath.getOther(this).collectRoute(start,dirs,c,startTime));
             myList.add(this.leadingPath);
           	Boolean direction=Boolean.valueOf(false);
           	if(leadingPath.getEnd()==this){
               direction=Boolean.valueOf(true);
             }
-            this.leadingPath.confirmPossibleOccupation(c,myList.size()-1);
-            /*new Occupation(this.leadingPath,this.leadingPath.getOther(this).nodeValue(),direction,c);
-          dirs.add(direction);*/
+            this.leadingPath.confirmPossibleOccupation(c,myList.size()-1,direction);
+            /*new Occupation(this.leadingPath,this.leadingPath.getOther(this).nodeValue(),direction,c);*/
+          dirs.add(direction);
             return myList;
         }
     }
     
-    public void addPotentialIntersection(Path pdouble reachTime){
+    public void addPotentialIntersection(Path pdouble,double reachTime){
         
         //add a potential horizontal occupation at appropriate end of each applicable path's occupation graph
     }

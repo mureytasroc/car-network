@@ -173,7 +173,7 @@ public class Car{
 	}
     
     public void setPathOccupation(int num, Occupation occ){
-        this.speedProfile.set(num,occ);
+        //this.speedProfile.set(num,occ);
     }
 	public ArrayList<Path> getOptimalPath() {
         
@@ -187,7 +187,7 @@ public class Car{
     
     
       
-        this.start.nodify(this,null,startTime);
+        this.start.nodify(0,this,null,startTime);
         
 		
         this.directions = new ArrayList<Boolean>();
@@ -227,7 +227,7 @@ public class Car{
             int t=this.loc.travel(curPath,speed,true);
         }
         inc++;
-        this.destination.nodify(0,this,null);//bug checking
+        //this.destination.nodify(0,this,null);//bug checking
 		return path;
 	}
 	public Location getLocation() {

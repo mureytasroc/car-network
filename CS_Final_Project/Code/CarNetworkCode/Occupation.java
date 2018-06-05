@@ -3,7 +3,7 @@ import java.util.Collections;
 public class Occupation{
     
     //vvv below variables are for continuous occupation
-    //private double speed;
+    private double speed;
     private boolean direction;
     private double beginTime;
     private double endTime;
@@ -37,8 +37,7 @@ public class Occupation{
         Line end;
         Line thisL;
         
-        if(EOlineSegs.size()==0){//if there are no existing occupations
-            Point start;
+        if(lineSegs.size()==0){//if there are no existing occupations
             if(dir){
                 start=new Point(enterTime,0);
                 end = new Line(new Point(0,p.getDistance()),0);
@@ -51,13 +50,14 @@ public class Occupation{
             }
             Point endP=end.getIntersection(thisL);
             thisLineSeg=new LineSegment(start,endP);
-            lineSegs.sortedAdd(thisLineSeg);
+            //lineSegs.sortedAdd(thisLineSeg);
+            ExtraMethods.sortAddAsc(thisLineSeg,lineSegs);
         }
         else{//there are existing occupations
             Point jaggedEnd;
         while(jaggedEnd.getY()<p.getDistance()){
-        for(int i=0;i<EOlineSegs.size();i++){
-            Point intP = thisLineSeg.getIntersection(EOlineSegs.get(i));
+        for(int i=0;i<lineSegs.size();i++){
+            Point intP = thisLineSeg.getIntersection(lineSegs.get(i));
             if(intP!=null){
                 firstInt=intP;
                 break;
@@ -67,19 +67,18 @@ public class Occupation{
             
         }
         if(firstInt==null){//no intersections
-            lineSegs.sortedAdd(thisLineSeg);
+            ExtraMethods.sortAddAsc(thisLineSeg,lineSegs);
         }
         else{//there is at least one collision that needs to be managed //check if intersected line is opposite sign slope (if it is set endtime to infinity)
             
             
             
             firstInt=new Point(firstInt.getX(),firstInt.getY()-c.getTD());
-            
-            lineSegs.sortedAdd(new LineSegment(start,firstInt));
+            ExtraMethods.sortAddAsc(new LineSegment(start,firstInt),lineSegs);
             //lineSegs
             
             LineSegment firstLS = new LineSegment(new Point(),new Point());
-            lineSegs.sortedAdd();
+            ExtraMethods.sortAddAsc(firstLS,lineSegs);
         }
         //calculate occupation here
         

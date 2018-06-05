@@ -17,6 +17,7 @@ public class Grid {
 	private ArrayList<Path> delayQueue;
     private long startTime;//in ms since 1970 12am January 1
     private double time;//in seconds
+    private int SadiTime=0;//in frame units
 
 	Grid(){
         this.startTime=System.currentTimeMillis();
@@ -36,7 +37,7 @@ public class Grid {
 	
 	public void setup() {
 		
-    
+    time=System.nanoTime();
 	
 	for(int i=0;i<myPaths.size();i++) {
 			myPaths.get(i).intersects();
@@ -180,8 +181,6 @@ public class Grid {
 	public void requestRoute(Car c, Intersection start, Intersection end) {
 		ArrayList<Path> cRoute = c.getOptimalPath();
 		//check for problems with this path and modify this and other paths as necessary
-	
-		this.clock=0;
 	}
 	
 	public void collisionCheck() {
@@ -199,5 +198,4 @@ public class Grid {
 	public ArrayList<Intersection> getMyIntersections(){
 		return this.myIntersections;
 	}
-	
 }
