@@ -1,4 +1,8 @@
-public class Point{
+import java.util.ArrayList;
+import java.util.Collections;
+import java.awt.*;
+
+public class Point implements Comparable{
     private double x;
     private double y;
     Point(double xIn, double yIn){
@@ -33,6 +37,19 @@ public class Point{
         String ys=Double.toString((this.y));
         return ("("+xs+", "+ys+")");
     }
+    public int compareTo(Object o) {
+		int out=1;
+		if (o instanceof Point) {
+			Point i=((Point)o);
+		if (i.getY()>this.getY()) {
+			out=-1;
+		}
+		else if (i.getY()==this.getY()&&i.getX()<this.getX()) {
+			out=-1;
+		}
+		}
+		return out;
+	}
 }
 
 //m=double.MAX_VALUE

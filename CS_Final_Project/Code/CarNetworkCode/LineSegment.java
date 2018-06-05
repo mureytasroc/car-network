@@ -141,7 +141,7 @@ public class LineSegment implements Comparable{
     
     public int compareTo(Object ob){
         if ( ! (ob instanceof LineSegment) ){
-            return -1;}
+            return 1;}
         LineSegment ls = (LineSegment)ob;
         double x1=this.getAvgX();
         double y1=this.getAvgY();
