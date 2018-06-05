@@ -26,8 +26,7 @@ public class Occupation{
     
     public Occupation(Path p,Occupation existingOcc,double enterTime,Boolean dir,double sp){ //continuous occupation constructor from Path getTime
         continuous=true;
-        lineSegs=new ArrayList<LineSegment>();
-        EOlineSegs=existingOcc.getLS();
+        lineSegs=new ArrayList<LineSegment>(existingOcc.getLS());
         this.beginTime=enterTime;
         this.direction=dir;
         this.myPath=p;
