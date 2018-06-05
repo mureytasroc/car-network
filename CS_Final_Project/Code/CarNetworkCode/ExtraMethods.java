@@ -87,5 +87,8 @@ public class ExtraMethods{
             return -1;}
         
     }
+    public static LineSegment earliestInt(LineSegment l, ArrayList<LineSegment> al){
+        earlies
+    }
 
 }

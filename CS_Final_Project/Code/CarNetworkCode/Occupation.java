@@ -32,30 +32,23 @@ public class Occupation{
         this.myPath=p;
         this.speed=sp;
         this.lineSegs=new ArrayList<LineSegment>();
-        Point firstInt=null;
         Point start;
-        Line end;
-        Line thisL;
-        
-        if(EOlineSegs.size()==0){//if there are no existing occupations
-            Line linus;
-            if(dir){
-                start=new Point(enterTime,0);
+        Point end;
+        if(dir){
+            start=new Point(enterTime,0);
                 end = new Point(enterTime+p.getDistance()/sp,p.getDistance());
-                linus=new Line(start,end);
-            }
-            else{
-                start=new Point(enterTime,p.getDistance());
-                end = new Point(enterTime+p.getDistance()/sp,0);
-                linus=new Line(start,end);
-            }
-            ExtraMethods.sortAddAsc(linus,lineSegs);
         }
-        else{//there are existing occupations
-            Point jaggedEnd;
-        while(jaggedEnd.getY()<p.getDistance()){
-            
-            
+        else{
+            start=new Point(enterTime,p.getDistance());
+            end = new Point(enterTime+p.getDistance()/sp,0);
+        }
+        linus=new LineSegment(start,end);
+        ExtraMethods.sortAddAsc(linus,lineSegs);
+        if(EOlineSegs.size()!=0){//if there are no existing occupations
+  //there are existing occupations
+        
+        while(true){
+            Point firstInt;
             for(int i=0;i<EOlineSegs.size();i++){
                 Point intP = thisLineSeg.getIntersection(EOlineSegs.get(i));
                 if(intP!=null){

@@ -26,6 +26,12 @@ public class LineSegment implements Comparable{
         this.p1=inP1;
         this.p2=inP2;
     }
+    public Point getP1(){
+        return this.p1;
+    }
+    public Point getP2(){
+        return this.p2;
+    }
     public Line getLine(){
         return new Line(this.p1,this.p2);
     }
