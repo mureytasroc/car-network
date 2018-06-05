@@ -38,6 +38,7 @@ public class Occupation{
         Line thisL;
         
         if(EOlineSegs.size()==0){//if there are no existing occupations
+            
             if(dir){
                 start=new Point(enterTime,0);
                 end = new Point(enterTime+p.getDistance()/sp,p.getDistance());
@@ -46,9 +47,8 @@ public class Occupation{
             else{
                 start=new Point(enterTime,p.getDistance());
                 end = new Point(enterTime+p.getDistance()/sp,0);
-                lineSegs.add(new Line(start,-sp));
+                lineSegs.add(new Line(start,end));
             }
-            Point endP=end.getIntersection(thisL);
             thisLineSeg=new LineSegment(start,endP);
             //lineSegs.sortedAdd(thisLineSeg);
             ExtraMethods.sortAddAsc(thisLineSeg,lineSegs);
