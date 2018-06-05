@@ -88,7 +88,13 @@ public class ExtraMethods{
         
     }
     public static LineSegment earliestInt(LineSegment l, ArrayList<LineSegment> al){
-        earlies
+        Point out;
+        LineSegment out;
+        for(LineSegment l2: al){
+            curPoint=l.getIntersection(l2);
+            if (intersection!=null&&curPoint.getY()<Point.getY()){out=curPoint;};
+        }
+        return LineSegment
     }
 
 }
