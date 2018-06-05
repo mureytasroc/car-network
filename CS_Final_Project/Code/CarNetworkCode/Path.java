@@ -6,7 +6,7 @@ public class Path {
 	private double distance;
 	private double speedLim;
 	private Grid myGrid;
-    private Occupation occupation;
+    private Occupation occupation=new Occupation();
     private Occupation possibleOccupation=new Occupation();
 	
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no

@@ -1,4 +1,5 @@
 import java.lang.*;
+import java.util.*;
 public class LineSegment implements Comparable{
     
     public static void main(String[] args){//tester code
@@ -138,7 +139,15 @@ public class LineSegment implements Comparable{
     public double getAvgY(){
         return (this.p1.getY()/2.0+this.p2.getY()/2.0);
     }
-    
+    public LineSegment first(ArrayList<LineSegment> al){
+        Point out=null;
+        LineSegment output=null;
+        for(LineSegment l2: al){
+            Point curPoint=this.getIntersection(l2);
+            if (curPoint!=null&&curPoint.getY()<out.getY()){out=curPoint;output=l2;}
+        }
+        return output;
+    }
     public int compareTo(Object ob){
         if ( ! (ob instanceof LineSegment) ){
             return 1;}

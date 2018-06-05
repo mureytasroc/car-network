@@ -26,7 +26,7 @@ public class Occupation{
     
     public Occupation(Path p,Occupation existingOcc,double enterTime,Boolean dir,double sp){ //continuous occupation constructor from Path getTime
         continuous=true;
-        EOlineSegs=new ArrayList<LineSegment>(existingOcc.getLS());
+        ArrayList<LineSegment>EOlineSegs=new ArrayList<LineSegment>(existingOcc.getLS());
         this.beginTime=enterTime;
         this.direction=dir;
         this.myPath=p;
@@ -42,24 +42,25 @@ public class Occupation{
             start=new Point(enterTime,p.getDistance());
             end = new Point(enterTime+p.getDistance()/sp,0);
         }
-        linus=new LineSegment(start,end);
-        ExtraMethods.sortAddAsc(linus,lineSegs);
-        if(EOlineSegs.size()!=0){//if there are no existing occupations
+        LineSegment curSeg=new LineSegment(start,end);
+        if(EOlineSegs.size()==0){
+        this.lineSegs.add(curSeg);
+        }
+        else{//if there are no existing occupations
   //there are existing occupations
-        
+        Point curStart=start;
         while(true){
-            Point firstInt;
-            for(int i=0;i<EOlineSegs.size();i++){
-                Point intP = thisLineSeg.getIntersection(EOlineSegs.get(i));
-                if(intP!=null){
-                    firstInt=intP;
-                    break;
-                }
+            LineSegment collider=curSeg.first(EOlineSegs);
+            if (collider==null){lineSegs.add(curSeg);break;}
+            else{
+                Point collision=collider.getIntersection(curSeg);
+                lineSegs.add(new LineSegment(curStart,collision));
+                curStart=collision;
+                curSeg=new LineSegment(collision,end);
             }
             
-            
         }
-        if(firstInt==null){//no intersections
+        /*if(firstInt==null){//no intersections
             ExtraMethods.sortAddAsc(thisLineSeg,lineSegs);
         }
         else{//there is at least one collision that needs to be managed //check if intersected line is opposite sign slope (if it is set endtime to infinity)
@@ -72,7 +73,7 @@ public class Occupation{
             
             LineSegment firstLS = new LineSegment(new Point(),new Point());
             ExtraMethods.sortAddAsc(firstLS,lineSegs);
-        }
+        }*/
         //calculate occupation here
         
             
@@ -82,7 +83,7 @@ public class Occupation{
     
         
     public double getEndTime(){
-        
+        return this.endTime;
     }
     
     public ArrayList<LineSegment> getLS(){
