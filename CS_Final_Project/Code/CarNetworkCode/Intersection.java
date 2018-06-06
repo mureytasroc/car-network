@@ -166,7 +166,7 @@ public class Intersection implements Comparable {
 		StdDraw.setPenColor(0,0,0);
         StdDraw.setPenRadius(0.03);
 		StdDraw.text(this.loc.getPos()[0], this.loc.getPos()[1], (Integer.valueOf((int)(nodeValue))).toString() );
-        System.out.println(nodeValue);
+        //System.out.println(nodeValue);
 		/*System.out.println("hey");
 		
 		for(int i=0; i<this.myPaths.size();i++) {

@@ -5,7 +5,7 @@ public class Car{
 	private Location loc;
 	private ArrayList<Path> myRoute;
 	private ArrayList<Boolean> directions;
-    private ArrayList<ArrayList<LineSegment>> speedProfile;//speed profile for each path
+    private ArrayList<ArrayList<LineSegment>> speedProfile=new ArrayList<ArrayList<LineSegment>>();//speed profile for each path
 	private Path curPath;
 	private double speed=1;
 	private Intersection destination;
@@ -60,6 +60,7 @@ public class Car{
         return this.speed;
     }
 	public void setup(Location l,Location d) {
+        
 		this.loc=l;
 		Path pb=d.snapToPath();
         Path pb2=l.snapToPath();
@@ -118,7 +119,20 @@ public class Car{
 	}
 	public void update() {
         
-		
+        ArrayList<LineSegment> nowIntensity = this.speedProfile.get(inc-1);
+        this.speed=ExtraMethods.parseSpeed(myGrid.getTime(),nowIntensity);
+        System.out.println(myGrid.getTime());
+        if(Double.isNaN(this.speed)){
+            System.out.println("ERROR");
+        }
+            
+            
+		if(this.directions.get(this.inc-1)) {
+			
+			speed=Math.abs(speed);
+		}
+		else {speed=-Math.abs(speed);
+		}
 		int t=this.loc.travel(curPath,speed,true);
 		if(t>0) {
 			if (this.inc==myRoute.size()) {
@@ -159,6 +173,7 @@ public class Car{
 		}
 		else {speed=-Math.abs(speed);
 		}
+                
 		inc++;
 			}
 		}
@@ -172,8 +187,18 @@ public class Car{
 		
 	}
     
-    public void setPathOccupation(int num, Occupation occ){
+    /*public void setPathOccupation(int num, Occupation occ){
         //this.speedProfile.set(num,occ);
+    }*/
+    public void addToSP(int index, ArrayList<LineSegment> ls){
+        if(index>=speedProfile.size()){
+            //System.out.println("add: "+index+", "+ls.size());
+            this.speedProfile.add(ls);
+        }
+        else{
+            //System.out.println("set: "+index+", "+ls.size());
+        this.speedProfile.set(index,ls);
+        }
     }
 	public ArrayList<Path> getOptimalPath() {
         
@@ -191,6 +216,9 @@ public class Car{
         
 		
         this.directions = new ArrayList<Boolean>();
+        if(destination.nodeValue()==Double.POSITIVE_INFINITY){
+            System.out.println("UNSOLVABLE");
+        }
         ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
 
         if (!startIsInt) {
@@ -208,7 +236,7 @@ public class Car{
                         this.curPath=a;
                         tempPath1=a;
                     killMe=true;
-                    System.out.println("yes");
+                    //System.out.println("yes");
                 }
             p1.die();
             p2.getOther(start).addPath(eatenPath2);
@@ -228,6 +256,7 @@ public class Car{
         }
         inc++;
         //this.destination.nodify(0,this,null);//bug checking
+        
 		return path;
 	}
 	public Location getLocation() {
@@ -243,5 +272,6 @@ public class Car{
 	public Grid getGrid() {
 		return myGrid;
 	}
+    
 
 }

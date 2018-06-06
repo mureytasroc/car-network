@@ -5,13 +5,10 @@ public class ExtraMethods{
         
         
         //sortAddAsc test code
-        ArrayList<Integer> l = new ArrayList<Integer>();
-        l.add(3);
-        Integer b = new Integer(2);
-        sortAddAsc(b,l);
-        for(int i=0;i<l.size();i++){
-            System.out.print(l.get(i)+", ");
-        }
+        ArrayList<LineSegment> als = new ArrayList<LineSegment>();
+        als.add(new LineSegment(new Point(1,1),new Point(5,1)));
+        als.add(new LineSegment(new Point(6,1),new Point(8,1)));
+        System.out.println(parseSpeed(6.5,als));
         
         
         
@@ -52,6 +49,16 @@ public class ExtraMethods{
         
         
 
+    }
+    
+    public static double parseSpeed(double time, ArrayList<LineSegment> ls){
+        for(int i=0;i<ls.size();i++){
+            if(ls.get(i).getPointByX(time)!=null){
+                return ls.get(i).getSlope();
+            }
+
+        }
+        return Double.NaN;
     }
     
     private static int recurse(Comparable add, ArrayList list, int left, int right){ //used in sortAddAsc above

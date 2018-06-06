@@ -22,7 +22,7 @@ public class Grid {
 	Grid(){
         this.startTime=System.currentTimeMillis();
         this.time=0;
-		StdDraw.setCanvasSize(900,900);
+		StdDraw.setCanvasSize(700,700);
 		StdDraw.setXscale(0,800);
         StdDraw.setYscale(0,800);
 		StdDraw.enableDoubleBuffering();

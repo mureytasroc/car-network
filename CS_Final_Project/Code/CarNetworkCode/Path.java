@@ -115,7 +115,7 @@ public class Path {
             s=this.getSpeedLim();
         }
 		double projected=Math.abs((this.distance/s));
-        this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()));
+        this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()),c);
         projected=this.possibleOccupation.getEndTime()-enterTime;
         //this.getOther(origin).addPotentialOccupation(this,projected);
         
@@ -123,8 +123,9 @@ public class Path {
     }
     
     public void confirmPossibleOccupation(Car c, int pathNum, boolean direction){
-        c.setPathOccupation(pathNum,this.possibleOccupation);
+        //c.setPathOccupation(pathNum,this.possibleOccupation);
         this.occupation.add(possibleOccupation);
+        c.addToSP(pathNum,this.occupation.getLS());
         //add possibleOccupation to occupations, delete all redundant occupations (ones that have a point with an x value less than the possibleOccupation's end x value )
         
     }
@@ -137,11 +138,11 @@ public class Path {
 		//StdDraw.setPenColor((int)(Math.random()*200),(int)(Math.random()*200),(int)(Math.random()*200));
 		StdDraw.setPenRadius(0.01);
 		StdDraw.setPenColor(0,(int)(255*this.speedLim/5.0),(int)(255*this.speedLim/5.0));
-		//StdDraw.line(this.start.getLoc().getPos()[0], this.start.getLoc().getPos()[1], this.end.getLoc().getPos()[0], this.end.getLoc().getPos()[1]);
+		StdDraw.line(this.start.getLoc().getPos()[0], this.start.getLoc().getPos()[1], this.end.getLoc().getPos()[0], this.end.getLoc().getPos()[1]);
 		StdDraw.setPenColor(0,255,255);
 		double[] x = { this.start.getLoc().getPos()[0],  (this.start.getLoc().getPos()[0]+this.end.getLoc().getPos()[0])/2-40,this.end.getLoc().getPos()[0], (this.start.getLoc().getPos()[0]+this.end.getLoc().getPos()[0])/2 };
         double[] y = { this.start.getLoc().getPos()[1],(this.start.getLoc().getPos()[1]+this.end.getLoc().getPos()[1])/2+4, this.end.getLoc().getPos()[1], (this.start.getLoc().getPos()[1]+this.end.getLoc().getPos()[1])/2};
-        StdDraw.filledPolygon(x, y);
+        //StdDraw.filledPolygon(x, y);
 	}
 	public Intersection getStart() {
 		return this.start;

@@ -10,11 +10,11 @@ public class LineSegment implements Comparable{
         System.out.println(l1);
         System.out.println(l2);
         System.out.println(l1.compareTo(l2));*/
-        LineSegment l1 = new LineSegment(new Point(4,3),new Point(7,5));
-        LineSegment l2 = new LineSegment(new Point(5,0),new Point(10,6));
+        LineSegment l1 = new LineSegment(new Point(4,3),new Point(10,0));
+        LineSegment l2 = new LineSegment(new Point(4,2),new Point(10,0));
         System.out.println(l1);
         System.out.println(l2);
-        System.out.println(l1.getIntersection(l2));
+        System.out.println(l2.endPointMinus(0.5,new Point(10,0),l1));
     }
     
     
@@ -156,6 +156,63 @@ public class LineSegment implements Comparable{
         }
         return output;
     }
+    
+    public Point getPointByX(double x){
+            
+            double higherX;
+            double lowerX;
+            if(this.p1.getX()>this.p2.getX()){
+                higherX=this.p1.getX();
+                lowerX=this.p2.getX();
+            }
+            else{
+                higherX=this.p2.getX();
+                lowerX=this.p1.getX();
+            }
+        
+        if(x>higherX||x<lowerX){
+            return null;
+        }
+        else if(this.getSlope()==Double.POSITIVE_INFINITY||this.getSlope()==Double.NEGATIVE_INFINITY){
+            return null;
+        }
+        else{
+            return new Point(x,this.getSlope()*(x-p1.getX())+p1.getY());
+        }
+        
+        
+    }
+    
+    public Point getPointByY(double y){
+        double higherY;
+            double lowerY;
+            if(this.p1.getY()>this.p2.getY()){
+                higherY=this.p1.getY();
+                lowerY=this.p2.getY();
+            }
+            else{
+                higherY=this.p2.getY();
+                lowerY=this.p1.getY();
+            }
+        if(y>higherY||y<lowerY){
+            return null;
+        }
+        else if(this.getSlope()==0){
+            return null;
+        }
+        else{
+            return new Point((y-p1.getY())/this.getSlope()+p1.getX(),y);
+        }
+    }
+    
+    public Point endPointMinus(double TD,Point collision, LineSegment collider){
+        //THIS METHOD CAN ONLY BE USED IF THE SLOPE OF THIS LS IS GREATER THAN THE SLOPE OF collider AND THEY ARE BOTH POSITIVE SLOPE
+        double awaySlope=this.getSlope()-collider.getSlope();
+        double dX=-TD/awaySlope;
+        double x=collision.getX()+dX;
+        return this.getPointByX(x);
+    }
+    
     public int compareTo(Object ob){
         if ( ! (ob instanceof LineSegment) ){
             return 1;}
@@ -185,6 +242,14 @@ public class LineSegment implements Comparable{
         }
         
     }
+    
+    public boolean isOppositeSlope(LineSegment l){
+        if((this.getSlope()>=0&&l.getSlope()<=0)||(this.getSlope()>=0&&l.getSlope()<=0)){
+            return true;
+        }
+        return false;
+    }
+    
     
     
 }
