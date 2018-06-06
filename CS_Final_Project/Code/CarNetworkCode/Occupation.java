@@ -45,13 +45,14 @@ public class Occupation{
         LineSegment curSeg=new LineSegment(start,end);
         if(EOlineSegs.size()==0){
         this.lineSegs.add(curSeg);
+        endTime=end.getX();
         }
         else{//if there are no existing occupations
   //there are existing occupations
         Point curStart=start;
         while(true){
             LineSegment collider=curSeg.first(EOlineSegs);
-            if (collider==null){lineSegs.add(curSeg);break;}
+            if (collider==null){lineSegs.add(curSeg);endTime=end.getX();break;}
             else{
                 Point collision=collider.getIntersection(curSeg);
                 lineSegs.add(new LineSegment(curStart,collision));

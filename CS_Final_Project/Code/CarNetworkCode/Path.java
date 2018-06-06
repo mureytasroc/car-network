@@ -73,7 +73,7 @@ public class Path {
 		this.distance=start.getLoc().getDistance(end.getLoc());
 	}
 
-	public double[] getTime(double speed){ //returns {time,maxSpeed}
+	/*public double[] getTime(double speed){ //returns {time,maxSpeed}
 		double[] returnAr = new double[2];
 		
 		if(speed>this.speedLim) { //check for speed of slowest car on path? -- this could be factored into dijstra's algo to account for multiple cars in network
@@ -85,7 +85,7 @@ public class Path {
 		returnAr[0] = this.distance/returnAr[1];
 		
 		return returnAr;
-	}
+	}*/
 	public void update() {
         if (this.end.getLoc().getPos()[0]==this.start.getLoc().getPos()[0]&&this.end.getLoc().getPos()[1]==this.start.getLoc().getPos()[1]){
             this.die();
