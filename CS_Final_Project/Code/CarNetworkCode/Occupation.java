@@ -45,6 +45,8 @@ public class Occupation{
             end = new Point(enterTime+p.getDistance()/sp,0);
         }
         LineSegment curSeg=new LineSegment(start,end);
+        //System.out.println(start.getX());
+        //System.out.println(end.getX());
         if(EOlineSegs.size()==0){//if there are no existing occupations
         this.lineSegs.add(curSeg);
         //System.out.println("hey"+curSeg);
