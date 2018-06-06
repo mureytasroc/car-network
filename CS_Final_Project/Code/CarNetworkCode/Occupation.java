@@ -25,6 +25,7 @@ public class Occupation{
     }
     
     public Occupation(Path p,Occupation existingOcc,double enterTime,Boolean dir,double sp){ //continuous occupation constructor from Path getTime
+        
         continuous=true;
         ArrayList<LineSegment>EOlineSegs=new ArrayList<LineSegment>(existingOcc.getLS());
         this.beginTime=enterTime;
@@ -49,10 +50,13 @@ public class Occupation{
         }
         else{//if there are no existing occupations
   //there are existing occupations
-        Point curStart=start;
-        while(true){
+        Point curStart=new Point(start);
+        boolean keep=true;
+        while(keep){
             LineSegment collider=curSeg.first(EOlineSegs);
-            if (collider==null){lineSegs.add(curSeg);endTime=end.getX();break;}
+            //System.out.println(collider);
+            //System.out.println("hey");
+            if (collider==null){lineSegs.add(curSeg);endTime=end.getX();keep=false;}
             else{
                 Point collision=collider.getIntersection(curSeg);
                 lineSegs.add(new LineSegment(curStart,collision));
@@ -61,6 +65,8 @@ public class Occupation{
             }
             
         }
+        
+        
         /*if(firstInt==null){//no intersections
             ExtraMethods.sortAddAsc(thisLineSeg,lineSegs);
         }

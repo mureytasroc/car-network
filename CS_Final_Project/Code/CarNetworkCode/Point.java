@@ -5,9 +5,13 @@ import java.awt.*;
 public class Point implements Comparable{
     private double x;
     private double y;
-    Point(double xIn, double yIn){
+    public Point(double xIn, double yIn){
         this.x=xIn;
         this.y=yIn;
+    }
+    public Point (Point p){
+        this.x=p.getX();
+        this.y=p.getY();
     }
     public double slope(Point p){
         double m=0;

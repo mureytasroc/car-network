@@ -143,15 +143,16 @@ public class LineSegment implements Comparable{
         Point out=null;
         LineSegment output=null;
         for(LineSegment l2: al){
-            Point curPoint=this.getIntersection(l2);
+            Point curPoint=null;
+            curPoint=this.getIntersection(l2);
             if (curPoint==null){
                 
             }
             else
                 if(out==null)
-                    out=curPoint;output=l2;
+                { out=curPoint;output=l2;}
                 else if(curPoint.getY()<out.getY())
-                    out=curPoint;output=l2;
+                { out=curPoint;output=l2;}
         }
         return output;
     }
