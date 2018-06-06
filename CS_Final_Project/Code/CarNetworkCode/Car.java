@@ -119,6 +119,8 @@ public class Car{
 	}
 	public void update() {
         
+        //System.out.println(myGrid.getTime());
+        
         //System.out.println("should have showed");
         ArrayList<LineSegment> nowIntensity = this.speedProfile.get(inc-1);
         //System.out.println(nowIntensity);
@@ -214,8 +216,7 @@ public class Car{
 	public ArrayList<Path> getOptimalPath() {
         
         this.startTime=this.myGrid.getTime();//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
-        System.out.println(startTime);
-        
+     System.out.println(startTime);
 		for (Intersection i: myGrid.getMyIntersections()) {
 			i.setup();
 		}

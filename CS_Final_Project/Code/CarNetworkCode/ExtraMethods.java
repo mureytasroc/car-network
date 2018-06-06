@@ -51,6 +51,10 @@ public class ExtraMethods{
 
     }
     
+    /*printLSAL(ArrayList<LineSegment> ls){
+        for(int i=0;i<ls.)
+    }*/
+    
     public static double parseSpeed(double time, ArrayList<LineSegment> ls){
         for(int i=0;i<ls.size();i++){
             if(ls.get(i).getPointByX(time)!=null){

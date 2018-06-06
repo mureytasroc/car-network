@@ -15,12 +15,12 @@ public class Grid {
 	
 	private ArrayList<Car> deleteQueue;
 	private ArrayList<Path> delayQueue;
-    private long startTime;//in ms since 1970 12am January 1
+    private long janTime;//in ms since 1970 12am January 1
     private double time;//in seconds
     private int SadiTime=0;//in frame units
 
 	Grid(){
-        this.startTime=System.currentTimeMillis();
+        this.janTime=System.currentTimeMillis();
         this.time=0;
 		StdDraw.setCanvasSize(700,700);
 		StdDraw.setXscale(0,800);
@@ -77,7 +77,9 @@ public class Grid {
     
     
 	public void update() {
-        this.time=(double)(System.currentTimeMillis()-startTime);
+        this.time=(double)(System.currentTimeMillis()-janTime)/1000.0;
+        
+        
             
 		this.show();
 		for(int i=myPaths.size()-1;i>=0;i--) {
