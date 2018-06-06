@@ -119,10 +119,12 @@ public class Car{
 	}
 	public void update() {
         
+        //System.out.println("should have showed");
         ArrayList<LineSegment> nowIntensity = this.speedProfile.get(inc-1);
         //System.out.println(nowIntensity);
         //double temp=ExtraMethods.parseSpeed(myGrid.getTime(),nowIntensity);
         double newLoc=ExtraMethods.parseLoc(myGrid.getTime(),nowIntensity);
+        
         //System.out.println(newLoc);
         //System.out.println(myGrid.getTime());
         /*if(!Double.isNaN(temp)){
@@ -137,8 +139,10 @@ public class Car{
 		}
 		else {speed=-Math.abs(speed);
 		}
+        
         int asfd=this.loc.teleport(curPath,newLoc,true);
 		int t=this.loc.travel(curPath,speed/2.0,true);
+        
 		if(t>0) {
 			if (this.inc==myRoute.size()) {
 				if (!destIsInt) {
@@ -182,7 +186,9 @@ public class Car{
 		inc++;
 			}
 		}
+        //System.out.println("should have showed");
 		this.show();
+        StdDraw.show();
 		//CAR UPDATE METHOD
 		
 	}
