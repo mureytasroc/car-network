@@ -215,7 +215,7 @@ public class Car{
     }
 	public ArrayList<Path> getOptimalPath() {
         
-        this.startTime=this.myGrid.getTime();//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
+        this.startTime=this.myGrid.getTime()+3;//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
      System.out.println(startTime);
 		for (Intersection i: myGrid.getMyIntersections()) {
 			i.setup();
