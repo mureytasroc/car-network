@@ -90,7 +90,9 @@ public class Grid {
 			 //This is the update loop like in FishTank
 		}
 		StdDraw.setPenRadius();
+        
 		for(int i=myCars.size()-1;i>=0;i--) {
+            
 			myCars.get(i).update();
 			 //This is the update loop like in FishTank
 		}

@@ -115,7 +115,6 @@ public class Path {
             s=this.getSpeedLim();
         }
 		double projected=Math.abs((this.distance/s));
-        System.out.println("why so many???");
         this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()));
         projected=this.possibleOccupation.getEndTime()-enterTime;
         //this.getOther(origin).addPotentialOccupation(this,projected);
