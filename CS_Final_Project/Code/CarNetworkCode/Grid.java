@@ -21,7 +21,7 @@ public class Grid {
 
 	Grid(){
         this.janTime=System.currentTimeMillis();
-        this.time=0;
+        this.time=(double)(System.currentTimeMillis()-janTime)/1000.0;
 		StdDraw.setCanvasSize(700,700);
 		StdDraw.setXscale(0,800);
         StdDraw.setYscale(0,800);
@@ -37,8 +37,9 @@ public class Grid {
 	
 	public void setup() {
 		
-    time=System.nanoTime();
-	
+    //time=System.nanoTime();
+	this.time=(double)(System.currentTimeMillis()-janTime)/1000.0;
+        
 	for(int i=0;i<myPaths.size();i++) {
 			myPaths.get(i).intersects();
 		 //This is the update loop like in FishTank
