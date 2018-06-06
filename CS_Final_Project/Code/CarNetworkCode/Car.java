@@ -119,12 +119,12 @@ public class Car{
 	public void update() {
         
         //System.out.println(myGrid.getTime());
-        
+        System.out.println("update");
         //System.out.println("should have showed");
         ArrayList<LineSegment> nowIntensity = this.speedProfile.get(inc-1);
         //System.out.println(nowIntensity);
         //double temp=ExtraMethods.parseSpeed(myGrid.getTime(),nowIntensity);
-        double newLoc=ExtraMethods.parseLoc(myGrid.getTime(),nowIntensity);
+        double newLoc=ExtraMethods.parseLoc(myGrid.getTime()*100,nowIntensity);
         
         //System.out.println(newLoc);
         //System.out.println(myGrid.getTime());
@@ -187,9 +187,10 @@ public class Car{
 		inc++;
 			}
 		}
-        //System.out.println("should have showed");
+        System.out.println("should have showed");
 		this.show();
-        StdDraw.show();
+        
+        //StdDraw.show();
 		//CAR UPDATE METHOD
 		
 	}
@@ -214,7 +215,7 @@ public class Car{
     }
 	public ArrayList<Path> getOptimalPath() {
         
-        this.startTime=this.myGrid.getTime()+3;//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
+        this.startTime=this.myGrid.getTime();//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
      //System.out.println(this.myGrid.getTime());
 		for (Intersection i: myGrid.getMyIntersections()) {
 			i.setup();
