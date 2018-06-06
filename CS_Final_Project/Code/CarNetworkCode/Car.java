@@ -7,7 +7,7 @@ public class Car{
 	private ArrayList<Boolean> directions;
     private ArrayList<ArrayList<LineSegment>> speedProfile=new ArrayList<ArrayList<LineSegment>>();//speed profile for each path
 	private Path curPath;
-	private double speed=800.0;
+	private double speed=1.0;
 	private Intersection destination;
     private Intersection start;
 	private int inc=0;
@@ -124,11 +124,12 @@ public class Car{
         //System.out.println(nowIntensity);
         double temp=ExtraMethods.parseSpeed(myGrid.getTime(),nowIntensity);
         double newLoc=ExtraMethods.parseLoc(myGrid.getTime(),nowIntensity);
+        System.out.println(newLoc);
         //System.out.println(newLoc);
         //System.out.println(newLoc);
         //System.out.println(myGrid.getTime());
         if(!Double.isNaN(temp)){
-            //this.speed=temp;
+            this.speed=temp;
             System.out.println("yay");
         }
         //System.out.println(this.speed);
@@ -141,8 +142,8 @@ public class Car{
 		else {speed=-Math.abs(speed);
 		}
         
-        int asfd=this.loc.teleport(curPath,newLoc,true);
-		int t=this.loc.travel(curPath,speed/3,true);
+        //int asfd=this.loc.teleport(curPath,newLoc,true);
+		int t=this.loc.travel(curPath,speed,true);
         
 		if(t>0) {
 			if (this.inc==myRoute.size()) {

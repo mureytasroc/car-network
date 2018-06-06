@@ -29,7 +29,9 @@ public class Location {
         int out=0;
 		if (slope<Double.MAX_VALUE&&slope>-Double.MAX_VALUE) {
 		coords[0]=p.getStart().getLoc().getPos()[0]+dist*p.XD()/p.getDistance();
+            //System.out.println(coords[0]);
 		coords[1]=p.getStart().getLoc().getPos()[1]+dist*p.YD()/p.getDistance();
+            //System.out.println(coords[1]);
         }
 		else {coords[1]=dist;}
 		/*if(p.getStart().getLoc().getPos()[0]>p.getEnd().getLoc().getPos()[0]) {

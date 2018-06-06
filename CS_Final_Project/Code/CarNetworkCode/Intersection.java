@@ -59,7 +59,7 @@ public class Intersection implements Comparable {
 	}*/
     // In later implementations, source will be passed as a parameter to the getDistance method
     public void nodify(double source, Car c, Path inPath, double startTime) {//recursive
-        System.out.println(source);
+        //System.out.println(source);
 		if (source<this.nodeValue) {
             this.leadingPath=inPath;
 			nodeValue=source;

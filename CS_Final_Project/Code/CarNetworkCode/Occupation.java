@@ -81,8 +81,8 @@ public class Occupation{
                     lineSegs.add(new LineSegment(curStart,holder));
                     curStart=holder;
                            Line temp = new Line(curStart,collider.getSlope());
-                        end=finishLine.getIntersection(temp);
-                    curSeg=new LineSegment(curStart,end);
+                        end=new point(finishLine.getIntersection(temp));
+                    curSeg=new LineSegment(new point(curStart),new point(end));
                     //System.out.println("hey"+curSeg);
                        }
                     

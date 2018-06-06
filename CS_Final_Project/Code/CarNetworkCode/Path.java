@@ -116,7 +116,7 @@ public class Path {
         }
 		double projected;
         //System.out.println("hey "+projected);
-        System.out.println(enterTime);
+        //System.out.println(enterTime);
         this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()),c);
         projected=this.possibleOccupation.getEndTime()-enterTime;
         //System.out.println("ayayaya "+projected);
