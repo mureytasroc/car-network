@@ -24,6 +24,58 @@ public class Location {
 	public Grid getGrid() {
 		return myGrid;
 	}
+    public int teleport(Path p,double dist, boolean b) {
+		double slope=p.getSlope();
+        int out=0;
+		if (slope<Double.MAX_VALUE&&slope>-Double.MAX_VALUE) {
+		double inc=dist/Math.pow((1+slope*slope),0.5);
+		coords[0]=inc;
+		coords[1]=slope*inc;
+        }
+		else {coords[1]=dist;}
+		if(p.getStart().getLoc().getPos()[0]>p.getEnd().getLoc().getPos()[0]) {
+			if (coords[0]>p.getStart().getLoc().getPos()[0]) {
+				out=1; coords[0]=(p.getStart().getLoc().getPos()[0]);
+				coords[1]=(p.getStart().getLoc().getPos()[1]);
+				}
+			else if(coords[0]<p.getEnd().getLoc().getPos()[0]) {
+				out=2; coords[0]=(p.getEnd().getLoc().getPos()[0]);
+				coords[1]=(p.getEnd().getLoc().getPos()[1]);
+			}
+		}
+		else if (p.getStart().getLoc().getPos()[0]<p.getEnd().getLoc().getPos()[0]){
+			if(coords[0]<p.getStart().getLoc().getPos()[0]) {
+				out=1; coords[0]=(p.getStart().getLoc().getPos()[0]);
+				coords[1]=(p.getStart().getLoc().getPos()[1]);
+			}
+			else if(coords[0]>p.getEnd().getLoc().getPos()[0]) {
+				out=2; coords[0]=(p.getEnd().getLoc().getPos()[0]);
+				coords[1]=(p.getEnd().getLoc().getPos()[1]);
+			}
+		}
+		else if(p.getStart().getLoc().getPos()[1]>p.getEnd().getLoc().getPos()[1]) {
+			if (coords[1]>p.getStart().getLoc().getPos()[1]) {
+				out=1; coords[0]=(p.getStart().getLoc().getPos()[0]);
+				coords[1]=(p.getStart().getLoc().getPos()[1]);
+				}
+			else if(coords[1]<p.getEnd().getLoc().getPos()[1]) {
+				out=2; coords[0]=(p.getEnd().getLoc().getPos()[0]);
+				coords[1]=(p.getEnd().getLoc().getPos()[1]);
+			}
+		}
+		else {
+			if(coords[1]<p.getStart().getLoc().getPos()[1]) {
+				out=1; coords[0]=(p.getStart().getLoc().getPos()[0]);
+				coords[1]=(p.getStart().getLoc().getPos()[1]);
+			}
+			else if(coords[1]>p.getEnd().getLoc().getPos()[1]) {
+				out=2; coords[0]=(p.getEnd().getLoc().getPos()[0]);
+				coords[1]=(p.getEnd().getLoc().getPos()[1]);
+			}
+		}
+		
+		return out;
+	}
 	public int travel(Path p,double mag, boolean b) {
         if (b&&Math.abs(mag)>p.getSpeedLim()){
             if (mag>=0){

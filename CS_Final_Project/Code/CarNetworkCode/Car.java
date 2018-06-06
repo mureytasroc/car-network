@@ -120,11 +120,15 @@ public class Car{
 	public void update() {
         
         ArrayList<LineSegment> nowIntensity = this.speedProfile.get(inc-1);
-        this.speed=ExtraMethods.parseSpeed(myGrid.getTime(),nowIntensity);
-        System.out.println(myGrid.getTime());
-        if(Double.isNaN(this.speed)){
-            System.out.println("ERROR");
-        }
+        //System.out.println(nowIntensity);
+        //double temp=ExtraMethods.parseSpeed(myGrid.getTime(),nowIntensity);
+        double newLoc=ExtraMethods.parseLoc(myGrid.getTime(),nowIntensity);
+        //System.out.println(newLoc);
+        //System.out.println(myGrid.getTime());
+        /*if(!Double.isNaN(temp)){
+            this.speed=temp;
+            System.out.println("yay");
+        }*/
             
             
 		if(this.directions.get(this.inc-1)) {
@@ -133,7 +137,8 @@ public class Car{
 		}
 		else {speed=-Math.abs(speed);
 		}
-		int t=this.loc.travel(curPath,speed,true);
+        int asfd=this.loc.teleport(curPath,newLoc,true);
+		int t=this.loc.travel(curPath,speed/2.0,true);
 		if(t>0) {
 			if (this.inc==myRoute.size()) {
 				if (!destIsInt) {
@@ -202,7 +207,8 @@ public class Car{
     }
 	public ArrayList<Path> getOptimalPath() {
         
-        this.startTime=this.myGrid.getTime()+3;//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
+        this.startTime=this.myGrid.getTime();//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
+        System.out.println(startTime);
         
 		for (Intersection i: myGrid.getMyIntersections()) {
 			i.setup();

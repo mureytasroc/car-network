@@ -47,6 +47,7 @@ public class Occupation{
         LineSegment curSeg=new LineSegment(start,end);
         if(EOlineSegs.size()==0){//if there are no existing occupations
         this.lineSegs.add(curSeg);
+        //System.out.println("hey"+curSeg);
         endTime=end.getX();
         }
         else{
@@ -80,6 +81,7 @@ public class Occupation{
                            Line temp = new Line(curStart,collider.getSlope());
                         end=finishLine.getIntersection(temp);
                     curSeg=new LineSegment(curStart,end);
+                    //System.out.println("hey"+curSeg);
                        }
                     
                     
@@ -98,6 +100,7 @@ public class Occupation{
     }
     
     public ArrayList<LineSegment> getLS(){
+        
         return this.lineSegs;
     }
     

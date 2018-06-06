@@ -60,6 +60,17 @@ public class ExtraMethods{
         }
         return Double.NaN;
     }
+    public static double parseLoc(double time, ArrayList<LineSegment> ls){
+        //System.out.println("$#@");
+        for(int i=0;i<ls.size();i++){
+            if(ls.get(i).getPointByX(time)!=null){
+                System.out.println(ls.get(i).getPointByX(time).getY());
+                return (ls.get(i).getPointByX(time).getY());
+            }
+
+        }
+        return Double.NaN;
+    }
     
     private static int recurse(Comparable add, ArrayList list, int left, int right){ //used in sortAddAsc above
         int mid = left + (right - left)/2;

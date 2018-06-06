@@ -14,6 +14,8 @@ public class Point implements Comparable{
         this.y=p.getY();
     }
     public double slope(Point p){
+        if(p==null)
+            return 1.0/0;
         double m=0;
         double dY=p.getY()-this.y;
         double dX=p.getX()-this.x;

@@ -126,6 +126,8 @@ public class Path {
         //c.setPathOccupation(pathNum,this.possibleOccupation);
         this.occupation.add(possibleOccupation);
         c.addToSP(pathNum,this.occupation.getLS());
+        //System.out.println(this.occupation.getLS());
+        //System.out.println("aiiiii");
         //add possibleOccupation to occupations, delete all redundant occupations (ones that have a point with an x value less than the possibleOccupation's end x value )
         
     }

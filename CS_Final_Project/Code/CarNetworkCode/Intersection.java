@@ -59,6 +59,7 @@ public class Intersection implements Comparable {
 	}*/
     // In later implementations, source will be passed as a parameter to the getDistance method
     public void nodify(double source, Car c, Path inPath, double startTime) {//recursive
+        
 		if (source<this.nodeValue) {
             this.leadingPath=inPath;
 			nodeValue=source;
@@ -78,7 +79,7 @@ public class Intersection implements Comparable {
 
     
     public ArrayList<Path> collectRoute(Intersection start, ArrayList<Boolean> dirs, Car c, double startTime){
-        
+        System.out.println(startTime);
         if(this == start){
             ArrayList<Path> myList = new ArrayList<Path>();
             return myList;
@@ -166,7 +167,7 @@ public class Intersection implements Comparable {
 		StdDraw.setPenColor(0,0,0);
         StdDraw.setPenRadius(0.03);
 		StdDraw.text(this.loc.getPos()[0], this.loc.getPos()[1], (Integer.valueOf((int)(nodeValue))).toString() );
-        //System.out.println(nodeValue);
+        System.out.println(nodeValue);
 		/*System.out.println("hey");
 		
 		for(int i=0; i<this.myPaths.size();i++) {
