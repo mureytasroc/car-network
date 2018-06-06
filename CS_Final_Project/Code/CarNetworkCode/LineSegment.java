@@ -144,7 +144,9 @@ public class LineSegment implements Comparable{
         LineSegment output=null;
         for(LineSegment l2: al){
             Point curPoint=this.getIntersection(l2);
-            if (curPoint==null)
+            if (curPoint==null){
+                
+            }
             else
                 if(out==null)
                     out=curPoint;output=l2;
