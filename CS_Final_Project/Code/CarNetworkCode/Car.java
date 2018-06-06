@@ -7,7 +7,7 @@ public class Car{
 	private ArrayList<Boolean> directions;
     private ArrayList<ArrayList<LineSegment>> speedProfile=new ArrayList<ArrayList<LineSegment>>();//speed profile for each path
 	private Path curPath;
-	private double speed=1.0;
+	private double speed=200.0;
 	private Intersection destination;
     private Intersection start;
 	private int inc=0;
@@ -142,9 +142,9 @@ public class Car{
 		else {speed=-Math.abs(speed);
 		}
         
-        //int asfd=this.loc.teleport(curPath,newLoc,true);
-		int t=this.loc.travel(curPath,speed,true);
-        
+        int asfd=this.loc.teleport(curPath,newLoc,true);
+		//int t=this.loc.travel(curPath,speed/1000000,true);
+        int t=0;
 		if(t>0) {
 			if (this.inc==myRoute.size()) {
 				if (!destIsInt) {
