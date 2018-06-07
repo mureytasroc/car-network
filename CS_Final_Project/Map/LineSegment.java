@@ -10,8 +10,8 @@ public class LineSegment implements Comparable{
         System.out.println(l1);
         System.out.println(l2);
         System.out.println(l1.compareTo(l2));*/
-        LineSegment l1 = new LineSegment(new Point(4,3),new Point(10,0));
-        LineSegment l2 = new LineSegment(new Point(4,2),new Point(10,0));
+        LineSegment l1 = new LineSegment(new Point(1,1),4.0/3.0,5);
+        LineSegment l2 = new LineSegment(new Point(1,1),0,3);
         ArrayList<LineSegment> ar = new ArrayList<LineSegment>();
         ar.add(l1);
         ar.add(l2);
