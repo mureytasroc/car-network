@@ -77,7 +77,23 @@ public class Intersection implements Comparable {
 		}
 	}
 
-    
+     public Route prepareRoute(Intersection start, Car c, double startTime){
+        //System.out.println(startTime);
+        if(this == start){
+            Route myRoute = new Route(c);
+            return myRoute;
+        }
+        else{
+            //System.out.println("this far");
+            Route myRoute = new Route(this.leadingPath.getOther(this).prepareRoute(start,c,startTime));
+            boolean direction=false;
+          	if(leadingPath.getEnd()==this){
+              direction=true;
+            }
+            myRoute.addModule(new RouteModule(this.leadingPath.confirm(),this.leadingPath,direction));
+            return myRoute;
+        }
+    }
     public ArrayList<Path> collectRoute(Intersection start, ArrayList<Boolean> dirs, Car c, double startTime){
         //System.out.println(startTime);
         if(this == start){

@@ -135,7 +135,12 @@ public class Path {
         
     }
     
-    
+    public ArrayList<LineSegment> confirm(){
+        //c.setPathOccupation(pathNum,this.possibleOccupation);
+        this.occupation.add(possibleOccupation);
+        return this.occupation.getLS();
+        
+    }
 	public double getSlope() {
 		return( (this.end.getLoc().getPos()[1]-this.start.getLoc().getPos()[1])/(this.end.getLoc().getPos()[0]-this.start.getLoc().getPos()[0]));
 	}
@@ -165,6 +170,12 @@ public class Path {
 	}
 	public double getDistance() {
 		return this.distance;
+	}
+    public double XD() {
+		return (this.end.getLoc().getPos()[0]-this.start.getLoc().getPos()[0]);
+	}
+    public double YD() {
+		return (this.end.getLoc().getPos()[1]-this.start.getLoc().getPos()[1]);
 	}
     public double getDistance(Car c) {
         double s=Math.abs(c.getSpeed());
