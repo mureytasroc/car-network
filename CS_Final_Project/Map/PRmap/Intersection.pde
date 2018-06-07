@@ -13,9 +13,16 @@ public class Intersection{
    myPaths.add(p);
  }
  public void setMarkers(double dist){
+   double d=dist;
    for(int i=0;i<myPaths.size();i++){
-     double slope=myPaths.get(i).getLS().getSlope();
-     myMarkers.add(new Marker(this.map,p,dist,myPaths.get(i)));
+     LineSegment thisLS = myPaths.get(i).getLS();
+     
+     double slope=thisLS.getSlope();
+     if(slope==Double.NEGATIVE_INFINITY){
+      d*=-1;
+     }
+     Point p=point.getClosest(thisLS.getP1(),thisLS.getP2());
+     myMarkers.add(new Marker(this.map,p,d,myPaths.get(i)));
    }
    
  }

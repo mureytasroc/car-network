@@ -68,6 +68,18 @@ class Point implements Comparable{
      return a; 
     }
   }
+  public Point getFarthest(Point a, Point b){
+    double distA = this.getDist(a);
+    double distB = this.getDist(b);
+    if(distA==distB){
+      return null;}
+    if(distA<distB){
+     return b; 
+    }
+    else{
+     return a; 
+    }
+  }
   public double getDist(Point p){
     return (Math.sqrt(Math.pow(p.getX()-this.getX(),2)+Math.pow(p.getY()-this.getY(),2)));
   }
