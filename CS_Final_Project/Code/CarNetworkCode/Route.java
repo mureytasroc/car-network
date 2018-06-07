@@ -37,7 +37,7 @@ public class Route{
         myRoute.add(r);
     }
     public void clear(){
-        for(int i=myRoute.size(); i>=0;i--){
+        for(int i=myRoute.size()-1; i>=0;i--){
             myRoute.remove(i);
         }
     }
