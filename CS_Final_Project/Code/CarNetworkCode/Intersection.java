@@ -90,7 +90,7 @@ public class Intersection implements Comparable {
           	if(leadingPath.getEnd()==this){
               direction=true;
             }
-            myRoute.addModule(new RouteModule(this.leadingPath.confirm(),this.leadingPath,direction));
+            myRoute.addModule(new RouteModule(this.leadingPath.confirm(),this.leadingPath,direction,c));
             return myRoute;
         }
     }

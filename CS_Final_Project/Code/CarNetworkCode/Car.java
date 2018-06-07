@@ -115,41 +115,15 @@ public class Car{
 		//System.out.print(" end ");
 		//System.out.println(myGrid.getMyIntersections().size());
 		this.curPath=this.loc.snapToPath();
+        
 		theRoute=this.getOptimalPath();
+        
 	}
 	public void update() {
         
-        //System.out.println(myGrid.getTime());
-        //System.out.println("should have showed");
-        ArrayList<LineSegment> nowIntensity = this.speedProfile.get(inc-1);
-        //System.out.println(nowIntensity);
-        double temp=ExtraMethods.parseSpeed(myGrid.getTime(),nowIntensity);
-        double newLoc=ExtraMethods.parseLoc(myGrid.getTime(),nowIntensity);
-        //System.out.println(newLoc);
-        //System.out.println(newLoc);
-        //System.out.println(newLoc);
-        //System.out.println(myGrid.getTime());
-        if(!Double.isNaN(temp)){
-            this.speed=temp;
-            //System.out.println("yay");
-        }
-        //System.out.println(this.speed);
-            
-            
-		if(this.directions.get(this.inc-1)) {
-			
-			speed=Math.abs(speed);
-		}
-		else {speed=-Math.abs(speed);
-		}
         
-        int t=this.loc.teleport(curPath,newLoc);
-        //int t=0;
-		if(t>0) {
-            System.out.println("REEEEEEEEEEEET");
-			if (this.inc==myRoute.size()) {
+        if(theRoute.advance()){
 				if (!destIsInt) {
-					
 				Path p1=destination.getPaths().get(0);
 				Path p2=destination.getPaths().get(1);
 				p1.getOther(destination).addPath(eatenPath);
@@ -158,40 +132,9 @@ public class Car{
 				p2.die();
 				myGrid.removeIntersection(destination);
 				}
-                theRoute.clear();
-				/*for(int i=myRoute.size()-1;i>=0;i--) {
-					myRoute.remove(i);
-					
-				}
-                for(int i=directions.size()-1;i>=0;i--) {
-					directions.remove(i);
-					
-				}
-                for(int i=speedProfile.size()-1; i>=0;i--){
-                    speedProfile.remove(i);
-                }*/
-                
-				this.inc=0;
 				setup(this.loc,new Location( myGrid,(Math.random()*800),(Math.random()*800)));
 			}
-			else {
-				
-			curPath=this.loc.snapToPath(myRoute.get(this.inc));
-			
-		if(this.directions.get(this.inc)) {
-			
-			speed=Math.abs(speed);
-		}
-		else {speed=-Math.abs(speed);
-		}
-                
-		inc++;
-			}
-		}
 		this.show();
-        
-        //StdDraw.show();
-		//CAR UPDATE METHOD
 		
 	}
 	public void show() {
@@ -228,13 +171,14 @@ public class Car{
         this.start.nodify(0,this,null,startTime);
         
 		this.theRoute=new Route(this);
-        this.directions = new ArrayList<Boolean>();
+        //this.directions = new ArrayList<Boolean>();
         if(destination.nodeValue()==Double.POSITIVE_INFINITY){
             System.out.println("UNSOLVABLE");
         }
+        
         //ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
         theRoute=destination.prepareRoute(this.start,this,this.startTime);
-
+        
         if (!startIsInt) {
 				Path p1=start.getPaths().get(0);
 				Path p2=start.getPaths().get(1);
@@ -260,7 +204,7 @@ public class Car{
 				
                 
         }
-        if(this.directions.get(this.inc)) {
+       /* if(this.directions.get(this.inc)) {
 			speed=Math.abs(speed);
             int t=this.loc.travel(curPath,speed,true);
 		}
@@ -268,7 +212,7 @@ public class Car{
             speed=-Math.abs(speed);
             int t=this.loc.travel(curPath,speed,true);
         }
-        inc++;
+        inc++;*/
         //this.destination.nodify(0,this,null);//bug checking
         
 		return theRoute;

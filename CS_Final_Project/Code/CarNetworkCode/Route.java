@@ -2,7 +2,7 @@ import java.util.*;
 public class Route{
     private Car c;
     private ArrayList<RouteModule> myRoute;
-    private int dC;
+    private int inc=0;
     public Route(Car c,ArrayList<RouteModule> a){
         this.c=c;
         myRoute=new ArrayList<RouteModule>(a);
@@ -15,6 +15,17 @@ public class Route{
         this.c=r.getCar();
         this.myRoute=r.getRoute();
     }
+    public boolean advance(){
+        if(myRoute.get(inc).advance()){
+            inc++;
+        }
+        if (inc==myRoute.size()){
+            inc=0;
+            this.clear();
+            return true;
+        }
+        return false;
+    }
     public Car getCar(){
         return c;
     }
@@ -25,7 +36,6 @@ public class Route{
     public void addModule(RouteModule r){
         myRoute.add(r);
     }
-    public boolean getDirection
     public void clear(){
         for(int i=myRoute.size(); i>=0;i--){
             myRoute.remove(i);

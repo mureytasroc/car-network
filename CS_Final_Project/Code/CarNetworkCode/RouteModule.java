@@ -3,15 +3,26 @@ public class RouteModule{
     ArrayList<LineSegment> speedMap;
     Path myPath;
     boolean direction;
-    public RouteModule(ArrayList<LineSegment>a, Path p,boolean d){
+    Car c;
+    Grid myGrid;
+    public RouteModule(ArrayList<LineSegment>a, Path p,boolean d, Car c){
         speedMap=new ArrayList<LineSegment>(a);
         myPath=p;
         direction=d;
+        this.c=c;
+        myGrid=c.getGrid();
     }
     public boolean getDirection(){
         return direction;
     }
-    public boolean getPath(){
+    public Path getPath(){
         return myPath;
+    }
+    public boolean advance(){
+        double newLoc=ExtraMethods.parseLoc(myGrid.getTime(),speedMap);
+        if(c.getLocation().teleport(myPath,newLoc)>0){
+            return true;
+        }
+        return false;
     }
 }
