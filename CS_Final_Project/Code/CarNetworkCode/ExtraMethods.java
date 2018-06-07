@@ -13,6 +13,7 @@ public class ExtraMethods{
         
         
         
+        
     }
     public static void sortAddAsc(Comparable add, ArrayList list){ //sorted add ascengind
         if(list.size()!=0){
@@ -51,9 +52,11 @@ public class ExtraMethods{
 
     }
     
-    /*printLSAL(ArrayList<LineSegment> ls){
-        for(int i=0;i<ls.)
-    }*/
+    public static void printAL(ArrayList ls){
+        for(int i=0;i<ls.size();i++){
+            System.out.println("index: "+i+",  "+ls.get(i));
+        }
+    }
     
     public static double parseSpeed(double time, ArrayList<LineSegment> ls){
         for(int i=0;i<ls.size();i++){
@@ -64,10 +67,12 @@ public class ExtraMethods{
         }
         return Double.NaN;
     }
-    public static double parseLoc(double time, ArrayList<LineSegment> ls){
+    public static double parseLoc(double time, ArrayList<LineSegment> ls){//, boolean tru){//tru used for testing purposes
         //System.out.println("$#@");
         for(int i=0;i<ls.size();i++){
-            System.out.println(time+"blabla"+ls.get(i));
+            //if(tru){
+             //System.out.println(ls.get(i));   
+            //}
             if(ls.get(i).getPointByX(time)!=null){
                 //System.out.println(ls.get(i).getPointByX(time).getY());
                 return (ls.get(i).getPointByX(time).getY());

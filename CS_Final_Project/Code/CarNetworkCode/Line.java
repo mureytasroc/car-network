@@ -20,7 +20,7 @@ public class Line{
         this.slope=p1.slope(p2);
     }
     public Point getIntersection(Line l){
-        if((Math.abs(this.slope-l.getSlope())<0.00001)||((this.slope==Double.POSITIVE_INFINITY||this.slope==Double.NEGATIVE_INFINITY)&&(l.getSlope()==Double.POSITIVE_INFINITY||l.getSlope()==Double.NEGATIVE_INFINITY))){
+        if((Math.abs(this.slope-l.getSlope())<0.0001)||((this.slope==Double.POSITIVE_INFINITY||this.slope==Double.NEGATIVE_INFINITY)&&(l.getSlope()==Double.POSITIVE_INFINITY||l.getSlope()==Double.NEGATIVE_INFINITY))){
             return null;
         }
         else{//lines are not the same or parallel
@@ -51,6 +51,30 @@ public class Line{
             return new Point(x,y);
         }
     }
+    
+    
+    
+    public Point getPointByX(double x){
+        if(this.getSlope()==Double.POSITIVE_INFINITY||this.getSlope()==Double.NEGATIVE_INFINITY){
+            return null;
+        }
+        else{
+            return new Point(x,this.getSlope()*(x-this.point.getX())+this.point.getY());
+        }
+        
+        
+    }
+    public Point getPointByY(double y){
+        if(this.getSlope()==0){
+            return null;
+        }
+        else{
+            return new Point((y-point.getY())/this.getSlope()+point.getX(),y);
+        }
+    }
+    
+    
+    
     public boolean doesIntersect(Point p, double precision){
         double m=this.slope;
         double y = m*p.getX()-m*this.point.getX()+this.point.getY();

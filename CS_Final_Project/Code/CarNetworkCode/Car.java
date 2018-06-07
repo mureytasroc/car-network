@@ -7,7 +7,7 @@ public class Car{
 	private ArrayList<Boolean> directions;
     private ArrayList<ArrayList<LineSegment>> speedProfile=new ArrayList<ArrayList<LineSegment>>();//speed profile for each path
 	private Path curPath;
-	private double speed=200.0;
+	private double speed=1;
 	private Intersection destination;
     private Intersection start;
 	private int inc=0;
@@ -20,6 +20,7 @@ public class Car{
     private Path tempPath1;
     private Path tempPath2;
     private Path tempPath3;
+    //private boolean printie;
     private double trailingDistance;
     public double getTD(){
         return trailingDistance;
@@ -27,7 +28,7 @@ public class Car{
     private double startTime;//in seconds with millisecond precision
 	Car(Location l){
         this.trailingDistance=0.4064;
-        
+
 		this.myRoute=new ArrayList<Path>();
 		this.directions=new ArrayList<Boolean>();
 		this.myGrid=l.getGrid();
@@ -38,9 +39,9 @@ public class Car{
 		this.curPath=this.loc.snapToPath();
 		this.myGrid.addCar(this);
 	}
-	Car(Location l,Location d){
+	Car(Location l,Location d){//, boolean tru){//tru used for testing purposes
         this.trailingDistance=0.4064;
-        
+        //this.printie=tru;
 		this.myRoute=new ArrayList<Path>();
 		this.directions=new ArrayList<Boolean>();
 		this.myGrid=l.getGrid();
@@ -56,6 +57,9 @@ public class Car{
 		this.setup(l,d);
 		
 	}
+    Car(double td){//used for testing only, never actually used in algo
+        this.trailingDistance=td;
+    }
     public double getSpeed(){
         return this.speed;
     }
@@ -119,20 +123,24 @@ public class Car{
 	public void update() {
         
         //System.out.println(myGrid.getTime());
+        //System.out.println("update");
         //System.out.println("should have showed");
         ArrayList<LineSegment> nowIntensity = this.speedProfile.get(inc-1);
         //System.out.println(nowIntensity);
-        double temp=ExtraMethods.parseSpeed(myGrid.getTime(),nowIntensity);
-        double newLoc=ExtraMethods.parseLoc(myGrid.getTime(),nowIntensity);
-        System.out.println(newLoc);
-        //System.out.println(newLoc);
+        //double temp=ExtraMethods.parseSpeed(myGrid.getTime(),nowIntensity);
+        double newLoc;
+        //if(this.printie){
+           // newLoc=ExtraMethods.parseLoc(myGrid.getTime()*100,nowIntensity,true);}
+        //else{
+            newLoc=ExtraMethods.parseLoc(myGrid.getTime()*100,nowIntensity);//false);
+        //}
+        
         //System.out.println(newLoc);
         //System.out.println(myGrid.getTime());
-        if(!Double.isNaN(temp)){
+        /*if(!Double.isNaN(temp)){
             this.speed=temp;
             System.out.println("yay");
-        }
-        //System.out.println(this.speed);
+        }*/
             
             
 		if(this.directions.get(this.inc-1)) {
@@ -142,9 +150,9 @@ public class Car{
 		else {speed=-Math.abs(speed);
 		}
         
-        int asfd=this.loc.teleport(curPath,newLoc,true);
-		//int t=this.loc.travel(curPath,speed/1000000,true);
-        int t=0;
+        //int asfd=this.loc.teleport(curPath,newLoc,true);
+		int t=this.loc.travel(curPath,1/2.0,true);
+        
 		if(t>0) {
 			if (this.inc==myRoute.size()) {
 				if (!destIsInt) {
@@ -188,6 +196,7 @@ public class Car{
 		inc++;
 			}
 		}
+        //System.out.println("should have showed");
 		this.show();
         
         //StdDraw.show();
@@ -205,7 +214,9 @@ public class Car{
     }*/
     public void addToSP(int index, ArrayList<LineSegment> ls){
         if(index>=speedProfile.size()){
-            //System.out.println("add: "+index+", "+ls.size());
+            //if(printie){
+            //System.out.println(index);}
+            
             this.speedProfile.add(ls);
         }
         else{

@@ -2,6 +2,27 @@ import java.util.*;
 import java.util.Collections;
 public class Occupation{
     
+    public static void main(String[] args){
+        ArrayList<LineSegment> ls = new ArrayList<LineSegment>();
+        ls.add(new LineSegment(new Point(-1,0), new Point(3,5)));
+        ls.add(new LineSegment(new Point(3,5), new Point(8,7)));
+        ls.add(new LineSegment(new Point(8,7), new Point(20,10)));
+        ls.add(new LineSegment(new Point(19,9.4), new Point(24,9.4)));
+        
+        ExtraMethods.printAL(ls);
+        /*ls.add(new LineSegment(new Point(-1,10), new Point(3,5)));
+        ls.add(new LineSegment(new Point(3,5), new Point(8,3)));
+        ls.add(new LineSegment(new Point(8,3), new Point(20,0)));*/
+        
+        
+        Occupation occ = new Occupation(ls);
+        
+        Occupation next = new Occupation(new Path(10),occ,0,true,2,new Car(0.5));
+        ExtraMethods.printAL(next.getLS());
+        System.out.println(next.getEndTime());
+
+    }
+    
     //vvv below variables are for continuous occupation
     private double speed;
     private boolean direction;
@@ -16,6 +37,10 @@ public class Occupation{
     public Occupation(){
         continuous=false;
         lineSegs=new ArrayList<LineSegment>();
+    }
+    public Occupation(ArrayList<LineSegment> ls){
+        continuous=false;
+        lineSegs=new ArrayList<LineSegment>(ls);
     }
     
     public void add(Occupation addend){
@@ -45,8 +70,6 @@ public class Occupation{
             end = new Point(enterTime+p.getDistance()/sp,0);
         }
         LineSegment curSeg=new LineSegment(start,end);
-        //System.out.println(start.getX());
-        //System.out.println(end.getX());
         if(EOlineSegs.size()==0){//if there are no existing occupations
         this.lineSegs.add(curSeg);
         //System.out.println("hey"+curSeg);
@@ -56,33 +79,72 @@ public class Occupation{
   //there are existing occupations
         Point curStart=new Point(start);
         boolean keep=true;
-            LineSegment finishLine;
+            Line finishLine;
             if(dir){
-                finishLine = new LineSegment(new Point(enterTime,p.getDistance()),new Point(Double.MAX_VALUE,p.getDistance()));}
+                finishLine = new Line(new Point(enterTime,p.getDistance()),0);}
             else{
-                finishLine = new LineSegment(new Point(enterTime,0),new Point(Double.MAX_VALUE,0));
+                finishLine = new Line(new Point(enterTime,0),0);
             }
 
-        while(keep){
+            boolean endOfFollow=false;
+            Line temp;
+            boolean segReachedEnd=false;
             
+        while(keep){
             LineSegment collider=curSeg.first(EOlineSegs);
-            //System.out.println(collider);
             //System.out.println("hey");
-            if (collider==null){lineSegs.add(curSeg);endTime=end.getX();keep=false;}
+            if (collider==null){
+                if(segReachedEnd){
+                    lineSegs.add(curSeg);
+                    endTime=end.getX();
+                    keep=false;
+                    break;
+                }
+                else if(endOfFollow){
+                    lineSegs.add(curSeg);
+                    double slop=sp;
+                    if(!dir){
+                        slop*=-1;
+                    }
+                    Line tempest=new Line(curSeg.rightEndPoint(),slop);
+                    end=tempest.getIntersection(finishLine);
+                    curSeg=new LineSegment(curSeg.rightEndPoint(),end);
+                    
+                    
+                    endOfFollow=false;
+                    segReachedEnd=true;
+                    
+                }
+            }
             else{
+                segReachedEnd=false;
                 //System.out.println(c.getTD());
-                if((collider.isOppositeSlope(curSeg))||(Math.abs(collider.getSlope())>=Math.abs(curSeg.getSlope()))){
+                if((collider.isOppositeSlope(curSeg))){
+                    this.endTime=Double.POSITIVE_INFINITY;
+                    keep=false;
+                }
+                else if(curSeg.getSlope()<0&&collider.getSlope()<curSeg.getSlope()){
+                    this.endTime=Double.POSITIVE_INFINITY;
+                    keep=false;
+                }
+                else if(curSeg.getSlope()>0&&collider.getSlope()>curSeg.getSlope()){
                     this.endTime=Double.POSITIVE_INFINITY;
                     keep=false;
                 }
                 else{
+                    
                     Point collision=collider.getIntersection(curSeg);
-                    Point holder=curSeg.endPointMinus(c.getTD(),collision, collider);
+                    Point holder=curSeg.endPointMinus(c.getTD(), collider);
+
                     lineSegs.add(new LineSegment(curStart,holder));
                     curStart=holder;
-                           Line temp = new Line(curStart,collider.getSlope());
-                        end=new point(finishLine.getIntersection(temp));
-                    curSeg=new LineSegment(new point(curStart),new point(end));
+                           temp = new Line(curStart,collider.getSlope());
+                        end=temp.getPointByX(collider.rightEndPoint().getX());//finishLine.getIntersection(temp);
+                    curSeg=new LineSegment(curStart,end);
+
+                    endOfFollow=true;
+                    
+                    
                     //System.out.println("hey"+curSeg);
                        }
                     
