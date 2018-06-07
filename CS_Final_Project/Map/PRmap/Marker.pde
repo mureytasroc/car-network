@@ -1,27 +1,33 @@
 import java.awt.*;
 import java.util.*;
 
-class Path{
 
+public class Marker{
+  private Point point;
+  private double distance;
+  private Path path;
+  private Map map;
+ Marker(Map m,Point p, double dist, Path pa){
+   this.map=m;
+   this.path=pa;
+   this.point=p;
+   this.distance=dist;
+ }
+ public void drawMarker(){
+   double wid=this.map.getLineWidth();
+   LineSegment pathLS=this.path.getLS();
+   
+   LineSegment firstSeg=new LineSegment(point,pathLS.getSlope(),distance/2.0);
+   LineSegment secSeg=new LineSegment(point,pathLS.getSlope(),-distance/2.0);
+   
+    drawSeg(wid,firstSeg,path.getLMC(),path.getRMC());
+    drawSeg(wid,secSeg,path.getRMC(),path.getLMC());
     
-    private Color leftColor, rightColor, lmColor, rmColor;
-    private LineSegment lineSeg;
-    private double wid;
-    private Map map;
     
-    Path(Map m,Point p1, Point p2,double w){
-        this.map=m;
-        this.wid=w;
-        this.lineSeg=new LineSegment(p1,p2);
-        this.leftColor = new Color(255,0,0);
-        this.rightColor = new Color(0,255,0);
-        this.lmColor = new Color(255,0,255);
-        this.rmColor = new Color(0,255,255);
-    }
-    public void show(){
-      
-      
-        strokeWeight((float)(wid*1.0/2.0));
+ }
+ 
+ private void drawSeg(double wid,LineSegment lineSeg, Color leftColor, Color rightColor){
+   strokeWeight((float)(wid*1.0/2.0));
         strokeCap(SQUARE);
             
         double perpSlope;
@@ -48,24 +54,7 @@ class Path{
         line((float)leftStart.getX(),(float)leftStart.getY(),(float)leftEnd.getX(),(float)leftEnd.getY());
         
         stroke(leftColor.getRed(),leftColor.getGreen(),leftColor.getBlue());
-        line((float)rightStart.getX(),(float)rightStart.getY(),(float)rightEnd.getX(),(float)rightEnd.getY());
-        
-        /*StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.setPenRadius(0.005);
-        StdDraw.line(lineSeg.getP1().getX(),lineSeg.getP1().getY(),lineSeg.getP2().getX(),lineSeg.getP2().getY());*/
-        
-    }
-    public Color getLMC(){
-     return this.lmColor; 
-    }
-    public Color getRMC(){
-     return this.rmColor; 
-    }
-    public LineSegment getLS(){
-      return this.lineSeg;}
-      
-    public Point getIntersection(Path p){
-      return this.lineSeg.getIntersection(p.getLS());
-    }
-    
+        line((float)rightStart.getX(),(float)rightStart.getY(),(float)rightEnd.getX(),(float)rightEnd.getY()); 
+ }
+  
 }
