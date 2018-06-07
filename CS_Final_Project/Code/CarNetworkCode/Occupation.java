@@ -45,6 +45,8 @@ public class Occupation{
             end = new Point(enterTime+p.getDistance()/sp,0);
         }
         LineSegment curSeg=new LineSegment(start,end);
+        //System.out.println(start.getX());
+        //System.out.println(end.getX());
         if(EOlineSegs.size()==0){//if there are no existing occupations
         this.lineSegs.add(curSeg);
         //System.out.println("hey"+curSeg);
@@ -79,8 +81,8 @@ public class Occupation{
                     lineSegs.add(new LineSegment(curStart,holder));
                     curStart=holder;
                            Line temp = new Line(curStart,collider.getSlope());
-                        end=finishLine.getIntersection(temp);
-                    curSeg=new LineSegment(curStart,end);
+                        end=new point(finishLine.getIntersection(temp));
+                    curSeg=new LineSegment(new point(curStart),new point(end));
                     //System.out.println("hey"+curSeg);
                        }
                     

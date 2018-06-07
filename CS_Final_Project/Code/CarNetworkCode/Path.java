@@ -114,9 +114,12 @@ public class Path {
         if (s>this.getSpeedLim()){
             s=this.getSpeedLim();
         }
-		double projected=Math.abs((this.distance/s));
+		double projected;
+        //System.out.println("hey "+projected);
+        //System.out.println(enterTime);
         this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()),c);
         projected=this.possibleOccupation.getEndTime()-enterTime;
+        //System.out.println("ayayaya "+projected);
         //this.getOther(origin).addPotentialOccupation(this,projected);
         
         return projected;
@@ -162,6 +165,12 @@ public class Path {
 	}
 	public double getDistance() {
 		return this.distance;
+	}
+    public double XD() {
+		return (this.end.getLoc().getPos()[0]-this.start.getLoc().getPos()[0]);
+	}
+    public double YD() {
+		return (this.end.getLoc().getPos()[1]-this.start.getLoc().getPos()[1]);
 	}
     public double getDistance(Car c) {
         double s=Math.abs(c.getSpeed());
