@@ -14,7 +14,7 @@ public class LineSegment implements Comparable{
         LineSegment l2 = new LineSegment(new Point(4,2),new Point(10,0));
         System.out.println(l1);
         System.out.println(l2);
-        System.out.println(l2.endPointMinus(0.5,l1));
+        System.out.println(l2.isInDomain(2.1));
     }
     
     
@@ -79,6 +79,42 @@ public class LineSegment implements Comparable{
         }
         return null;
     }
+    public boolean isInRange(double x){
+        if(this.getSlope()==Double.POSITIVE_INFINITY||this.getSlope()==Double.NEGATIVE_INFINITY){
+            if(Math.abs(this.p1.getX()-x)<0.0001){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            if(x>this.leftEndPoint().getX()-0.0001&&x<this.rightEndPoint().getX()+0.0001){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+    public boolean isInDomain(double y){
+        if(this.getSlope()==0){
+            if(Math.abs(this.p1.getY()-y)<0.0001){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            if(y>this.lowerEndPoint().getY()-0.0001&&y<this.higherEndPoint().getY()+0.0001){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
     public Point rightEndPoint(){
         if(this.p1.getX()>this.p2.getX()){
             return p1;
@@ -87,6 +123,36 @@ public class LineSegment implements Comparable{
             return p2;   
         }
         System.out.println("RIGHT_END_POINT_NULL");
+        return null;
+    }
+    public Point leftEndPoint(){
+        if(this.p1.getX()>this.p2.getX()){
+            return p2;
+        }
+        if(this.p1.getX()<this.p2.getX()){
+            return p1;   
+        }
+        System.out.println("LEFT_END_POINT_NULL");
+        return null;
+    }
+    public Point lowerEndPoint(){
+        if(this.p1.getY()>this.p2.getY()){
+            return p2;
+        }
+        if(this.p1.getY()<this.p2.getY()){
+            return p1;   
+        }
+        System.out.println("LOWER_END_POINT_NULL");
+        return null;
+    }
+    public Point higherEndPoint(){
+        if(this.p1.getY()>this.p2.getY()){
+            return p1;
+        }
+        if(this.p1.getY()<this.p2.getY()){
+            return p2;   
+        }
+        System.out.println("HIGHER_END_POINT_NULL");
         return null;
     }
     public Point getIntersection(LineSegment l){

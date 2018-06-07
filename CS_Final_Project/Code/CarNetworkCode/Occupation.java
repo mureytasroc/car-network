@@ -135,7 +135,12 @@ public class Occupation{
                     
                     Point collision=collider.getIntersection(curSeg);
                     Point holder=curSeg.endPointMinus(c.getTD(), collider);
-
+                    if(!curSeg.isInRange(holder.getX())){
+                        System.out.println("NO SPACE FOR PROPER TRAILING DISTANCE");
+                        this.endTime=Double.POSITIVE_INFINITY;
+                    keep=false;
+                        break;
+                    }
                     lineSegs.add(new LineSegment(curStart,holder));
                     curStart=holder;
                            temp = new Line(curStart,collider.getSlope());
