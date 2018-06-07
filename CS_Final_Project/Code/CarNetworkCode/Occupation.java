@@ -4,12 +4,12 @@ public class Occupation{
     
     public static void main(String[] args){
         ArrayList<LineSegment> ls = new ArrayList<LineSegment>();
-        ls.add(new LineSegment(new Point(-1,0), new Point(3,5)));
-        ls.add(new LineSegment(new Point(3,5), new Point(8,7)));
-        ls.add(new LineSegment(new Point(8,7), new Point(20,10)));
-        ls.add(new LineSegment(new Point(19,9.4), new Point(24,9.4)));
+        ls.add(new LineSegment(new Point(-1,10), new Point(3,5)));
+        ls.add(new LineSegment(new Point(3,5), new Point(8,3)));
+        ls.add(new LineSegment(new Point(8,3), new Point(20,0)));
+        ls.add(new LineSegment(new Point(19,0.6), new Point(24,0.6)));
         
-        ExtraMethods.printAL(ls);
+        ExtraMethods.printLSarray(ls);
         /*ls.add(new LineSegment(new Point(-1,10), new Point(3,5)));
         ls.add(new LineSegment(new Point(3,5), new Point(8,3)));
         ls.add(new LineSegment(new Point(8,3), new Point(20,0)));*/
@@ -17,8 +17,8 @@ public class Occupation{
         
         Occupation occ = new Occupation(ls);
         
-        //Occupation next = new Occupation(new Path(10),occ,0,true,2,new Car(0.5));
-        ExtraMethods.printAL(next.getLS());
+        Occupation next = new Occupation(new Path(10),occ,0,false,2,new Car(0.5));
+        ExtraMethods.printLSarray(next.getLS());
         System.out.println(next.getEndTime());
 
     }

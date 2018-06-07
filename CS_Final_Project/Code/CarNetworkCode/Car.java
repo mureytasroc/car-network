@@ -57,6 +57,10 @@ public class Car{
 		this.setup(l,d);
 		
 	}
+    Car(double td){//FOR TESTING ONLY, DO NOT DELETE
+        this.trailingDistance=td;    }
+    
+    
     public double getSpeed(){
         return this.speed;
     }

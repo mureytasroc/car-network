@@ -12,9 +12,10 @@ public class LineSegment implements Comparable{
         System.out.println(l1.compareTo(l2));*/
         LineSegment l1 = new LineSegment(new Point(4,3),new Point(10,0));
         LineSegment l2 = new LineSegment(new Point(4,2),new Point(10,0));
-        System.out.println(l1);
-        System.out.println(l2);
-        System.out.println(l2.isInDomain(2.1));
+        ArrayList<LineSegment> ar = new ArrayList<LineSegment>();
+        ar.add(l1);
+        ar.add(l2);
+        ExtraMethods.printLSarray(ar);
     }
     
     
@@ -175,7 +176,7 @@ public class LineSegment implements Comparable{
         
     }
     
-    public String toString(){
+    public String toString(boolean old){
         String ls=this.getLine().toString();
         String add;
         if(this.slope==Double.POSITIVE_INFINITY||this.slope==Double.NEGATIVE_INFINITY){
@@ -208,6 +209,21 @@ public class LineSegment implements Comparable{
         }
         ls+=add;
         return ls;
+    }
+    
+    public String toString(){
+        String ls="((1-t)*(";
+        ls+=this.p1.getX();
+        ls+=")+t*(";
+        ls+=this.p2.getX();
+        ls+="),(1-t)*(";
+        ls+=this.p1.getY();
+        ls+=")+t*(";
+        ls+=this.p2.getY();
+        ls+="))";
+        
+        return ls;
+        
     }
     
     public double getAvgX(){

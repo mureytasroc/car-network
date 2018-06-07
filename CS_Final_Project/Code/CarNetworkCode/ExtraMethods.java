@@ -58,6 +58,16 @@ public class ExtraMethods{
         }
     }
     
+    public static void printLSarray(ArrayList<LineSegment> ls){
+        for(int i=0;i<ls.size();i++){
+               if(i==ls.size()-1){
+                   System.out.println(ls.get(i));
+               }
+               else{
+            System.out.print(ls.get(i)+", ");}
+        }
+    }
+    
     public static double parseSpeed(double time, ArrayList<LineSegment> ls){
         for(int i=0;i<ls.size();i++){
             if(ls.get(i).getPointByX(time)!=null){

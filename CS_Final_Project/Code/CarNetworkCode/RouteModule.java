@@ -21,7 +21,7 @@ public class RouteModule{
     public boolean advance(){
         double newLoc=ExtraMethods.parseLoc(myGrid.getTime(),speedMap);
         if(Double.isNaN(newLoc)){
-            //System.out.println("heya");
+            System.out.println("heya");
             //newLoc=5;
         }
         if(c.getLocation().teleport(myPath,newLoc)>0){
