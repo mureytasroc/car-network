@@ -41,6 +41,9 @@ public class LineSegment implements Comparable{
             this.p2=new Point(p1.getX()+dX,p1.getY()+dY);
         }
     }
+    public double getStart(){
+        return(Math.min(p1.getX(),p2.getX()));
+    }
     public Point getP1(){
         return this.p1;
     }
@@ -188,7 +191,9 @@ public class LineSegment implements Comparable{
         }
         
     }
-    
+    public String range(){
+        return("from "+p1.getX()+" to "+ p2.getX());
+    }
     public String toString(boolean old){
         String ls=this.getLine().toString();
         String add;

@@ -81,7 +81,7 @@ public class ExtraMethods{
         //System.out.println("$#@");
         for(int i=0;i<ls.size();i++){
             //if(tru){
-             //System.out.println(ls.get(i));   
+             //System.out.println(ls.get(i).range()+" in "+time);   
             //}
             if(ls.get(i).getPointByX(time)!=null){
                 //System.out.println(ls.get(i).getPointByX(time).getY());
