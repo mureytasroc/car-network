@@ -1,19 +1,17 @@
 import java.awt.*;
 import java.util.*;
 
-public class Path{
-    public static void main(String[] args){
-        
-    }
+class Path{
+
     
     private Color leftColor, rightColor, lmColor, rmColor;
     private LineSegment lineSeg;
-    private double width;
+    private double wid;
     private Map map;
     
     Path(Map m,Point p1, Point p2,double w){
         this.map=m;
-        this.width=w;
+        this.wid=w;
         this.lineSeg=new LineSegment(p1,p2);
         this.leftColor = new Color(255,0,0);
         this.rightColor = new Color(0,255,0);
@@ -21,7 +19,10 @@ public class Path{
         this.rmColor = new Color(0,255,255);
     }
     public void show(){
-        StdDraw.setPenRadius(width*1.15/4.0);
+      
+      
+        strokeWeight((float)(wid*1.0/2.0));
+        strokeCap(SQUARE);
             
         double perpSlope;
         if(this.lineSeg.getSlope()==Double.POSITIVE_INFINITY||this.lineSeg.getSlope()==Double.NEGATIVE_INFINITY){
@@ -33,21 +34,21 @@ public class Path{
         else{
             perpSlope=-1.0/this.lineSeg.getSlope();
         }
-        LineSegment p1PerpLSL = new LineSegment(lineSeg.getP1(),perpSlope,this.width/4.0);
+        LineSegment p1PerpLSL = new LineSegment(lineSeg.getP1(),perpSlope,this.wid/4.0);
         Point leftStart = p1PerpLSL.getP2();
-        LineSegment p1PerpLSR = new LineSegment(lineSeg.getP1(),perpSlope,-this.width/4.0);
+        LineSegment p1PerpLSR = new LineSegment(lineSeg.getP1(),perpSlope,-this.wid/4.0);
         Point rightStart = p1PerpLSR.getP2();
         
-        LineSegment p2PerpLSL = new LineSegment(lineSeg.getP2(),perpSlope,this.width/4.0);
+        LineSegment p2PerpLSL = new LineSegment(lineSeg.getP2(),perpSlope,this.wid/4.0);
         Point leftEnd = p2PerpLSL.getP2();
-        LineSegment p2PerpLSR = new LineSegment(lineSeg.getP2(),perpSlope,-this.width/4.0);
+        LineSegment p2PerpLSR = new LineSegment(lineSeg.getP2(),perpSlope,-this.wid/4.0);
         Point rightEnd = p2PerpLSR.getP2();
         
-        StdDraw.setPenColor(this.rightColor);
-        StdDraw.line(leftStart.getX(),leftStart.getY(),leftEnd.getX(),leftEnd.getY());
+        stroke(rightColor.getRed(),rightColor.getGreen(),rightColor.getBlue());
+        line((float)leftStart.getX(),(float)leftStart.getY(),(float)leftEnd.getX(),(float)leftEnd.getY());
         
-        StdDraw.setPenColor(this.leftColor);
-        StdDraw.line(rightStart.getX(),rightStart.getY(),rightEnd.getX(),rightEnd.getY());
+        stroke(leftColor.getRed(),leftColor.getGreen(),leftColor.getBlue());
+        line((float)rightStart.getX(),(float)rightStart.getY(),(float)rightEnd.getX(),(float)rightEnd.getY());
         
         /*StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.setPenRadius(0.005);
