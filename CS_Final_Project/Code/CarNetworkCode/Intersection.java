@@ -93,7 +93,7 @@ public class Intersection implements Comparable<Intersection> {
               direction=true;
             }
             myRoute.addModule(new RouteModule(this.leadingPath.confirm(),this.leadingPath,direction,c));
-            System.out.println("hasdfk;hk"+this.leadingPath);
+            //System.out.println("hasdfk;hk"+this.leadingPath);
             return myRoute;
         }
     }

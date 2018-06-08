@@ -139,7 +139,7 @@ public class Path {
 	}
     
     public double getTime(Car c,Intersection origin,Boolean direction, double enterTime){
-        System.out.println("here"+this.start.getLoc().getPos()[0]+" or "+this.end.getLoc().getPos()[0]);
+        //System.out.println("here"+this.start.getLoc().getPos()[0]+" or "+this.end.getLoc().getPos()[0]);
         
         double s=Math.abs(c.getSpeed());
         if (s>this.getSpeedLim()){

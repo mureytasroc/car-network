@@ -35,7 +35,7 @@ public class RouteModule{
         else{theSpeed=-1;}
         //System.out.println(myPath);
         if(Double.isNaN(newLoc)){
-            System.out.println("heya");
+            //System.out.println("heya");
             //newLoc=5;
         }
         //System.out.println(newLoc);

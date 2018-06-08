@@ -27,17 +27,20 @@ public class Location {
     public int teleport(Path p,double dist) {
 		double slope=p.getSlope();
         int out=0;
-       // System.out.println(dist);
+        // System.out.println(dist);
 		if (slope<Double.MAX_VALUE&&slope>-Double.MAX_VALUE) {
-		coords[0]=p.getStart().getLoc().getPos()[0]+dist*p.XD()/p.getDistance();
-            System.out.println("xloc: "+coords[0]);
+		coords[0]=p.getEnd().getLoc().getPos()[0]-dist*p.XD()/p.getDistance();
+            /*System.out.println("xloc: "+coords[0]);
             System.out.println("xd: "+p.XD());
             System.out.println("xloc1: "+p.getStart().getLoc().getPos()[0]);
+            System.out.println("yloc1: "+p.getStart().getLoc().getPos()[1]);
+            System.out.println("xloc2: "+p.getEnd().getLoc().getPos()[0]);
+            System.out.println("yloc2: "+p.getEnd().getLoc().getPos()[1]);*/
            // System.out.println(p.minX());
             //System.out.println(p.maxX());
             //System.out.println(p.getStart().getLoc().getPos()[0]);
             //System.out.println(p);
-		coords[1]=p.getStart().getLoc().getPos()[1]+dist*p.YD()/p.getDistance();
+		coords[1]=p.getEnd().getLoc().getPos()[1]-dist*p.YD()/p.getDistance();
             //System.out.println(coords[1]);
         }
 		else {coords[1]=p.getStart().getLoc().getPos()[1]+dist;}
