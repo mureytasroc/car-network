@@ -45,7 +45,7 @@ public class Occupation{
     
     public void add(Occupation addend){
         for(LineSegment l: addend.getLS()){
-            ExtraMethods.sortAddAsc(l,this.lineSegs);
+            this.lineSegs.add(l);
         }
     }
     
@@ -60,7 +60,7 @@ public class Occupation{
         this.lineSegs=new ArrayList<LineSegment>();
         Point start;
         Point end;
-        System.out.println(start+end)
+        //System.out.println(start+end);
         if(dir){
             
             start=new Point(enterTime,0);
@@ -94,7 +94,8 @@ public class Occupation{
             boolean segReachedEnd=false;
             
         while(keep){
-            
+            System.out.println(curSeg);
+            ExtraMethods.printLSarray(existingOcc.getLS());
             LineSegment collider=curSeg.first(EOlineSegs);
             //System.out.println("hey");
             if (collider==null){

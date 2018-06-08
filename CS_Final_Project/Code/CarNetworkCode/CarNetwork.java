@@ -20,10 +20,10 @@ public class CarNetwork {
         Path xx=new Path(new Intersection(new Location(myGrid,200,0)),new Intersection(new Location(myGrid,800,550)),3);
 		Path xxx=new Path(new Intersection(new Location(myGrid,0,300)),new Intersection(new Location(myGrid,750,0)),1);
         Path qa=new Path(new Intersection(new Location(myGrid,240,200)),new Intersection(new Location(myGrid,300,100)),1);
-		Path ua=new Path(new Intersection(new Location(myGrid,80,20)),new Intersection(new Location(myGrid,260,760)),1);
+		Path ua=new Path(new Intersection(new Location(myGrid,80,20)),new Intersection(new Location(myGrid,260,700)),1);
         Path pa=new Path(new Intersection(new Location(myGrid,700,700)),new Intersection(new Location(myGrid,550,0)),1);
         Path qaa=new Path(new Intersection(new Location(myGrid,640,200)),new Intersection(new Location(myGrid,300,300)),5);
-		Path uaa=new Path(new Intersection(new Location(myGrid,60,20)),new Intersection(new Location(myGrid,760,760)),1);
+		Path uaa=new Path(new Intersection(new Location(myGrid,60,20)),new Intersection(new Location(myGrid,760,700)),1);
         Path paa=new Path(new Intersection(new Location(myGrid,200,700)),new Intersection(new Location(myGrid,550,400)),1);
 		myGrid.setup();
 		Location l=new Location(myGrid,800,0);

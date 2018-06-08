@@ -34,6 +34,7 @@ public class RouteModule{
             System.out.println("heya");
             //newLoc=5;
         }
+        System.out.println(newLoc);
         //if(c.getLocation().teleport(myPath,newLoc)>0){
         
         //c.getLocation().travel(myPath,theSpeed,true);
