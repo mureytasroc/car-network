@@ -2,14 +2,16 @@
 double lineWidth;
 
 void setup(){
-  size(600,600);
+  size(800,800);
 background(0);
-lineWidth=20;
+lineWidth=(double)width*27.0/600.0;//=8 inches in real life
         Map m = new Map(lineWidth);
         
-        m.drawGrid(3,2,2,2,0.4);
+        double markerWidth=(double)width*10.0/600.0;
         
-        m.update();
+        m.drawGrid(3,2,2,2,markerWidth);
+        
+        m.update(markerWidth);
     
     
     

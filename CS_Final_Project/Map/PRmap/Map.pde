@@ -13,7 +13,7 @@ class Map{
         myIntersections=new ArrayList<Intersection>();
     }
     
-    public void drawGrid(int horRoads, int vertRoads){
+    public void drawGrid(int horRoads, int vertRoads,int horMarkers, int vertMarkers, double markerDist){
       
         myIntersections.clear();
         
@@ -37,13 +37,21 @@ class Map{
           for(int s=0;s<=vertRoads;s++){
             double x1=leftx+inWidth*s/((double)(vertRoads+1));
             double x2=leftx+inWidth*(s+1)/((double)(vertRoads+1));
-            
+            System.out.println("("+x1+", "+y+")");
             myIntersections.add(new Intersection(this,new Point(x1,y),new ArrayList<Path>()));
             
             x1+= lineWidth/2.0;
             x2-= lineWidth/2.0;
             
             this.addPath(new Path(this,new Point(x1,y),new Point(x2,y),lineWidth));
+            
+            for(int b=1;b<=vertMarkers;b++){
+              double pathWidth=x2-x1;
+              double xm=x1+pathWidth*b/((double)(vertMarkers+1));
+              this.myPaths.get(myPaths.size()-1).addMarker(new Point(xm,y),markerDist);
+            
+            }
+            
             myIntersections.get(myIntersections.size()-1).addPath(myPaths.get(myPaths.size()-1));
             if(s>0){
               myIntersections.get(myIntersections.size()-1).addPath(myPaths.get(myPaths.size()-2));
@@ -51,6 +59,7 @@ class Map{
           }
           myIntersections.add(new Intersection(this,new Point(rightx,y),new ArrayList<Path>()));
           myIntersections.get(myIntersections.size()-1).addPath(myPaths.get(myPaths.size()-1));
+          
           
           
         }
@@ -64,9 +73,17 @@ class Map{
             y1+= lineWidth/2.0;
             y2-= lineWidth/2.0;
             
-            int interIndex=(horRoads+2)*i+s;
+            int interIndex=(vertRoads+2)*s+i;
             
             this.addPath(new Path(this,new Point(x,y1),new Point(x,y2),lineWidth));
+            
+            for(int b=1;b<=horMarkers;b++){
+              double pathWidth=y2-y1;
+              double ym=y1+pathWidth*b/((double)(horMarkers+1));
+              this.myPaths.get(myPaths.size()-1).addMarker(new Point(x,ym),markerDist);
+            
+            }
+            
             myIntersections.get(interIndex).addPath(myPaths.get(myPaths.size()-1));
             if(s>0){
               myIntersections.get(interIndex).addPath(myPaths.get(myPaths.size()-2));
@@ -75,7 +92,7 @@ class Map{
             
           }
           
-          int interIndex=(horRoads+2)*i+horRoads+1;
+          int interIndex=(vertRoads+2)*(horRoads+1)+i;
           myIntersections.get(interIndex).addPath(myPaths.get(myPaths.size()-1));
           
           //this.addBlock(x,lineWidth*3/2);
@@ -97,15 +114,17 @@ class Map{
     public double getLineWidth(){
       return this.lineWidth; 
     }
-    public void update(int horMarkers, int vertMarkers, double markerDist){
+    public void update(double markerDist){
 
         for(int i=0;i<myPaths.size();i++){
             myPaths.get(i).show();
+            myPaths.get(i).drawMarkers();
         }
-        
+        System.out.println("\n\n\n\n");
         for(int i=0;i<myIntersections.size();i++){
          myIntersections.get(i).setMarkers(markerDist); 
         }
+
 
     }
 }

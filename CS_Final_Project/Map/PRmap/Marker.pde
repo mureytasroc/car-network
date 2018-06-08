@@ -5,13 +5,15 @@ import java.util.*;
 public class Marker{
   private Point point;
   private double distance;
+  private double drawDist;
+  private Point drawPoint;
   private Path path;
   private Map map;
  Marker(Map m,Point p, double dist, Path pa){
    this.map=m;
    this.path=pa;
    this.point=p;
-   this.distance=dist;
+   this.distance=Math.abs(dist);
  }
  public void drawMarker(){
    double wid=this.map.getLineWidth();
@@ -21,7 +23,7 @@ public class Marker{
    LineSegment secSeg=new LineSegment(point,pathLS.getSlope(),-distance/2.0);
    
     drawSeg(wid,firstSeg,path.getLMC(),path.getRMC());
-    drawSeg(wid,secSeg,path.getRMC(),path.getLMC());
+    drawSeg(wid,secSeg,path.getLMC(),path.getRMC());
     
     
  }
@@ -31,23 +33,23 @@ public class Marker{
         strokeCap(SQUARE);
             
         double perpSlope;
-        if(this.lineSeg.getSlope()==Double.POSITIVE_INFINITY||this.lineSeg.getSlope()==Double.NEGATIVE_INFINITY){
+        if(lineSeg.getSlope()==Double.POSITIVE_INFINITY||lineSeg.getSlope()==Double.NEGATIVE_INFINITY){
             perpSlope=0;
         }
-        else if(this.lineSeg.getSlope()==0){
+        else if(lineSeg.getSlope()==0){
             perpSlope=Double.POSITIVE_INFINITY;
         }
         else{
-            perpSlope=-1.0/this.lineSeg.getSlope();
+            perpSlope=-1.0/lineSeg.getSlope();
         }
-        LineSegment p1PerpLSL = new LineSegment(lineSeg.getP1(),perpSlope,this.wid/4.0);
+        LineSegment p1PerpLSL = new LineSegment(lineSeg.getP1(),perpSlope,wid/4.0);
         Point leftStart = p1PerpLSL.getP2();
-        LineSegment p1PerpLSR = new LineSegment(lineSeg.getP1(),perpSlope,-this.wid/4.0);
+        LineSegment p1PerpLSR = new LineSegment(lineSeg.getP1(),perpSlope,-wid/4.0);
         Point rightStart = p1PerpLSR.getP2();
         
-        LineSegment p2PerpLSL = new LineSegment(lineSeg.getP2(),perpSlope,this.wid/4.0);
+        LineSegment p2PerpLSL = new LineSegment(lineSeg.getP2(),perpSlope,wid/4.0);
         Point leftEnd = p2PerpLSL.getP2();
-        LineSegment p2PerpLSR = new LineSegment(lineSeg.getP2(),perpSlope,-this.wid/4.0);
+        LineSegment p2PerpLSR = new LineSegment(lineSeg.getP2(),perpSlope,-wid/4.0);
         Point rightEnd = p2PerpLSR.getP2();
         
         stroke(rightColor.getRed(),rightColor.getGreen(),rightColor.getBlue());

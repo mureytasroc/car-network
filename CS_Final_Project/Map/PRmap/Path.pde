@@ -8,8 +8,10 @@ class Path{
     private LineSegment lineSeg;
     private double wid;
     private Map map;
+    private ArrayList<Marker> myMarks;
     
     Path(Map m,Point p1, Point p2,double w){
+        this.myMarks=new ArrayList<Marker>();
         this.map=m;
         this.wid=w;
         this.lineSeg=new LineSegment(p1,p2);
@@ -66,6 +68,14 @@ class Path{
       
     public Point getIntersection(Path p){
       return this.lineSeg.getIntersection(p.getLS());
+    }
+    public void addMarker(Point p, double dist){
+      this.myMarks.add(new Marker(map,p,dist,this));
+    }
+    public void drawMarkers(){
+     for(int i=0;i<myMarks.size();i++){
+      myMarks.get(i).drawMarker(); 
+     }
     }
     
 }
