@@ -92,8 +92,14 @@ public class Occupation{
             boolean endOfFollow=false;
             Line temp;
             boolean segReachedEnd=false;
-            
+            long counter=0;
         while(keep){
+            //counter++;
+            if(counter>5){
+                this.endTime=Double.POSITIVE_INFINITY;
+                    keep=false;
+                break;
+            }
             System.out.println(curSeg);
             ExtraMethods.printLSarray(existingOcc.getLS());
             LineSegment collider=curSeg.first(EOlineSegs);

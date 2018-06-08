@@ -24,6 +24,10 @@ public class RouteModule{
     public Path getPath(){
         return myPath;
     }
+    public void push(double offset){
+        double theSpeed=ExtraMethods.parseSpeed(myGrid.getTime()+offset,speedMap);
+       c.getLocation().travel(myPath,theSpeed,true);
+    }
     public boolean advance(double offset){
         double newLoc=ExtraMethods.parseLoc(myGrid.getTime()+offset,speedMap);
         double theSpeed=ExtraMethods.parseSpeed(myGrid.getTime()+offset,speedMap);
@@ -34,15 +38,11 @@ public class RouteModule{
             System.out.println("heya");
             //newLoc=5;
         }
-        System.out.println(newLoc);
-        //if(c.getLocation().teleport(myPath,newLoc)>0){
-        
-        //c.getLocation().travel(myPath,theSpeed,true);
-        if(c.getLocation().travel(myPath,theSpeed,true)>0){
-            //System.out.println("yaaaaaaaaaaaaaay");
+        //System.out.println(newLoc);
+        if (Double.isNaN(newLoc)){
             return true;
-            
         }
+        c.getLocation().teleport(myPath,newLoc);
         return false;
     }
 }

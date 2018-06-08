@@ -30,9 +30,11 @@ public class Location {
        // System.out.println(dist);
 		if (slope<Double.MAX_VALUE&&slope>-Double.MAX_VALUE) {
 		coords[0]=p.getStart().getLoc().getPos()[0]+dist*p.XD()/p.getDistance();
-            System.out.println(coords[0]);
-            System.out.println(p.minX());
-            System.out.println(p.maxX());
+            System.out.println("xloc: "+coords[0]);
+            System.out.println("xd: "+p.XD());
+            System.out.println("xloc1: "+p.getStart().getLoc().getPos()[0]);
+           // System.out.println(p.minX());
+            //System.out.println(p.maxX());
             //System.out.println(p.getStart().getLoc().getPos()[0]);
             //System.out.println(p);
 		coords[1]=p.getStart().getLoc().getPos()[1]+dist*p.YD()/p.getDistance();
@@ -41,8 +43,8 @@ public class Location {
 		else {coords[1]=p.getStart().getLoc().getPos()[1]+dist;}
         double e=0;
         if (coords[0]-e<p.minX()||coords[0]+e>p.maxX()||coords[1]-e<p.minY()||coords[1]+e>p.maxY()){
-            System.out.println("switchswitchswitch");
-            System.out.println(p.minX()+" to "+p.maxX()+"; "+ coords[0]);
+            //System.out.println("switchswitchswitch");
+            //System.out.println(p.minX()+" to "+p.maxX()+"; "+ coords[0]);
             out=1;
         }
 		

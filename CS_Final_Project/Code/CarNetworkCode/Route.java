@@ -27,15 +27,18 @@ public class Route{
         if(myRoute.get(inc).advance(offset)){
             System.out.println(myRoute.get(inc));
             inc++;
+            done=true;
+            //myRoute.get(inc).push(offset);
             //System.out.println(myRoute.get(inc));
-            System.out.println(inc);
+            
+            System.out.println("koom"+inc);
             
         }
         if (inc==myRoute.size()){
             inc=0;
             this.clear();
             System.out.println("done");
-            done=true;
+            
             return true;
         }
         return false;
