@@ -28,7 +28,7 @@ public class CarNetwork {
 		myGrid.setup();
 		Location l=new Location(myGrid,400,490);
         Location l2=new Location(myGrid,200,490);
-		Location d=new Location(myGrid,0,0);
+		Location d=new Location(myGrid,0,800);
 		Location d2=new Location(myGrid,0,0);
         Location ea=new Location(myGrid,600,490);
         Location ea2=new Location(myGrid,0,490);

@@ -38,6 +38,7 @@ public class Car{
 		myGrid.setup();
 		this.curPath=this.loc.snapToPath();
 		this.myGrid.addCar(this);
+        
 	}
 	Car(Location l,Location d){
         this.trailingDistance=0.4064;
