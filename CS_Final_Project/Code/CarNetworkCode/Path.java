@@ -190,6 +190,21 @@ public class Path {
 	public double getSpeedLim() {
 		return this.speedLim;
 	}
+    public double maxX(){
+        //System.out.println(this.start.getLoc().getPos()[0]+" or "+this.end.getLoc().getPos()[0]);
+        return Math.max(this.start.getLoc().getPos()[0],this.end.getLoc().getPos()[0]);
+        
+        
+    }
+    public double maxY(){
+        return Math.max(this.start.getLoc().getPos()[1],this.end.getLoc().getPos()[1]);
+    }
+     public double minX(){
+        return Math.min(this.start.getLoc().getPos()[0],this.end.getLoc().getPos()[0]);
+    }
+    public double minY(){
+        return Math.min(this.start.getLoc().getPos()[1],this.end.getLoc().getPos()[1]);
+    }
 	public void intersects() {
 		ArrayList<Intersection> crosses=new ArrayList<Intersection>();
 		crosses.add(this.start);

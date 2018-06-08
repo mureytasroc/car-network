@@ -14,7 +14,7 @@ public class CarNetwork {
 		Path p=new Path(new Intersection(new Location(myGrid,40,40)),new Intersection(new Location(myGrid,40,700)),2);
 		Path r=new Path(new Intersection(new Location(myGrid,700,40)),new Intersection(new Location(myGrid,700,700)),4);
         /*Path rasdf=new Path(new Intersection(new Location(myGrid,30,0)),new Intersection(new Location(myGrid,800,800)),4);
-		/*Path pp=new Path(new Intersection(new Location(myGrid,50,400)),new Intersection(new Location(myGrid,750,430)),1);
+		Path pp=new Path(new Intersection(new Location(myGrid,50,400)),new Intersection(new Location(myGrid,750,430)),1);
 		Path rr=new Path(new Intersection(new Location(myGrid,200,0)),new Intersection(new Location(myGrid,800,800)),1);
 		Path rrr=new Path(new Intersection(new Location(myGrid,0,300)),new Intersection(new Location(myGrid,750,300)),1);
         Path xx=new Path(new Intersection(new Location(myGrid,200,0)),new Intersection(new Location(myGrid,800,550)),3);
@@ -28,7 +28,7 @@ public class CarNetwork {
 		myGrid.setup();
 		Location l=new Location(myGrid,400,490);
         Location l2=new Location(myGrid,200,490);
-		Location d=new Location(myGrid,800,0);
+		Location d=new Location(myGrid,0,0);
 		Location d2=new Location(myGrid,0,0);
         Location ea=new Location(myGrid,600,490);
         Location ea2=new Location(myGrid,0,490);

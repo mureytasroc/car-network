@@ -8,7 +8,7 @@ public class Car{
     private ArrayList<ArrayList<LineSegment>> speedProfile=new ArrayList<ArrayList<LineSegment>>();//speed profile for each 
     private Route theRoute;
 	private Path curPath;
-	private double speed=100.0;
+	private double speed=80.0;
 	private Intersection destination;
     private Intersection start;
 	private int inc=0;

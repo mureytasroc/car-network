@@ -27,54 +27,24 @@ public class Location {
     public int teleport(Path p,double dist) {
 		double slope=p.getSlope();
         int out=0;
+       // System.out.println(dist);
 		if (slope<Double.MAX_VALUE&&slope>-Double.MAX_VALUE) {
 		coords[0]=p.getStart().getLoc().getPos()[0]+dist*p.XD()/p.getDistance();
             System.out.println(coords[0]);
+            System.out.println(p.minX());
+            System.out.println(p.maxX());
+            //System.out.println(p.getStart().getLoc().getPos()[0]);
+            //System.out.println(p);
 		coords[1]=p.getStart().getLoc().getPos()[1]+dist*p.YD()/p.getDistance();
-            System.out.println(coords[1]);
+            //System.out.println(coords[1]);
         }
 		else {coords[1]=p.getStart().getLoc().getPos()[1]+dist;}
-        int e=10;
-        if(p.getStart().getLoc().getPos()[0]+e>p.getEnd().getLoc().getPos()[0]) {
-			if (coords[0]+e>p.getStart().getLoc().getPos()[0]) {
-				out=1; coords[0]=(p.getStart().getLoc().getPos()[0]);
-				coords[1]=(p.getStart().getLoc().getPos()[1]);
-				}
-			else if(coords[0]-e<p.getEnd().getLoc().getPos()[0]) {
-				out=2; coords[0]=(p.getEnd().getLoc().getPos()[0]);
-				coords[1]=(p.getEnd().getLoc().getPos()[1]);
-			}
-		}
-		else if (p.getStart().getLoc().getPos()[0]-e<p.getEnd().getLoc().getPos()[0]){
-			if(coords[0]-e<p.getStart().getLoc().getPos()[0]) {
-				out=1; coords[0]=(p.getStart().getLoc().getPos()[0]);
-				coords[1]=(p.getStart().getLoc().getPos()[1]);
-			}
-			else if(coords[0]+e>p.getEnd().getLoc().getPos()[0]) {
-				out=2; coords[0]=(p.getEnd().getLoc().getPos()[0]);
-				coords[1]=(p.getEnd().getLoc().getPos()[1]);
-			}
-		}
-		else if(p.getStart().getLoc().getPos()[1]+e>p.getEnd().getLoc().getPos()[1]) {
-			if (coords[1]+e>p.getStart().getLoc().getPos()[1]) {
-				out=1; coords[0]=(p.getStart().getLoc().getPos()[0]);
-				coords[1]=(p.getStart().getLoc().getPos()[1]);
-				}
-			else if(coords[1]-e<p.getEnd().getLoc().getPos()[1]) {
-				out=2; coords[0]=(p.getEnd().getLoc().getPos()[0]);
-				coords[1]=(p.getEnd().getLoc().getPos()[1]);
-			}
-		}
-		else {
-			if(coords[1]-e<p.getStart().getLoc().getPos()[1]) {
-				out=1; coords[0]=(p.getStart().getLoc().getPos()[0]);
-				coords[1]=(p.getStart().getLoc().getPos()[1]);
-			}
-			else if(coords[1]+e>p.getEnd().getLoc().getPos()[1]) {
-				out=2; coords[0]=(p.getEnd().getLoc().getPos()[0]);
-				coords[1]=(p.getEnd().getLoc().getPos()[1]);
-			}
-		}
+        int e=-1;
+        if (coords[0]-e<p.minX()||coords[0]+e>p.maxX()||coords[1]-e<p.minY()||coords[1]+e>p.maxY()){
+            System.out.println("switchswitchswitch");
+            System.out.println(p.minX()+" to "+p.maxX()+"; "+ coords[0]);
+            out=1;
+        }
 		
 		return out;
 	}
