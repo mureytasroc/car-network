@@ -26,7 +26,7 @@ public class Path {
 		this.myGrid.addPath(this);
 		s.addPath(this);
 		e.addPath(this);
-        System.out.println(this.start.getLoc().getPos()[0]+" or "+this.end.getLoc().getPos()[0]);
+        //System.out.println(this.start.getLoc().getPos()[0]+" or "+this.end.getLoc().getPos()[0]);
 		
 	}
 	Path(Intersection s, Intersection e, double SL, double distance, boolean add){
