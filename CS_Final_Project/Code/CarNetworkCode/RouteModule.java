@@ -27,6 +27,8 @@ public class RouteModule{
     public boolean advance(double offset){
         double newLoc=ExtraMethods.parseLoc(myGrid.getTime()+offset,speedMap);
         double theSpeed=ExtraMethods.parseSpeed(myGrid.getTime()+offset,speedMap);
+        if(direction){theSpeed=1;}
+        else{theSpeed=-1;}
         //System.out.println(myPath);
         if(Double.isNaN(newLoc)){
             System.out.println("heya");

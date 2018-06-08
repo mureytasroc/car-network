@@ -27,7 +27,7 @@ public class Route{
         if(myRoute.get(inc).advance(offset)){
             System.out.println(myRoute.get(inc));
             inc++;
-            System.out.println(myRoute.get(inc));
+            //System.out.println(myRoute.get(inc));
             System.out.println(inc);
             
         }
