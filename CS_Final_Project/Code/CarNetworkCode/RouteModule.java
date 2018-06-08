@@ -36,7 +36,7 @@ public class RouteModule{
         }
         //if(c.getLocation().teleport(myPath,newLoc)>0){
         
-        c.getLocation().travel(myPath,theSpeed,true);
+        //c.getLocation().travel(myPath,theSpeed,true);
         if(c.getLocation().travel(myPath,theSpeed,true)>0){
             //System.out.println("yaaaaaaaaaaaaaay");
             return true;

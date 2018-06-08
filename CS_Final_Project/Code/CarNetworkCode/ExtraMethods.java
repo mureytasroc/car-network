@@ -15,7 +15,7 @@ public class ExtraMethods{
         
         
     }
-    public static void sortAddAsc(Comparable add, ArrayList list){ //sorted add ascengind
+    public static void sortAddAsc(Comparable add, ArrayList<Comparable> list){ //sorted add ascengind
         if(list.size()!=0){
         int ind = recurse(add,list,0,list.size()-1);
         

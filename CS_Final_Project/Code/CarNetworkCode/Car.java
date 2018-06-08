@@ -123,11 +123,13 @@ public class Car{
         
 		theRoute=this.getOptimalPath();
         
+        
 	}
 	public void update() {
         
         
         if(theRoute.advance()){
+            //System.out.println("onedown");
 				if (!destIsInt) {
 				Path p1=destination.getPaths().get(0);
 				Path p2=destination.getPaths().get(1);
@@ -170,13 +172,14 @@ public class Car{
 		}
 		
         myGrid.intersectionUpdate();
-    
-    
-      
+        
+        System.out.println("!@#$%^&");
+        
         this.start.nodify(0,this,null,startTime);
         
 		this.theRoute=new Route(this);
         //this.directions = new ArrayList<Boolean>();
+        
         if(destination.nodeValue()==Double.POSITIVE_INFINITY){
             System.out.println("UNSOLVABLE");
         }
@@ -201,9 +204,9 @@ public class Car{
                     killMe=true;
                     //System.out.println("yes");
                 }*/
-            //p1.die();
+            p1.die();
             p2.getOther(start).addPath(eatenPath2);
-            //p2.die();
+            p2.die();
             p1.getOther(start).addPath(eatenPath2);
             myGrid.removeIntersection(start);
 				

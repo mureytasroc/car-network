@@ -1,6 +1,6 @@
 import java.lang.*;
 import java.util.*;
-public class LineSegment implements Comparable{
+public class LineSegment implements Comparable<LineSegment>{
     
     public static void main(String[] args){//tester code
         /*
@@ -342,10 +342,7 @@ public class LineSegment implements Comparable{
         return this.getPointByX(x);
     }
     
-    public int compareTo(Object ob){
-        if ( ! (ob instanceof LineSegment) ){
-            return 1;}
-        LineSegment ls = (LineSegment)ob;
+    public int compareTo(LineSegment ls){
         double x1=this.getAvgX();
         double y1=this.getAvgY();
         double x2=ls.getAvgX();

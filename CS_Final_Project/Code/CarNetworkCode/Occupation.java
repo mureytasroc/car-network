@@ -60,8 +60,9 @@ public class Occupation{
         this.lineSegs=new ArrayList<LineSegment>();
         Point start;
         Point end;
-        
+        System.out.println(start+end)
         if(dir){
+            
             start=new Point(enterTime,0);
                 end = new Point(enterTime+p.getDistance()/sp,p.getDistance());
         }
@@ -71,9 +72,11 @@ public class Occupation{
         }
         LineSegment curSeg=new LineSegment(start,end);
         if(EOlineSegs.size()==0){//if there are no existing occupations
+            
         this.lineSegs.add(curSeg);
         //System.out.println("hey"+curSeg);
         endTime=end.getX();
+            
         }
         else{
   //there are existing occupations
@@ -91,6 +94,7 @@ public class Occupation{
             boolean segReachedEnd=false;
             
         while(keep){
+            
             LineSegment collider=curSeg.first(EOlineSegs);
             //System.out.println("hey");
             if (collider==null){
@@ -109,6 +113,8 @@ public class Occupation{
                     Line tempest=new Line(curSeg.rightEndPoint(),slop);
                     end=tempest.getIntersection(finishLine);
                     curSeg=new LineSegment(curSeg.rightEndPoint(),end);
+                   
+                    
                     
                     
                     endOfFollow=false;
@@ -160,7 +166,7 @@ public class Occupation{
         }
         
         }
-        
+         
     }//ADD CHECKING IF COLLISION IS RESOLVED SO U CAN GO UP
     
         

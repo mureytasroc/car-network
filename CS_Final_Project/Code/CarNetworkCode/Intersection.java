@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.awt.*;
 
 
-public class Intersection implements Comparable {
+public class Intersection implements Comparable<Intersection> {
 	private Location loc;
 	private Grid myGrid;
 	private ArrayList<Path> myPaths;
@@ -65,6 +65,7 @@ public class Intersection implements Comparable {
 			nodeValue=source;
 			for (int i=0; i<this.myPaths.size();i++) {
 				Path p=myPaths.get(i);
+                
 				//p.getOther(this).nodify((nodeValue+p.getDistance(c)),c,p);
                 Boolean direction=Boolean.valueOf(false);
           	if(p.getStart()==this){
@@ -72,6 +73,7 @@ public class Intersection implements Comparable {
             }
                 
                 p.getOther(this).nodify((nodeValue+p.getTime(c,this,direction,startTime+source)),c,p,startTime);
+                
                 //getDistance(c,this,source) //where this defines directionality
 			}
 		}
@@ -196,16 +198,14 @@ public class Intersection implements Comparable {
 		System.out.println(this.myPaths.get(i).getStart().nodeValue());
 		}*/
 	}
-	public int compareTo(Object o) {
+	public int compareTo(Intersection i) {
 		int out=1;
-		if (o instanceof Intersection) {
-			Intersection i=((Intersection)o);
+			//Intersection i=((Intersection)o);
 		if (i.getLoc().getPos()[0]>this.getLoc().getPos()[0]) {
 			out=-1;
 		}
 		else if (i.getLoc().getPos()[0]==this.getLoc().getPos()[0]&&i.getLoc().getPos()[1]>this.getLoc().getPos()[1]) {
 			out=-1;
-		}
 		}
 		return out;
 	}
