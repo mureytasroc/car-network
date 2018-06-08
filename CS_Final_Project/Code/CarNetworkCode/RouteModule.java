@@ -26,12 +26,16 @@ public class RouteModule{
     }
     public boolean advance(double offset){
         double newLoc=ExtraMethods.parseLoc(myGrid.getTime()+offset,speedMap);
+        double theSpeed=ExtraMethods.parseSpeed(myGrid.getTime()+offset,speedMap);
         //System.out.println(myPath);
         if(Double.isNaN(newLoc)){
             System.out.println("heya");
             //newLoc=5;
         }
-        if(c.getLocation().teleport(myPath,newLoc)>0){
+        //if(c.getLocation().teleport(myPath,newLoc)>0){
+        
+        c.getLocation().travel(myPath,theSpeed,true);
+        if(c.getLocation().travel(myPath,theSpeed,true)>0){
             //System.out.println("yaaaaaaaaaaaaaay");
             return true;
             

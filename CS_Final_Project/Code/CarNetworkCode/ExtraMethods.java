@@ -70,6 +70,7 @@ public class ExtraMethods{
     
     public static double parseSpeed(double time, ArrayList<LineSegment> ls){
         for(int i=0;i<ls.size();i++){
+            System.out.println(ls.get(i).range()+" in "+time);   
             if(ls.get(i).getPointByX(time)!=null){
                 return ls.get(i).getSlope();
             }
@@ -84,7 +85,7 @@ public class ExtraMethods{
              //System.out.println(ls.get(i).range()+" in "+time);   
             //}
             if(ls.get(i).getPointByX(time)!=null){
-                //System.out.println(ls.get(i).getPointByX(time).getY());
+                System.out.println(ls.get(i).getPointByX(time).getY());
                 return (ls.get(i).getPointByX(time).getY());
             }
 
