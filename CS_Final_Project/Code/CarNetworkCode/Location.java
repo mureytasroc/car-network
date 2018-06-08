@@ -39,7 +39,7 @@ public class Location {
             //System.out.println(coords[1]);
         }
 		else {coords[1]=p.getStart().getLoc().getPos()[1]+dist;}
-        int e=-1;
+        double e=0;
         if (coords[0]-e<p.minX()||coords[0]+e>p.maxX()||coords[1]-e<p.minY()||coords[1]+e>p.maxY()){
             System.out.println("switchswitchswitch");
             System.out.println(p.minX()+" to "+p.maxX()+"; "+ coords[0]);

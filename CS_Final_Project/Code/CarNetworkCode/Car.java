@@ -201,9 +201,9 @@ public class Car{
                     killMe=true;
                     //System.out.println("yes");
                 }*/
-            p1.die();
+            //p1.die();
             p2.getOther(start).addPath(eatenPath2);
-            p2.die();
+            //p2.die();
             p1.getOther(start).addPath(eatenPath2);
             myGrid.removeIntersection(start);
 				
