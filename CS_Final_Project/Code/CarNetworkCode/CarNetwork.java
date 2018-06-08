@@ -26,7 +26,7 @@ public class CarNetwork {
 		Path uaa=new Path(new Intersection(new Location(myGrid,60,20)),new Intersection(new Location(myGrid,760,760)),1);
         Path paa=new Path(new Intersection(new Location(myGrid,200,700)),new Intersection(new Location(myGrid,550,400)),1);*/
 		myGrid.setup();
-		Location l=new Location(myGrid,400,490);
+		Location l=new Location(myGrid,0,0);
         Location l2=new Location(myGrid,200,490);
 		Location d=new Location(myGrid,0,800);
 		Location d2=new Location(myGrid,0,0);
