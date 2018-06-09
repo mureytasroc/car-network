@@ -127,7 +127,7 @@ public class Car{
 	}
 	public void update() {
         
-        //theRoute.print();
+        //theRoute.print(startTime);
         
         
         if(theRoute.advance()){
@@ -156,6 +156,10 @@ public class Car{
         //this.speedProfile.set(num,occ);
     }*/
     public void addToSP(int index, ArrayList<LineSegment> ls){
+        //System.out.println("\n\n\n\n");
+        //System.out.println("x="+startTime);
+        //ExtraMethods.printLSarray(ls);
+        //System.out.println("\n\n\n\n");
         if(index>=speedProfile.size()){
             //System.out.println("add: "+index+", "+ls.size());
             this.speedProfile.add(ls);
@@ -175,7 +179,7 @@ public class Car{
 		
         myGrid.intersectionUpdate();
         
-        System.out.println("!@#$%^&");
+        //System.out.println("!@#$%^&");
         
         this.start.nodify(0,this,null,startTime);
         

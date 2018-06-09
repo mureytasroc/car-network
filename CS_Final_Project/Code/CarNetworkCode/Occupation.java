@@ -74,6 +74,7 @@ public class Occupation{
             end = new Point(enterTime+p.getDistance()/sp,0);
         }
         LineSegment curSeg=new LineSegment(start,end);
+        
         if(EOlineSegs.size()==0){//if there are no existing occupations
             
         this.lineSegs.add(curSeg);
@@ -84,6 +85,11 @@ public class Occupation{
         else{
   //there are existing occupations
         Point curStart=new Point(start);
+            if(curStart.getX()<enterTime||curStart.getY()>p.getDistance()){
+                this.lineSegs.add(curSeg);
+                endTime=end.getX();
+            }
+            else{
         boolean keep=true;
             Line finishLine;
             if(dir){
@@ -103,8 +109,8 @@ public class Occupation{
                     keep=false;
                 break;
             }
-            System.out.println(curSeg);
-            ExtraMethods.printLSarray(existingOcc.getLS());
+            //System.out.println(curSeg);
+            //ExtraMethods.printLSarray(existingOcc.getLS());
             LineSegment collider=curSeg.first(EOlineSegs);
             //System.out.println("hey");
             if (collider==null){
@@ -174,7 +180,7 @@ public class Occupation{
             }
             
         }
-        
+            }
         }
          
     }//ADD CHECKING IF COLLISION IS RESOLVED SO U CAN GO UP

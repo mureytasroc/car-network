@@ -8,6 +8,8 @@ public class Path {
 	private Grid myGrid;
     private Occupation occupation=new Occupation();
     private Occupation possibleOccupation=new Occupation();
+    private double startT=-1;
+    double savedD=-1;
 	
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no
 	
@@ -143,6 +145,7 @@ public class Path {
     }
     
     public double getTime(Car c,Intersection origin,Boolean direction, double enterTime){
+        this.startT=enterTime;
         //System.out.println("here"+this.start.getLoc().getPos()[0]+" or "+this.end.getLoc().getPos()[0]);
         
         double s=Math.abs(c.getSpeed());
@@ -160,6 +163,8 @@ public class Path {
     }
     
     public void confirmPossibleOccupation(Car c, int pathNum, boolean direction){
+        
+        System.out.println(startT);
         
         //c.setPathOccupation(pathNum,this.possibleOccupation);
         this.occupation.add(possibleOccupation);
@@ -314,6 +319,13 @@ public class Path {
 		
 	}
     
+    public void saveData(double s){
+        this.savedD=s;
+    }
+    
+    public void printData(){
+        System.out.println("Path327, "+savedD);
+    }
    
 	
 	

@@ -59,7 +59,7 @@ public class Intersection implements Comparable<Intersection> {
 	}*/
     // In later implementations, source will be passed as a parameter to the getDistance method
     public void nodify(double source, Car c, Path inPath, double startTime) {//recursive
-        System.out.println("ST: "+startTime);
+        //System.out.println("ST: "+startTime);
 		if (source<this.nodeValue) {
             this.leadingPath=inPath;
 			nodeValue=source;
@@ -71,7 +71,8 @@ public class Intersection implements Comparable<Intersection> {
           	if(p.getStart()==this){
               direction=Boolean.valueOf(true);
             }
-                
+            
+                p.saveData(source);
                 p.getOther(this).nodify((nodeValue+p.getTime(c,this,direction,startTime+source)),c,p,startTime);
                 
                 //getDistance(c,this,source) //where this defines directionality
@@ -115,6 +116,7 @@ public class Intersection implements Comparable<Intersection> {
           	if(leadingPath.getEnd()==this){
               direction=Boolean.valueOf(true);
             }
+            this.leadingPath.printData();
             this.leadingPath.confirmPossibleOccupation(c,myList.size()-1,direction);
             /*new Occupation(this.leadingPath,this.leadingPath.getOther(this).nodeValue(),direction,c);*/
           dirs.add(direction);

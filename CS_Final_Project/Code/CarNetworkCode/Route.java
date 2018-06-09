@@ -59,8 +59,9 @@ public class Route{
             myRoute.remove(i);
         }
     }
-    public void print(){
+    public void print(double startTime){
         System.out.println("\n\n\n\n");
+        System.out.println("x="+startTime);
         for(int i=0;i<myRoute.size();i++){
             myRoute.get(i).print();
             myRoute.get(i).getPath().getPO().printEnterTime();
