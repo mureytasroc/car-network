@@ -45,4 +45,18 @@ public class RouteModule{
         c.getLocation().teleport(myPath,newLoc);
         return false;
     }
+    
+    public void print(){
+        ExtraMethods.printLSarray(this.speedMap);
+        Point end;
+        if(this.direction){
+            end=myPath.getEnd().getPoint();
+        }
+        else{
+            end=myPath.getStart().getPoint();
+        }
+        LineSegment finishLine = new LineSegment(new Point(0,myPath.getDistance()),new Point(30,myPath.getDistance()));
+        System.out.println(finishLine);
+    }
+    
 }

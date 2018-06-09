@@ -153,6 +153,9 @@ public class Intersection implements Comparable<Intersection> {
 	public void setup() {
 		this.nodeValue=Double.MAX_VALUE;
 	}
+    public Point getPoint(){
+        return this.loc.getPoint();
+    }
 	public void update() {
 		
 		this.show();

@@ -59,4 +59,11 @@ public class Route{
             myRoute.remove(i);
         }
     }
+    public void print(){
+        System.out.println("\n\n\n\n");
+        for(int i=0;i<myRoute.size();i++){
+            myRoute.get(i).print();
+        }
+        System.out.println("\n\n\n\n");
+    }
 }

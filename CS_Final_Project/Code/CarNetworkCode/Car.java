@@ -127,6 +127,8 @@ public class Car{
 	}
 	public void update() {
         
+        theRoute.print();
+        
         
         if(theRoute.advance()){
             //System.out.println("onedown");
