@@ -38,7 +38,7 @@ public class Intersection{
        }
      }
             //System.out.println(thisLS.getSlope()+",  "+d);
-            System.out.println(myPaths.size());
+            //System.out.println(myPaths.size());
      LineSegment temp = new LineSegment(c,thisLS.getSlope(),d/2.0);
      Point p = temp.getP2();
      myMarkers.add(new Marker(this.map,p,d,myPaths.get(i)));

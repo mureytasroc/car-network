@@ -138,6 +138,10 @@ public class Path {
         }
 	}
     
+    public Occupation getPO(){
+        return this.possibleOccupation;
+    }
+    
     public double getTime(Car c,Intersection origin,Boolean direction, double enterTime){
         //System.out.println("here"+this.start.getLoc().getPos()[0]+" or "+this.end.getLoc().getPos()[0]);
         
@@ -156,6 +160,7 @@ public class Path {
     }
     
     public void confirmPossibleOccupation(Car c, int pathNum, boolean direction){
+        
         //c.setPathOccupation(pathNum,this.possibleOccupation);
         this.occupation.add(possibleOccupation);
         c.addToSP(pathNum,this.occupation.getLS());

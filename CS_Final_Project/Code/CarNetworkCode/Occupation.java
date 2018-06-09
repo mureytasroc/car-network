@@ -4,10 +4,10 @@ public class Occupation{
     
     public static void main(String[] args){
         ArrayList<LineSegment> ls = new ArrayList<LineSegment>();
-        ls.add(new LineSegment(new Point(-1,10), new Point(3,5)));
-        ls.add(new LineSegment(new Point(3,5), new Point(8,3)));
-        ls.add(new LineSegment(new Point(8,3), new Point(20,0)));
-        ls.add(new LineSegment(new Point(19,0.6), new Point(24,0.6)));
+        //ls.add(new LineSegment(new Point(-1,10), new Point(3,5)));
+        //ls.add(new LineSegment(new Point(3,5), new Point(8,3)));
+        //ls.add(new LineSegment(new Point(8,3), new Point(20,0)));
+        //ls.add(new LineSegment(new Point(19,0.6), new Point(24,0.6)));
         
         ExtraMethods.printLSarray(ls);
         /*ls.add(new LineSegment(new Point(-1,10), new Point(3,5)));
@@ -17,7 +17,7 @@ public class Occupation{
         
         Occupation occ = new Occupation(ls);
         
-        Occupation next = new Occupation(new Path(10),occ,0,true,2,new Car(0.5));
+        Occupation next = new Occupation(new Path(10),occ,5,true,2,new Car(0.5));
         ExtraMethods.printLSarray(next.getLS());
         System.out.println(next.getEndTime());
 
@@ -29,6 +29,8 @@ public class Occupation{
     private double beginTime;
     private double endTime;
     //^^^
+    
+    private double entarTime;
     
     private boolean continuous;
     private Path myPath;
@@ -50,6 +52,7 @@ public class Occupation{
     }
     
     public Occupation(Path p,Occupation existingOcc,double enterTime,Boolean dirie,double sp, Car c){ //continuous occupation constructor from Path getTime
+        this.entarTime=enterTime;
         Boolean dir = !dirie;
         continuous=true;
         ArrayList<LineSegment>EOlineSegs=new ArrayList<LineSegment>(existingOcc.getLS());
@@ -179,6 +182,10 @@ public class Occupation{
         
     public double getEndTime(){
         return this.endTime;
+    }
+    
+    public void printEnterTime(){
+        System.out.println("ENTAR SANDMAN: "+entarTime);
     }
     
     public ArrayList<LineSegment> getLS(){

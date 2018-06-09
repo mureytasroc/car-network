@@ -37,7 +37,7 @@ class Map{
           for(int s=0;s<=vertRoads;s++){
             double x1=leftx+inWidth*s/((double)(vertRoads+1));
             double x2=leftx+inWidth*(s+1)/((double)(vertRoads+1));
-            System.out.println("("+x1+", "+y+")");
+            //System.out.println("("+x1+", "+y+")");
             myIntersections.add(new Intersection(this,new Point(x1,y),new ArrayList<Path>()));
             
             x1+= lineWidth/2.0;
