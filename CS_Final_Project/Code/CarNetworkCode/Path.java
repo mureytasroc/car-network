@@ -9,7 +9,7 @@ public class Path {
     private Occupation occupation=new Occupation();
     private Occupation possibleOccupation=new Occupation();
     private double startT=-1;
-    double savedD=-1;
+    ArrayList<String> savedD=new ArrayList<String>();
 	
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no
 	
@@ -164,7 +164,7 @@ public class Path {
     
     public void confirmPossibleOccupation(Car c, int pathNum, boolean direction){
         
-        System.out.println(startT);
+        //System.out.println(startT);
         
         //c.setPathOccupation(pathNum,this.possibleOccupation);
         this.occupation.add(possibleOccupation);
@@ -319,12 +319,12 @@ public class Path {
 		
 	}
     
-    public void saveData(double s){
-        this.savedD=s;
+    public void saveData(String s){
+        this.savedD.add(s);
     }
     
     public void printData(){
-        System.out.println("Path327, "+savedD);
+        System.out.println(savedD);
     }
    
 	

@@ -85,7 +85,7 @@ public class Occupation{
         else{
   //there are existing occupations
         Point curStart=new Point(start);
-            if(curStart.getX()<enterTime||curStart.getY()>p.getDistance()){
+            if(curStart.getX()<enterTime||curStart.getY()>p.getDistance()||curStart.getY()<0){
                 this.lineSegs.add(curSeg);
                 endTime=end.getX();
             }

@@ -72,8 +72,15 @@ public class Intersection implements Comparable<Intersection> {
               direction=Boolean.valueOf(true);
             }
             
-                p.saveData(source);
-                p.getOther(this).nodify((nodeValue+p.getTime(c,this,direction,startTime+source)),c,p,startTime);
+                if(source==0){
+                    System.out.println("LLL");
+                }
+                double d = source+startTime;
+                p.saveData(this.getPoint().getY()+"+ "+nodeValue+"+ "+d);
+                
+                
+                
+                p.getOther(this).nodify((nodeValue+p.getTime(c,this,direction,source)),c,p,startTime);
                 
                 //getDistance(c,this,source) //where this defines directionality
 			}
@@ -94,6 +101,7 @@ public class Intersection implements Comparable<Intersection> {
               direction=true;
             }
             //System.out.println(nodeValue()+" and "+direction);
+            this.leadingPath.printData();
             myRoute.addModule(new RouteModule(this.leadingPath.confirm(),this.leadingPath,direction,c));
             //System.out.println("hasdfk;hk"+this.leadingPath);
             return myRoute;
@@ -116,7 +124,7 @@ public class Intersection implements Comparable<Intersection> {
           	if(leadingPath.getEnd()==this){
               direction=Boolean.valueOf(true);
             }
-            this.leadingPath.printData();
+            
             this.leadingPath.confirmPossibleOccupation(c,myList.size()-1,direction);
             /*new Occupation(this.leadingPath,this.leadingPath.getOther(this).nodeValue(),direction,c);*/
           dirs.add(direction);

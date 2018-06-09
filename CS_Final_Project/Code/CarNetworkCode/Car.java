@@ -181,7 +181,7 @@ public class Car{
         
         //System.out.println("!@#$%^&");
         
-        this.start.nodify(0,this,null,startTime);
+        this.start.nodify(startTime,this,null,startTime);
         
 		this.theRoute=new Route(this);
         //this.directions = new ArrayList<Boolean>();
