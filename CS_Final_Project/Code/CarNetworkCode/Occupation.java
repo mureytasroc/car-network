@@ -17,7 +17,7 @@ public class Occupation{
         
         Occupation occ = new Occupation(ls);
         
-        Occupation next = new Occupation(new Path(10),occ,0,false,2,new Car(0.5));
+        Occupation next = new Occupation(new Path(10),occ,0,true,2,new Car(0.5));
         ExtraMethods.printLSarray(next.getLS());
         System.out.println(next.getEndTime());
 
