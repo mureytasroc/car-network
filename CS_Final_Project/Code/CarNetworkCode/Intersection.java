@@ -92,6 +92,7 @@ public class Intersection implements Comparable<Intersection> {
           	if(leadingPath.getEnd()==this){
               direction=true;
             }
+            System.out.println(nodeValue()+" and "+direction);
             myRoute.addModule(new RouteModule(this.leadingPath.confirm(),this.leadingPath,direction,c));
             //System.out.println("hasdfk;hk"+this.leadingPath);
             return myRoute;
@@ -107,6 +108,7 @@ public class Intersection implements Comparable<Intersection> {
             //System.out.println("this far");
             ArrayList<Path> myList = new ArrayList<Path>(this.leadingPath.getOther(this).collectRoute(start,dirs,c,startTime));
             myList.add(this.leadingPath);
+            //System.out.println(this.nodeValue());
             
             
           	Boolean direction=Boolean.valueOf(false);

@@ -127,7 +127,7 @@ public class Car{
 	}
 	public void update() {
         
-        theRoute.print();
+        //theRoute.print();
         
         
         if(theRoute.advance()){
@@ -186,7 +186,7 @@ public class Car{
             System.out.println("UNSOLVABLE");
         }
         
-        //ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
+        ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
         theRoute=destination.prepareRoute(this.start,this,this.startTime);
         
         if (!startIsInt) {
