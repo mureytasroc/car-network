@@ -1,5 +1,5 @@
 
-public class CarNetwork {//// ccc ensure no change of direction, heirarchy of routes, new cars putting in request in heirarchy, destinations for different cars on same path, 
+public class CarNetwork {//// ccc ensure no change of direction, heirarchy of routes, new cars putting in request in heirarchy, destinations for different cars on same path, null pointer instead of printing unsolvable
 	
 	public static Grid myGrid;
 	public static void main(String args[]) {
