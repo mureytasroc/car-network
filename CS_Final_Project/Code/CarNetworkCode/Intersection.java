@@ -218,6 +218,14 @@ public class Intersection extends Location implements Comparable{
 		System.out.println(this.myPaths.get(i).getStart().nodeValue());
 		}*/
 	}
+    public Intersection maxInt(Intersection i){
+        if (this.compareTo(i)>0){return this;}
+        else{return i;}
+    }
+    public Intersection minInt(Intersection i){
+        if (this.compareTo(i)>0){return i;}
+        else{return this;}
+    }
 	public int compareTo(Intersection i) {
 		int out=1;
 			//Intersection i=((Intersection)o);

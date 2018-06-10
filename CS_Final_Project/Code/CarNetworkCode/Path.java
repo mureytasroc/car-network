@@ -1,6 +1,6 @@
 import java.util.*;
 import java.util.Collections;
-public class Path{
+public class Path extends LineSegment{
 	private Intersection start;
 	private Intersection end;
 	private double distance;
@@ -15,9 +15,9 @@ public class Path{
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no
 	
 	Path(Intersection s, Intersection e, double SL,double distance){
-        
+        super((Location)s.maxInt(e),(Location)s.minInt(e));
 		this.distance=distance;
-        if(e.compareTo(s)>0){
+        if(e.compareTo(s)>0){     
 		this.start=s;
 		this.end=e;
         }
@@ -25,6 +25,7 @@ public class Path{
             this.start=e;
 		this.end=s;
         }
+        
 		this.speedLim=SL;
 		this.myGrid=s.getGrid();
 		this.myGrid.addPath(this);
@@ -34,6 +35,7 @@ public class Path{
 		
 	}
 	Path(Intersection s, Intersection e, double SL, double distance, boolean add){
+        super((Location)s.maxInt(e),(Location)s.minInt(e));
 		this.distance=distance;
 		if(e.compareTo(s)>0){
 		this.start=s;
@@ -54,6 +56,7 @@ public class Path{
 		
 	}
 	Path(Intersection s, Intersection e, double SL){
+        super((Location)s.maxInt(e),(Location)s.minInt(e));
 		this.distance=s.getLoc().getDistance(e.getLoc());
 		if(e.compareTo(s)>0){
 		this.start=s;
@@ -72,6 +75,7 @@ public class Path{
 		
 	}
   Path(Intersection s, Intersection e, double SL, boolean add){
+      super((Location)s.maxInt(e),(Location)s.minInt(e));
 		this.distance=s.getLoc().getDistance(e.getLoc());
 		if(e.compareTo(s)>0){
 		this.start=s;
@@ -91,9 +95,9 @@ public class Path{
       //System.out.println(this.start.getLoc().getPos()[0]+" or "+this.end.getLoc().getPos()[0]);
 		
 	}
-    Path(double dist){//used for testing only, never actually used in algo
+   /* Path(double dist){//used for testing only, never actually used in algo
         this.distance=dist;
-    }
+    }*/
 	public void die() {
 		this.getStart().removePath(this);
 		this.getEnd().removePath(this);
