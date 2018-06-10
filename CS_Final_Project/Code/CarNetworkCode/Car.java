@@ -169,7 +169,71 @@ public class Car{
         this.speedProfile.set(index,ls);
         }
     }
+    public Route getOptimalPath() {
+        
+        this.startTime=this.myGrid.getTime();//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
+     //System.out.println(this.myGrid.getTime());
+for (Intersection i: myGrid.getMyIntersections()) {
+i.setup();
+}
+        for (Path p: myGrid.getMyPaths()) {
+p.cleanup();
+}
 
+        myGrid.intersectionUpdate();
+        
+        //System.out.println("!@#$%^&");
+        
+        this.start.nodify(startTime,this,null,startTime);
+        
+this.theRoute=new Route(this);
+        //this.directions = new ArrayList<Boolean>();
+        
+        if(destination.nodeValue()==Double.POSITIVE_INFINITY){
+            System.out.println("UNSOLVABLE");
+        }
+        
+        //ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
+        theRoute=destination.prepareRoute(this.start,this,this.startTime);
+        
+        if (!startIsInt) {
+Path p1=start.getPaths().get(0);
+Path p2=start.getPaths().get(1);
+                this.curPath=eatenPath2;
+                /*if (p1.getOther(start)==destination){
+                        Path a;
+                        if (start.compareTo(destination)<0){
+                        a=new Path(start,destination,p1.getSpeedLim());
+                        }
+                        else{
+                        a=new Path(destination,start, p1.getSpeedLim());
+                        }
+                        this.curPath=a;
+                        tempPath1=a;
+                    killMe=true;
+                    //System.out.println("yes");
+                }*/
+            p1.die();
+            p2.getOther(start).addPath(eatenPath2);
+            p2.die();
+            p1.getOther(start).addPath(eatenPath2);
+            myGrid.removeIntersection(start);
+
+                
+        }
+       /* if(this.directions.get(this.inc)) {
+speed=Math.abs(speed);
+            int t=this.loc.travel(curPath,speed,true);
+}
+        else{
+            speed=-Math.abs(speed);
+            int t=this.loc.travel(curPath,speed,true);
+        }
+        inc++;*/
+        //this.destination.nodify(0,this,null);//bug checking
+        
+return theRoute;
+}
 	public Location getLocation() {
 		return this.loc;
 	}
