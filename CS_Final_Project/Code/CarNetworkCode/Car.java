@@ -1,6 +1,6 @@
 import java.util.*;
 import java.awt.Color;
-public class Car{
+public class Car implements Comparable<Car> {
 	private Grid myGrid;
 	private Location loc;
 	private ArrayList<Path> myRoute;
@@ -246,6 +246,19 @@ return theRoute;
 	}*/
 	public Grid getGrid() {
 		return myGrid;
+	}
+    public int compareTo(Car c) {
+		int out=1;
+        if (this.speed>getSpeed()){
+            return 1;
+        }
+        else if(c.getSpeed()>this.speed){
+            return -1;
+        }
+        else{
+            return 0;
+        }
+		
 	}
     
 

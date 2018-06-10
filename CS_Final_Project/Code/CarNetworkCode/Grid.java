@@ -36,7 +36,7 @@ public class Grid {
 	}
 	
 	public void setup() {
-		
+        Collections.sort(myCars);
     //time=System.nanoTime();
 	this.time=(double)(System.currentTimeMillis()-janTime)/1000.0;
         
@@ -78,6 +78,7 @@ public class Grid {
     
     
 	public void update() {
+        Collections.sort(myCars);
         this.time=(double)(System.currentTimeMillis()-janTime)/1000.0;
         
         
@@ -184,7 +185,7 @@ public class Grid {
 	}
 	
 	public void requestRoute(Car c, Intersection start, Intersection end) {
-		ArrayList<Path> cRoute = c.getOptimalPath();
+		//ArrayList<Path> cRoute = c.getOptimalPath();
 		//check for problems with this path and modify this and other paths as necessary
 	}
 	
