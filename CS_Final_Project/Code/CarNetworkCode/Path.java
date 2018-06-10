@@ -7,7 +7,8 @@ public class Path {
 	private double speedLim;
 	private Grid myGrid;
     private Occupation occupation=new Occupation();
-    private ArrayList<Occupation> possibleOccupation = new Occupation();
+    private ArrayList<Occupation> possibleOccupation = new ArrayList<Occupation>();
+    private Occupation confirmedOccupation;
     private double startT=-1;
     ArrayList<String> savedD=new ArrayList<String>();
 	
@@ -141,7 +142,7 @@ public class Path {
 	}
     
     public Occupation getPO(){
-        return this.possibleOccupation;
+        return this.confirmedOccupation;
     }
     
     public double getTime(Car c,Intersection origin,Boolean direction, double enterTime){
@@ -179,8 +180,21 @@ public class Path {
     public ArrayList<LineSegment> confirm(boolean direction, double startTime){
         //c.setPathOccupation(pathNum,this.possibleOccupation);
         ArrayList<Occupation> dirRightPaths = new ArrayList<Occupation>();
-        
-        this.occupation.add(possibleOccupation);
+        for(int i=0;i<possibleOccupation.size();i++){
+            if(possibleOccupation.get(i).getDirection()==direction){
+                dirRightPaths.add(possibleOccupation.get(i));
+            }
+        }
+        double closestStartTimeDif=Double.POSITIVE_INFINITY;
+        Occupation closestOcc=null;
+        for(int i=0;i<dirRightPaths.size();i++){
+         if(Math.abs(dirRightPaths.get(i).getBeginTime()-startTime)<closestStartTimeDif){
+             closestStartTimeDif=Math.abs(dirRightPaths.get(i).getBeginTime()-startTime);
+             closestOcc=dirRightPaths.get(i);
+         }
+        }
+        this.occupation.add(closestOcc);
+        this.confirmedOccupation=closestOcc;
         return this.occupation.getLS();
         
     }
@@ -329,13 +343,12 @@ public class Path {
     public void printData(){
         System.out.println(savedD);
     }
-    
     public void cleanup(){
-        for(int i=possibleOccupation.size(); i>=0;i--){
-            possibleOccupation.remove(i);
-        }
-    }
-   
-	
-	
+        confirmedOccupation=null;
+        for(int i=possibleOccupation.size()-1; i>=0;i--){
+            possibleOccupation.remove(i);
+        }
+    }
+    
+    
 }

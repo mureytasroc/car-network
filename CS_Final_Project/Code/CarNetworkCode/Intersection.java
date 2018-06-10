@@ -101,8 +101,8 @@ public class Intersection implements Comparable<Intersection> {
               direction=true;
             }
             //System.out.println(nodeValue()+" and "+direction);
-            this.leadingPath.printData();
-            myRoute.addModule(new RouteModule(this.leadingPath.confirm(),this.leadingPath,direction,c));
+            //this.leadingPath.printData();
+            myRoute.addModule(new RouteModule(this.leadingPath.confirm(direction,startTime),this.leadingPath,direction,c));
             //System.out.println("hasdfk;hk"+this.leadingPath);
             return myRoute;
         }
@@ -132,7 +132,7 @@ public class Intersection implements Comparable<Intersection> {
         }
     }*/
     
-    public void addPotentialIntersection(Path pdouble,double reachTime){
+    public void addPotentialIntersectionOcc(Path pdouble,double reachTime){//ccc
         
         //add a potential horizontal occupation at appropriate end of each applicable path's occupation graph
     }

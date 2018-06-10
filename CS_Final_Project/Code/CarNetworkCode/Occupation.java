@@ -189,6 +189,14 @@ public class Occupation{
         return this.endTime;
     }
     
+    public double getBeginTime(){
+        return this.beginTime;
+    }
+    
+    public boolean getDirection(){
+        return this.direction;
+    }
+    
     public void printEnterTime(){
         System.out.println("ENTAR SANDMAN: "+entarTime);
     }

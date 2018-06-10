@@ -64,7 +64,12 @@ public class Route{
         System.out.println("x="+startTime);
         for(int i=0;i<myRoute.size();i++){
             myRoute.get(i).print();
-            myRoute.get(i).getPath().getPO().printEnterTime();
+            Occupation o = myRoute.get(i).getPath().getPO();
+            if(o==null){
+                System.out.println("null");
+            }
+            else{
+            myRoute.get(i).getPath().getPO().printEnterTime();}
         }
         System.out.println("\n\n\n\n");
     }
