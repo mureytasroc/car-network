@@ -51,6 +51,20 @@ public class Route{
     public ArrayList<RouteModule> getRoute(){
         return myRoute;
     }
+    public ArrayList<Path> getPaths(){
+        ArrayList<Path> p = new ArrayList<Path>();
+        for(int i=0;i<myRoute.size();i++){
+            p.add(myRoute.get(i).getPath());
+        }
+        return p;
+    }
+    public ArrayList<Boolean> getDirections(){
+        ArrayList<Boolean> p = new ArrayList<Boolean>();
+        for(int i=0;i<myRoute.size();i++){
+            p.add(myRoute.get(i).getDirection());
+        }
+        return p;
+    }
     public void addModule(RouteModule r){
         myRoute.add(r);
     }

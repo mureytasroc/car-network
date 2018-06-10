@@ -22,6 +22,9 @@ public class Car implements Comparable<Car> {
     private Path tempPath2;
     private Path tempPath3;
     private double trailingDistance;
+    private Boolean endOrientation;
+    
+    
     public double getTD(){
         return trailingDistance;
     }
@@ -187,6 +190,13 @@ p.cleanup();
         this.start.nodify(startTime,this,null,startTime);
         
 this.theRoute=new Route(this);
+        ArrayList<Boolean> p = new ArrayList<Boolean>(theRoute.getDirections());
+        if(! (p.size()==0)){
+        endOrientation=p.get(p.size()-1);}
+        else{
+            endOrientation=null;
+        }
+        
         //this.directions = new ArrayList<Boolean>();
         
         if(destination.nodeValue()==Double.POSITIVE_INFINITY){
