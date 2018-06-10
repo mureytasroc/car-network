@@ -10,10 +10,10 @@ public class CarNetwork {//// ccc ensure no change of direction, heirarchy of ro
         }*/
 		
 		Path q=new Path(new Intersection(new Location(myGrid,40,40)),new Intersection(new Location(myGrid,700,40)),2);
-		/*Path u=new Path(new Intersection(new Location(myGrid,40,700)),new Intersection(new Location(myGrid,700,700)),1);
+		Path u=new Path(new Intersection(new Location(myGrid,40,700)),new Intersection(new Location(myGrid,700,700)),1);
 		Path p=new Path(new Intersection(new Location(myGrid,40,40)),new Intersection(new Location(myGrid,40,700)),2);
 		Path r=new Path(new Intersection(new Location(myGrid,700,40)),new Intersection(new Location(myGrid,700,700)),4);
-        Path rasdf=new Path(new Intersection(new Location(myGrid,30,0)),new Intersection(new Location(myGrid,800,800)),4);
+        /*Path rasdf=new Path(new Intersection(new Location(myGrid,30,0)),new Intersection(new Location(myGrid,800,800)),4);
 		Path pp=new Path(new Intersection(new Location(myGrid,50,400)),new Intersection(new Location(myGrid,750,430)),1);
 		Path rr=new Path(new Intersection(new Location(myGrid,200,0)),new Intersection(new Location(myGrid,800,800)),1);
 		Path rrr=new Path(new Intersection(new Location(myGrid,0,300)),new Intersection(new Location(myGrid,750,300)),1);
@@ -24,8 +24,8 @@ public class CarNetwork {//// ccc ensure no change of direction, heirarchy of ro
         Path pa=new Path(new Intersection(new Location(myGrid,700,700)),new Intersection(new Location(myGrid,550,0)),1);
         Path qaa=new Path(new Intersection(new Location(myGrid,640,200)),new Intersection(new Location(myGrid,300,300)),5);
 		Path uaa=new Path(new Intersection(new Location(myGrid,60,20)),new Intersection(new Location(myGrid,760,700)),1);
-        Path paa=new Path(new Intersection(new Location(myGrid,200,700)),new Intersection(new Location(myGrid,550,400)),1);*/
-		myGrid.setup();
+        Path paa=new Path(new Intersection(new Location(myGrid,200,700)),new Intersection(new Location(myGrid,550,400)),1);
+		*/myGrid.setup();
 		Location l=new Location(myGrid,800,0);
         Location l2=new Location(myGrid,200,490);
 		Location d=new Location(myGrid,300,800);
@@ -33,8 +33,8 @@ public class CarNetwork {//// ccc ensure no change of direction, heirarchy of ro
         Location ea=new Location(myGrid,600,490);
         Location ea2=new Location(myGrid,0,490);
 		Car c=new Car(l,d);
-		/*Car g=new Car(l2,d2);
-        Car e=new Car(ea,ea2);*/
+		Car g=new Car(l2,d2);
+        Car e=new Car(ea,ea2);
         
 		while(true){
 		myGrid.update();

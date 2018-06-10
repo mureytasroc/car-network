@@ -1,22 +1,25 @@
 import java.util.ArrayList;
 
-public class Location {
+public class Location extends Point {
 	private Grid myGrid;
 	private double[] coords=new double[2];
 	
 	Location(Grid mG,double xPos, double yPos){
+        super(xPos,yPos);
 		this.myGrid=mG;
 		snapToPath();
 		coords[0]=xPos;
 		coords[1]=yPos;
 	}
     Location(Grid mG,int xPos, int yPos){
+        super(xPos,yPos);
 		this.myGrid=mG;
 		snapToPath();
 		coords[0]=xPos;
 		coords[1]=yPos;
 	}
 	Location(Location l){
+        super(l.getPos()[0],l.getPos()[1]);
 		this.myGrid=l.getGrid();
 		this.coords[0] = l.getPos()[0];
         this.coords[1] = l.getPos()[1];

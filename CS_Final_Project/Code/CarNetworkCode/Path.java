@@ -1,6 +1,6 @@
 import java.util.*;
 import java.util.Collections;
-public class Path {
+public class Path{
 	private Intersection start;
 	private Intersection end;
 	private double distance;
@@ -15,6 +15,7 @@ public class Path {
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no
 	
 	Path(Intersection s, Intersection e, double SL,double distance){
+        
 		this.distance=distance;
         if(e.compareTo(s)>0){
 		this.start=s;

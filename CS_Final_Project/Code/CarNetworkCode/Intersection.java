@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.awt.*;
 
 
-public class Intersection implements Comparable<Intersection> {
+public class Intersection extends Location implements Comparable{
 	private Location loc;
 	private Grid myGrid;
 	private ArrayList<Path> myPaths;
@@ -14,6 +14,7 @@ public class Intersection implements Comparable<Intersection> {
   private Path leadingPath;
 	
 	Intersection(Location l){
+        super(l);
 		this.loc = l;
 		myGrid=l.getGrid();
 		this.myGrid.addIntersection(this);
@@ -21,6 +22,7 @@ public class Intersection implements Comparable<Intersection> {
 		this.col=new Color(0,155,0);
 	}
 	Intersection(Location l,boolean special){
+        super(l);
 		this.loc = l;
 		myGrid=l.getGrid();
 		this.myGrid.addIntersection(this);
@@ -30,6 +32,14 @@ public class Intersection implements Comparable<Intersection> {
 		edible=false;
 		}
 		
+	}
+    
+    Intersection(Car c){
+        super(c.getLocation());
+		this.loc=c.getLocation();
+		myGrid=c.getGrid();
+		this.myGrid.addIntersection(this);
+		this.myPaths = new ArrayList<Path>();	
 	}
     public void specialize(){
         edible=!edible;
@@ -141,12 +151,7 @@ public class Intersection implements Comparable<Intersection> {
 	public double nodeValue() {
 		return nodeValue;
 	}
-	Intersection(Car c){
-		this.loc=c.getLocation();
-		myGrid=c.getGrid();
-		this.myGrid.addIntersection(this);
-		this.myPaths = new ArrayList<Path>();	
-	}
+	
 	public ArrayList<Path> getPaths(){
 		return myPaths;
 	}
