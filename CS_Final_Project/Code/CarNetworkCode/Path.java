@@ -163,7 +163,7 @@ public class Path {
         return projected;
     }
     
-    public void confirmPossibleOccupation(Car c, int pathNum, boolean direction){
+    /*public void confirmPossibleOccupation(Car c, int pathNum, boolean direction){
         
         //System.out.println(startT);
         
@@ -174,10 +174,12 @@ public class Path {
         //System.out.println("aiiiii");
         //add possibleOccupation to occupations, delete all redundant occupations (ones that have a point with an x value less than the possibleOccupation's end x value )
         
-    }
+    }*/
     
-    public ArrayList<LineSegment> confirm(){
+    public ArrayList<LineSegment> confirm(boolean direction, double startTime){
         //c.setPathOccupation(pathNum,this.possibleOccupation);
+        ArrayList<Occupation> dirRightPaths = new ArrayList<Occupation>();
+        
         this.occupation.add(possibleOccupation);
         return this.occupation.getLS();
         
@@ -327,6 +329,12 @@ public class Path {
     public void printData(){
         System.out.println(savedD);
     }
+    
+    public void cleanup(){
+        for(int i=possibleOccupation.size(); i>=0;i--){
+            possibleOccupation.remove(i);
+        }
+    }
    
 	
 	

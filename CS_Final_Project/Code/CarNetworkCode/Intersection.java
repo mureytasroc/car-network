@@ -107,7 +107,7 @@ public class Intersection implements Comparable<Intersection> {
             return myRoute;
         }
     }
-    public ArrayList<Path> collectRoute(Intersection start, ArrayList<Boolean> dirs, Car c, double startTime){
+    /*public ArrayList<Path> collectRoute(Intersection start, ArrayList<Boolean> dirs, Car c, double startTime){
         //System.out.println(startTime);
         if(this == start){
             ArrayList<Path> myList = new ArrayList<Path>();
@@ -126,11 +126,11 @@ public class Intersection implements Comparable<Intersection> {
             }
             
             this.leadingPath.confirmPossibleOccupation(c,myList.size()-1,direction);
-            /*new Occupation(this.leadingPath,this.leadingPath.getOther(this).nodeValue(),direction,c);*/
+            //new Occupation(this.leadingPath,this.leadingPath.getOther(this).nodeValue(),direction,c);
           dirs.add(direction);
             return myList;
         }
-    }
+    }*/
     
     public void addPotentialIntersection(Path pdouble,double reachTime){
         
