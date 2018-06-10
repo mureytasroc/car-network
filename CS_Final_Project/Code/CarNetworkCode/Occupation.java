@@ -51,9 +51,8 @@ public class Occupation{
         }
     }
     
-    public Occupation(Path p,Occupation existingOcc,double enterTime,Boolean dirie,double sp, Car c){ //continuous occupation constructor from Path getTime
+    public Occupation(Path p,Occupation existingOcc,double enterTime,Boolean dir,double sp, Car c){ //continuous occupation constructor from Path getTime
         this.entarTime=enterTime;
-        Boolean dir = !dirie;
         continuous=true;
         ArrayList<LineSegment>EOlineSegs=new ArrayList<LineSegment>(existingOcc.getLS());
         this.beginTime=enterTime;

@@ -75,7 +75,7 @@ public class Intersection implements Comparable<Intersection> {
                 if(source==0){
                     System.out.println("LLL");
                 }
-                double d = source+startTime;
+                double d = source;
                 p.saveData(this.getPoint().getY()+"+ "+nodeValue+"+ "+d);
                 
                 

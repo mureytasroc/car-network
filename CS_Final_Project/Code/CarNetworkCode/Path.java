@@ -7,7 +7,7 @@ public class Path {
 	private double speedLim;
 	private Grid myGrid;
     private Occupation occupation=new Occupation();
-    private Occupation possibleOccupation=new Occupation();
+    private ArrayList<Occupation> possibleOccupation = new Occupation();
     private double startT=-1;
     ArrayList<String> savedD=new ArrayList<String>();
 	
@@ -154,9 +154,10 @@ public class Path {
         }
 		double projected=Math.abs((this.distance/s));
         
-        this.possibleOccupation=new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()),c);
+        this.possibleOccupation.add(new Occupation(this,this.occupation,enterTime,direction,Math.abs(c.getSpeed()),c));
         
-        projected=this.possibleOccupation.getEndTime()-enterTime;
+        
+        projected=this.possibleOccupation.get(possibleOccupation.size()-1).getEndTime()-enterTime;
         //this.getOther(origin).addPotentialOccupation(this,projected);
         
         return projected;
