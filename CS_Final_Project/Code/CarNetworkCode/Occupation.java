@@ -102,7 +102,7 @@ public class Occupation{
             boolean segReachedEnd=false;
             long counter=0;
         while(keep){
-            //counter++;
+            counter++;
             if(counter>5){
                 this.endTime=Double.POSITIVE_INFINITY;
                     keep=false;

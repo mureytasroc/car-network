@@ -190,7 +190,7 @@ this.theRoute=new Route(this);
         //this.directions = new ArrayList<Boolean>();
         
         if(destination.nodeValue()==Double.POSITIVE_INFINITY){
-            System.out.println("UNSOLVABLE");
+            System.out.println("UNSOLVABLE");//CCC
         }
         
         //ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
