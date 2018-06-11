@@ -70,7 +70,8 @@ public class Intersection extends Location implements Comparable{
     // In later implementations, source will be passed as a parameter to the getDistance method
     public void nodify(double source, Car c, Path inPath, double startTime) {//recursive
         //System.out.println("ST: "+startTime);
-		if (source<this.nodeValue) {
+		if (source<=this.nodeValue) {
+            
             this.leadingPath=inPath;
 			nodeValue=source;
 			for (int i=0; i<this.myPaths.size();i++) {
@@ -97,7 +98,7 @@ public class Intersection extends Location implements Comparable{
 		}
 	}
 
-     public Route prepareRoute(Intersection start, Car c, double startTime){
+     public Route prepareRoute(Intersection start, Car c, double startTime, int w){
         //System.out.println(startTime);
         if(this == start){
             Route myRoute = new Route(c);
@@ -106,14 +107,16 @@ public class Intersection extends Location implements Comparable{
         else{
             //System.out.println("this far");
             //System.out.println(this.leadingPath);
-            System.out.println((Point)(start));
-            
+            //System.out.println((Point)(start));
+            w+=1;
             System.out.println((Point)(this));
-            Route myRoute = new Route(this.leadingPath.getOther(this).prepareRoute(start,c,startTime));//ccc
+            System.out.println(w);
+            Route myRoute = new Route(this.leadingPath.getOther(this).prepareRoute(start,c,startTime,w));//ccc
             boolean direction=false;
           	if(leadingPath.getEnd()==this){
               direction=true;
             }
+            //System.out.println(myRoute.getRoute().size());
             //System.out.println(nodeValue()+" and "+direction);
             //this.leadingPath.printData();
             myRoute.addModule(new RouteModule(this.leadingPath.confirm(direction,startTime),this.leadingPath,direction,c));

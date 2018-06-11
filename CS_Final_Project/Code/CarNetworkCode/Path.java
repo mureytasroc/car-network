@@ -192,7 +192,7 @@ public class Path extends LineSegment{
                 dirRightPaths.add(possibleOccupation.get(i));
             }
             else{
-                System.out.println("else");
+                //System.out.println("else");
             }
         }
         double closestStartTimeDif=Double.POSITIVE_INFINITY;

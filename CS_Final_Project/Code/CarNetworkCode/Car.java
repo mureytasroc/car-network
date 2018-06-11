@@ -8,7 +8,7 @@ public class Car implements Comparable<Car> {
     private ArrayList<ArrayList<LineSegment>> speedProfile=new ArrayList<ArrayList<LineSegment>>();//speed profile for each 
     private Route theRoute=new Route(this);
 	private Path curPath;
-	private double speed=80.0;
+	private double speed=200.0;
 	private Destination destination;
     private Intersection start;
 	private int inc=0;
@@ -221,6 +221,10 @@ p.cleanup();
         if(endOrientation){this.start=curPath.getEnd();}
         else{this.start=curPath.getStart();}
         this.start.nodify(startTime,this,null,startTime);
+        System.out.println("error is not in nodify");
+        for (Intersection i: myGrid.getMyIntersections()) {
+i.update();
+}
         Intersection d1=destination.getInts().get(0);
         Intersection d2=destination.getInts().get(1);
         //this.directions = new ArrayList<Boolean>();
@@ -229,8 +233,9 @@ p.cleanup();
             System.out.println("UNSOLVABLE");//CCC
         }
         //ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
-        System.out.println((Point)d1);
-        theRoute=d1.prepareRoute(this.start,this,this.startTime);
+        System.out.println("destination: "+(Point)d1);
+        theRoute=d1.prepareRoute(this.start,this,this.startTime,0);
+        System.out.println("error is not in prepare route");
         
         
         /*if (!startIsInt) {
