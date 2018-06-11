@@ -11,5 +11,6 @@ public class Destination{
     Destination(Location l){
         myPath=l.snapToPath();
         spot=l;
+        
     }
 }
