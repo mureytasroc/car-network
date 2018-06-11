@@ -6,10 +6,10 @@ public class Car implements Comparable<Car> {
 	private ArrayList<Path> myRoute;
 	private ArrayList<Boolean> directions;
     private ArrayList<ArrayList<LineSegment>> speedProfile=new ArrayList<ArrayList<LineSegment>>();//speed profile for each 
-    private Route theRoute;
+    private Route theRoute=new Route(this);
 	private Path curPath;
 	private double speed=80.0;
-	private Intersection destination;
+	private Destination destination;
     private Intersection start;
 	private int inc=0;
 	private Intersection mySpot;
@@ -18,11 +18,11 @@ public class Car implements Comparable<Car> {
     private boolean startIsInt=false;
     private Path eatenPath2;
     private boolean killMe=false;
-    private Path tempPath1;
+    /*private Path tempPath1;
     private Path tempPath2;
-    private Path tempPath3;
+    private Path tempPath3;*/
     private double trailingDistance;
-    private Boolean endOrientation;
+    private Boolean endOrientation=true;
     
     private double intersectionBufferTime;
     private double intersectionOccupationTime;
@@ -49,7 +49,7 @@ public class Car implements Comparable<Car> {
 		this.myGrid=l.getGrid();
 		this.loc=l;
 		l.snapToPath();
-		this.destination=new Intersection(l);
+		this.destination=new Destination(l);
 		myGrid.setup();
 		this.curPath=this.loc.snapToPath();
 		this.myGrid.addCar(this);
@@ -62,7 +62,6 @@ public class Car implements Comparable<Car> {
             intersectionBufferTime=0;
         }
         intersectionOccupationTime=3;
-        
 		this.myRoute=new ArrayList<Path>();
 		this.directions=new ArrayList<Boolean>();
 		this.myGrid=l.getGrid();
@@ -92,11 +91,11 @@ public class Car implements Comparable<Car> {
         return this.speed;
     }
 	public void setup(Location l,Location d) {
-        
+        this.destination=new Destination(d);
 		this.loc=l;
 		Path pb=d.snapToPath();
         Path pb2=l.snapToPath();
-        if (destination!=null)
+        /*if (destination!=null)
             destination.specialize();
          if (start!=null)
             start.specialize();
@@ -139,7 +138,7 @@ public class Car implements Comparable<Car> {
 		pb2.getEnd().removePath(pb2);
 		pb2.getStart().removePath(pb2);
         }
-        
+        */
         //System.out.print(" middle ");
 		//System.out.print(myGrid.getMyIntersections().size());
 		//myGrid.setup();
@@ -158,7 +157,7 @@ public class Car implements Comparable<Car> {
         
         if(theRoute.advance()){
             //System.out.println("onedown");
-				if (!destIsInt) {
+				/*if (!destIsInt) {
 				Path p1=destination.getPaths().get(0);
 				Path p2=destination.getPaths().get(1);
 				p1.getOther(destination).addPath(eatenPath);
@@ -166,7 +165,7 @@ public class Car implements Comparable<Car> {
 				p1.die();
 				p2.die();
 				myGrid.removeIntersection(destination);
-				}
+				}*/
 				setup(this.loc,new Location( myGrid,(Math.random()*800),(Math.random()*800)));
 			}
 		this.show();
@@ -210,26 +209,31 @@ p.cleanup();
         
         //System.out.println("!@#$%^&");
         
-        this.start.nodify(startTime,this,null,startTime);
         
-this.theRoute=new Route(this);
+        
+
         ArrayList<Boolean> p = new ArrayList<Boolean>(theRoute.getDirections());
         if(! (p.size()==0)){
         endOrientation=p.get(p.size()-1);}
         else{
-            endOrientation=null;
+            //endOrientation=null;
         }
-        
+        if(endOrientation){this.start=curPath.getEnd();}
+        else{this.start=curPath.getStart();}
+        this.start.nodify(startTime,this,null,startTime);
+        Intersection d1=destination.getInts().get(0);
+        Intersection d2=destination.getInts().get(1);
         //this.directions = new ArrayList<Boolean>();
         
-        if(destination.nodeValue()==Double.POSITIVE_INFINITY){
+        if(d1.nodeValue()==Double.POSITIVE_INFINITY){
             System.out.println("UNSOLVABLE");//CCC
         }
-        
         //ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
-        theRoute=destination.prepareRoute(this.start,this,this.startTime);
+        System.out.println((Point)d1);
+        theRoute=d1.prepareRoute(this.start,this,this.startTime);
         
-        if (!startIsInt) {
+        
+        /*if (!startIsInt) {
 Path p1=start.getPaths().get(0);
 Path p2=start.getPaths().get(1);
                 this.curPath=eatenPath2;
@@ -245,7 +249,7 @@ Path p2=start.getPaths().get(1);
                         tempPath1=a;
                     killMe=true;
                     //System.out.println("yes");
-                }*/
+                }
             p1.die();
             p2.getOther(start).addPath(eatenPath2);
             p2.die();
@@ -253,7 +257,7 @@ Path p2=start.getPaths().get(1);
             myGrid.removeIntersection(start);
 
                 
-        }
+        }*/
        /* if(this.directions.get(this.inc)) {
 speed=Math.abs(speed);
             int t=this.loc.travel(curPath,speed,true);

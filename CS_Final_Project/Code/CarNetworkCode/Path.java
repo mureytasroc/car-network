@@ -191,10 +191,14 @@ public class Path extends LineSegment{
             if(possibleOccupation.get(i).getDirection()==direction){
                 dirRightPaths.add(possibleOccupation.get(i));
             }
+            else{
+                System.out.println("else");
+            }
         }
         double closestStartTimeDif=Double.POSITIVE_INFINITY;
         Occupation closestOcc=null;
         int COindex;
+        System.out.println(dirRightPaths.size());
         for(int i=0;i<dirRightPaths.size();i++){
          if(Math.abs(dirRightPaths.get(i).getBeginTime()-startTime)<closestStartTimeDif){
              closestStartTimeDif=Math.abs(dirRightPaths.get(i).getBeginTime()-startTime);

@@ -105,6 +105,10 @@ public class Intersection extends Location implements Comparable{
         }
         else{
             //System.out.println("this far");
+            //System.out.println(this.leadingPath);
+            System.out.println((Point)(start));
+            
+            System.out.println((Point)(this));
             Route myRoute = new Route(this.leadingPath.getOther(this).prepareRoute(start,c,startTime));//ccc
             boolean direction=false;
           	if(leadingPath.getEnd()==this){

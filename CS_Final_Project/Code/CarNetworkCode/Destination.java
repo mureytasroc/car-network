@@ -1,8 +1,9 @@
+import java.util.*;
 public class Destination{
     private Path myPath;
     private double distance;
     private Location spot;
-    Destination(Path p, double d){
+    public Destination(Path p, double d){
         myPath=p;
         double distance=d;
         double slope=myPath.getSlope();
@@ -12,7 +13,7 @@ public class Destination{
             
         
     }
-    Destination(Location l){
+    public Destination(Location l){
         myPath=l.snapToPath();
         spot=l;
         double slope=myPath.getSlope();
@@ -20,5 +21,11 @@ public class Destination{
                                  +Math.pow(((Point)myPath.getStart()).getY()-((Point)spot).getY(),2),0.5);
         
         
+    }
+    public ArrayList<Intersection> getInts(){
+        ArrayList<Intersection> output=new ArrayList<Intersection>();
+        output.add(myPath.getStart());
+        output.add(myPath.getEnd());
+        return output;
     }
 }
