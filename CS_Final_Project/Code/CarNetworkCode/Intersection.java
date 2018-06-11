@@ -105,7 +105,7 @@ public class Intersection extends Location implements Comparable{
         }
         else{
             //System.out.println("this far");
-            Route myRoute = new Route(this.leadingPath.getOther(this).prepareRoute(start,c,startTime));
+            Route myRoute = new Route(this.leadingPath.getOther(this).prepareRoute(start,c,startTime));//ccc
             boolean direction=false;
           	if(leadingPath.getEnd()==this){
               direction=true;
@@ -142,10 +142,6 @@ public class Intersection extends Location implements Comparable{
         }
     }*/
     
-    public void addPotentialIntersectionOcc(Path pdouble,double reachTime){//ccc
-        
-        //add a potential horizontal occupation at appropriate end of each applicable path's occupation graph
-    }
     
     
 	public double nodeValue() {
@@ -237,4 +233,10 @@ public class Intersection extends Location implements Comparable{
 		}
 		return out;
 	}
+    
+    public void confirmPIO(PIO pio){
+        for(int i=0;i<myPaths.size();i++){
+            myPaths.get(i).confirmPIO(pio);
+        }
+    }
 }

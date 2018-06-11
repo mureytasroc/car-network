@@ -11,6 +11,7 @@ public class Path extends LineSegment{
     private Occupation confirmedOccupation;
     private double startT=-1;
     ArrayList<String> savedD=new ArrayList<String>();
+    ArrayList<PIO> pioList=new ArrayList<PIO>();
 	
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no
 	
@@ -95,9 +96,10 @@ public class Path extends LineSegment{
       //System.out.println(this.start.getLoc().getPos()[0]+" or "+this.end.getLoc().getPos()[0]);
 		
 	}
-   /* Path(double dist){//used for testing only, never actually used in algo
+    Path(double dist){//used for testing only, never actually used in algo //don't delete
+        super(new Point(1,1),new Point(1,1));
         this.distance=dist;
-    }*/
+    }
 	public void die() {
 		this.getStart().removePath(this);
 		this.getEnd().removePath(this);
@@ -182,7 +184,7 @@ public class Path extends LineSegment{
         
     }*/
     
-    public ArrayList<LineSegment> confirm(boolean direction, double startTime){
+    public ArrayList<LineSegment> confirm(boolean direction, double startTime){//add pio
         //c.setPathOccupation(pathNum,this.possibleOccupation);
         ArrayList<Occupation> dirRightPaths = new ArrayList<Occupation>();
         for(int i=0;i<possibleOccupation.size();i++){
@@ -192,15 +194,19 @@ public class Path extends LineSegment{
         }
         double closestStartTimeDif=Double.POSITIVE_INFINITY;
         Occupation closestOcc=null;
+        int COindex;
         for(int i=0;i<dirRightPaths.size();i++){
          if(Math.abs(dirRightPaths.get(i).getBeginTime()-startTime)<closestStartTimeDif){
              closestStartTimeDif=Math.abs(dirRightPaths.get(i).getBeginTime()-startTime);
              closestOcc=dirRightPaths.get(i);
          }
         }
-        this.occupation.add(closestOcc);
-        this.confirmedOccupation=closestOcc;
-        return this.occupation.getLS();
+        this.occupation.add(closestOcc);//WTF RETURNED THIS.OCCUPATION
+        ArrayList<LineSegment> alls = new ArrayList<LineSegment>(closestOcc.getLS());
+        PIO pio = closestOcc.getPio();
+        pio.getIntersection().confirmPIO(pio);
+        this.confirmedOccupation=this.occupation;//confirmedOcc is only for debugging
+        return alls;///WTF why return lineSeg
         
     }
 	public double getSlope() {
@@ -349,11 +355,26 @@ public class Path extends LineSegment{
         System.out.println(savedD);
     }
     public void cleanup(){
+        pioList=new ArrayList<PIO>();
         confirmedOccupation=null;
-        for(int i=possibleOccupation.size()-1; i>=0;i--){
+        /*for(int i=possibleOccupation.size()-1; i>=0;i--){
             possibleOccupation.remove(i);
+        }*/
+        possibleOccupation=new ArrayList<Occupation>();
+    }
+    public void confirmPIO(PIO pio){
+        LineSegment ls = pio.getLS();
+        Point p1 = ls.getP1();
+        Point p2 = ls.getP2();
+        if(pio.getIntersection()==this.getStart()){
+            this.occupation.addLS(new LineSegment(new Point(p1.getX(),0),new Point(p2.getX(),0)));
+        }
+        else{
+            this.occupation.addLS(new LineSegment(new Point(p1.getX(),this.getDistance()),new Point(p2.getX(),this.getDistance())));
         }
     }
+
+    public Grid getGrid(){return this.myGrid;}
     
     
 }

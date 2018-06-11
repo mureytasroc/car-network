@@ -10,12 +10,14 @@ public class LineSegment implements Comparable<LineSegment>{
         System.out.println(l1);
         System.out.println(l2);
         System.out.println(l1.compareTo(l2));*/
-        LineSegment l1 = new LineSegment(new Point(4,3),new Point(10,0));
-        LineSegment l2 = new LineSegment(new Point(4,2),new Point(10,0));
+        LineSegment l1 = new LineSegment(new Point(1,1),new Point(3,1));
+        LineSegment l2 = new LineSegment(new Point(1,1),new Point(4,1));
+        LineSegment l3 = new LineSegment(new Point(2,1),new Point(5,1));
         ArrayList<LineSegment> ar = new ArrayList<LineSegment>();
         ar.add(l1);
         ar.add(l2);
         ExtraMethods.printLSarray(ar);
+        System.out.println(l3.getLatestEPCollision(ar));
     }
     
     
@@ -39,6 +41,12 @@ public class LineSegment implements Comparable<LineSegment>{
             dX=length/(Math.sqrt(slope*slope+1));
             dY=slope*dX;
             this.p2=new Point(p1.getX()+dX,p1.getY()+dY);
+        }
+    }
+    LineSegment(LineSegment ls){
+        if(ls!=null){
+            this.p1=new Point(ls.getP1());
+            this.p2=new Point(ls.getP2());
         }
     }
     public double getBeginning(){
@@ -96,6 +104,61 @@ public class LineSegment implements Comparable<LineSegment>{
         }
         return null;
     }
+    public boolean hasCollision(LineSegment l){
+        if(l==null||this==null){
+            return false;
+        }
+        Point lineInt = l.getLine().getIntersection(this.getLine());
+        if(lineInt==null){
+            if(this.getSlope()==Double.POSITIVE_INFINITY||this.getSlope()==Double.NEGATIVE_INFINITY){
+                if(Math.abs(l.getLine().getPointByY(this.p1.getY()).getX()-this.p1.getX())<0.0001){
+                    double hy1=this.higherEndPoint().getY();
+                    double ly1=this.lowerEndPoint().getY();
+                    double hy2=l.higherEndPoint().getY();
+                    double ly2=l.lowerEndPoint().getY();
+                    if(hy1>=ly2&&hy1<hy2||hy2>=ly1&&hy2<hy1){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                else{
+                    return false;
+                }
+                }
+            else{
+            if(Math.abs(l.getLine().getPointByX(this.p1.getX()).getY()-this.p1.getY())<0.0001){
+                    double rx1=this.rightEndPoint().getX();
+                    double lx1=this.leftEndPoint().getX();
+                    double rx2=l.rightEndPoint().getX();
+                    double lx2=l.leftEndPoint().getX();
+                    if(rx1>=lx2&&rx1<rx2||rx2>=lx1&&rx2<rx1){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                
+            }
+            else{
+                return false;
+            }
+            }
+        }
+        else{
+            Point inte = this.getIntersection(l);
+            if(inte!=null){
+                return true;
+            }
+            else{
+                return false;
+            }
+            
+        }
+        
+    }
+    
     public boolean isInRange(double x){
         if(this.getSlope()==Double.POSITIVE_INFINITY||this.getSlope()==Double.NEGATIVE_INFINITY){
             if(Math.abs(this.p1.getX()-x)<0.0001){
@@ -151,6 +214,12 @@ public class LineSegment implements Comparable<LineSegment>{
         }
         System.out.println("LEFT_END_POINT_NULL");
         return null;
+    }
+    public boolean isHor(){
+        if(Math.abs(this.getSlope())<0.0001){
+            return true;
+        }
+        return false;
     }
     public Point lowerEndPoint(){
         if(this.p1.getY()>this.p2.getY()){
@@ -378,6 +447,27 @@ public class LineSegment implements Comparable<LineSegment>{
         }
         return false;
     }
+    
+    public Point getLatestEPCollision(ArrayList<LineSegment> ls){
+        double farthestRight=Double.NEGATIVE_INFINITY;
+        LineSegment fr=null;
+        for(int i=0;i<ls.size();i++){
+            if(this.hasCollision(ls.get(i))){
+                if(ls.get(i).rightEndPoint().getX()>farthestRight){
+                    farthestRight=ls.get(i).rightEndPoint().getX();
+                        fr=ls.get(i);
+                }
+            }
+        }
+        if(fr==null){
+            return null;
+        }
+        else{
+            return new Point(fr.rightEndPoint());
+        }
+    }
+    
+    
     
     
     

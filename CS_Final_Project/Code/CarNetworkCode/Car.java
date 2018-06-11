@@ -24,13 +24,25 @@ public class Car implements Comparable<Car> {
     private double trailingDistance;
     private Boolean endOrientation;
     
+    private double intersectionBufferTime;
+    private double intersectionOccupationTime;
     
-    public double getTD(){
-        return trailingDistance;
+    
+    public ArrayList<Double> getBufferData(){
+        ArrayList<Double> d = new ArrayList<Double>();
+        d.add(this.trailingDistance);
+        d.add(intersectionBufferTime);
+            d.add(intersectionOccupationTime);
+            return d;
     }
     private double startTime;//in seconds with millisecond precision
 	Car(Location l){
         this.trailingDistance=0.4064;
+        intersectionBufferTime=trailingDistance/this.speed-0.1;
+        if(intersectionBufferTime<=0){
+            intersectionBufferTime=0;
+        }
+        intersectionOccupationTime=3;
         
 		this.myRoute=new ArrayList<Path>();
 		this.directions=new ArrayList<Boolean>();
@@ -45,6 +57,11 @@ public class Car implements Comparable<Car> {
 	}
 	Car(Location l,Location d){
         this.trailingDistance=0.4064;
+        intersectionBufferTime=trailingDistance/this.speed-0.1;
+        if(intersectionBufferTime<=0){
+            intersectionBufferTime=0;
+        }
+        intersectionOccupationTime=3;
         
 		this.myRoute=new ArrayList<Path>();
 		this.directions=new ArrayList<Boolean>();
@@ -61,8 +78,14 @@ public class Car implements Comparable<Car> {
 		this.setup(l,d);
 		
 	}
-    Car(double td){//FOR TESTING ONLY, DO NOT DELETE
-        this.trailingDistance=td;    }
+    Car(double td,double sp){//FOR TESTING ONLY, DO NOT DELETE
+        this.speed=sp;
+        this.trailingDistance=td;    
+    intersectionBufferTime=trailingDistance/this.speed-0.1;
+        if(intersectionBufferTime<=0){
+            intersectionBufferTime=0;
+        }
+        intersectionOccupationTime=3;}
     
     
     public double getSpeed(){

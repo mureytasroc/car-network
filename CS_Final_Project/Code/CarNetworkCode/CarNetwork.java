@@ -13,8 +13,8 @@ public class CarNetwork {//// ccc ensure no change of direction, heirarchy of ro
 		Path u=new Path(new Intersection(new Location(myGrid,40,700)),new Intersection(new Location(myGrid,700,700)),1);
 		Path p=new Path(new Intersection(new Location(myGrid,40,40)),new Intersection(new Location(myGrid,40,700)),2);
 		Path r=new Path(new Intersection(new Location(myGrid,700,40)),new Intersection(new Location(myGrid,700,700)),4);
-        /*Path rasdf=new Path(new Intersection(new Location(myGrid,30,0)),new Intersection(new Location(myGrid,800,800)),4);
-		Path pp=new Path(new Intersection(new Location(myGrid,50,400)),new Intersection(new Location(myGrid,750,430)),1);
+        Path rasdf=new Path(new Intersection(new Location(myGrid,30,0)),new Intersection(new Location(myGrid,800,800)),4);
+		/*Path pp=new Path(new Intersection(new Location(myGrid,50,400)),new Intersection(new Location(myGrid,750,430)),1);
 		Path rr=new Path(new Intersection(new Location(myGrid,200,0)),new Intersection(new Location(myGrid,800,800)),1);
 		Path rrr=new Path(new Intersection(new Location(myGrid,0,300)),new Intersection(new Location(myGrid,750,300)),1);
         Path xx=new Path(new Intersection(new Location(myGrid,200,0)),new Intersection(new Location(myGrid,800,550)),3);

@@ -10,8 +10,9 @@ public class Point implements Comparable{
         this.y=yIn;
     }
     public Point (Point p){
+        if(p!=null){
         this.x=p.getX();
-        this.y=p.getY();
+        this.y=p.getY();}
     }
     public double slope(Point p){
         if(p==null)
