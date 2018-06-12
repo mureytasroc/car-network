@@ -76,9 +76,9 @@ public class Occupation{
             end = new Point(enterTime+p.getDistance()/sp,0);
         }
         LineSegment curSeg=new LineSegment(start,end);
-        
+        System.out.println("line segs size="+EOlineSegs.size());
         if(EOlineSegs.size()==0){//if there are no existing occupations
-            
+        System.out.println("yipeeeeeeeeeee");
         this.lineSegs.add(curSeg);
         //System.out.println("hey"+curSeg);
             
@@ -119,6 +119,7 @@ public class Occupation{
         while(keep){
             counter++;
             if(counter>50){
+                System.out.println("Occupation 122");
                 this.endTime=Double.POSITIVE_INFINITY;
                     keep=false;
                 break;
@@ -128,8 +129,11 @@ public class Occupation{
             LineSegment collider=curSeg.first(EOlineSegs);
             
             //System.out.println("hey");
+            
             if (collider==null){
-                if(segReachedEnd){
+                keep=false;
+                lineSegs.add(curSeg);
+                /*if(segReachedEnd){
                     if(ppio==null){
                         Point csr = new Point(curSeg.rightEndPoint());
                         
@@ -152,6 +156,7 @@ public class Occupation{
                         }
                         if(breakOut){
                             this.endTime=Double.POSITIVE_INFINITY;
+                            System.out.println("156");
                             keep=false;
                             break;
                         }
@@ -197,23 +202,26 @@ public class Occupation{
                     endOfFollow=false;
                     segReachedEnd=true;
                     
-                }
+                }*/
             }
             else{
                 segReachedEnd=false;
                 //System.out.println(c.getTD());
                 if((collider.isOppositeSlope(curSeg))){
                     this.endTime=Double.POSITIVE_INFINITY;
+                    System.out.println(209);
                     keep=false;
                     break;
                 }
                 else if(curSeg.getSlope()<0&&collider.getSlope()<curSeg.getSlope()){
                     this.endTime=Double.POSITIVE_INFINITY;
+                    System.out.println(215);
                     keep=false;
                     break;
                 }
                 else if(curSeg.getSlope()>0&&collider.getSlope()>curSeg.getSlope()){
                     this.endTime=Double.POSITIVE_INFINITY;
+                    System.out.println(221);
                     keep=false;
                     break;
                 }
@@ -221,16 +229,20 @@ public class Occupation{
                     
                     Point collision=collider.getIntersection(curSeg);
                     Point holder=curSeg.endPointMinus(c.getBufferData().get(0), collider);
-                    if(!curSeg.isInRange(holder.getX())){
+                    /*if(!curSeg.isInRange(holder.getX())){
                         System.out.println("NO SPACE FOR PROPER TRAILING DISTANCE");
                         this.endTime=Double.POSITIVE_INFINITY;
+                        System.out.println(232);
                     keep=false;
                         break;
-                    }
-                    lineSegs.add(new LineSegment(curStart,holder));
-                    curStart=holder;
+                    }*/
+                    System.out.println(collision+" bla "+holder);
+                    lineSegs.add(new LineSegment(curStart,collision));
+                    curStart=collision;
                            temp = new Line(curStart,collider.getSlope());
-                        end=temp.getPointByX(collider.rightEndPoint().getX());//finishLine.getIntersection(temp);
+                        //end=temp.getPointByX(collider.rightEndPoint().getX());//
+                        end=finishLine.getIntersection(temp);
+                    if (end==null){System.out.println("null");}
                     curSeg=new LineSegment(curStart,end);
 
                     endOfFollow=true;

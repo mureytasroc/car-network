@@ -167,7 +167,8 @@ public class Path extends LineSegment{
         
         projected=this.possibleOccupation.get(possibleOccupation.size()-1).getEndTime()-enterTime;
         //this.getOther(origin).addPotentialOccupation(this,projected);
-        
+        System.out.println("projected: "+projected);
+        ExtraMethods.printLSarray(this.possibleOccupation.get(possibleOccupation.size()-1).getLS());
         return projected;
     }
     

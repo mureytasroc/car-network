@@ -69,9 +69,10 @@ public class Intersection extends Location implements Comparable{
 	}*/
     // In later implementations, source will be passed as a parameter to the getDistance method
     public void nodify(double source, Car c, Path inPath, double startTime) {//recursive
-        //System.out.println("ST: "+startTime);
-		if (source<=this.nodeValue) {
-            
+        System.out.println("I am nodifying");
+        
+		if (source<this.nodeValue) {
+            System.out.println("success since "+source +" < "+this.nodeValue);
             this.leadingPath=inPath;
 			nodeValue=source;
 			for (int i=0; i<this.myPaths.size();i++) {
@@ -96,6 +97,9 @@ public class Intersection extends Location implements Comparable{
                 //getDistance(c,this,source) //where this defines directionality
 			}
 		}
+        else{
+             System.out.println("failure since "+this.nodeValue +" < "+source);
+        }
 	}
 
      public Route prepareRoute(Intersection start, Car c, double startTime, int w){
@@ -171,7 +175,7 @@ public class Intersection extends Location implements Comparable{
 		return myGrid;
 	}
 	public void setup() {
-		this.nodeValue=Double.MAX_VALUE;
+		this.nodeValue=Double.POSITIVE_INFINITY;
 	}
     public Point getPoint(){
         return this.loc.getPoint();
