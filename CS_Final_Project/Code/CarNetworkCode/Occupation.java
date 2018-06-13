@@ -154,7 +154,7 @@ public class Occupation{
                         }
                         if(breakOut){
                             this.endTime=Double.POSITIVE_INFINITY;
-                            System.out.println("156");
+                            System.out.println("Occupation 156");
                             keep=false;
                             break;
                         }
@@ -207,19 +207,19 @@ public class Occupation{
                 //System.out.println(c.getTD());
                 if((collider.isOppositeSlope(curSeg))){
                     this.endTime=Double.POSITIVE_INFINITY;
-                    System.out.println(209);
+                    System.out.println("Occupation 209");
                     keep=false;
                     break;
                 }
                 else if(curSeg.getSlope()<0&&collider.getSlope()<curSeg.getSlope()){
                     this.endTime=Double.POSITIVE_INFINITY;
-                    System.out.println(215);
+                    System.out.println("Occupation 215");
                     keep=false;
                     break;
                 }
                 else if(curSeg.getSlope()>0&&collider.getSlope()>curSeg.getSlope()){
                     this.endTime=Double.POSITIVE_INFINITY;
-                    System.out.println(221);
+                    System.out.println("Occupation 221");
                     keep=false;
                     break;
                 }
@@ -242,7 +242,7 @@ public class Occupation{
                     if(holder==null){
                         System.out.println("NO SPACE FOR PROPER TRAILING DISTANCE");
                         this.endTime=Double.POSITIVE_INFINITY;
-                        System.out.println(232);
+                        System.out.println("Occupation 244");
                     keep=false;
                         break;
                     }

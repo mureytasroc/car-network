@@ -8,6 +8,7 @@ public class Car implements Comparable<Car> {
     private ArrayList<ArrayList<LineSegment>> speedProfile=new ArrayList<ArrayList<LineSegment>>();//speed profile for each
     private ArrayList<ArrayList<LineSegment>> usedOccupations=new ArrayList<ArrayList<LineSegment>>();
     private ArrayList<Path> usedOccupationsP=new ArrayList<Path>();
+    ArrayList<Double> ald=new ArrayList<Double>();//used for debugging
     private Route theRoute=new Route(this);
 	private Path curPath;
 	private double speed=500.0;
@@ -197,16 +198,17 @@ public class Car implements Comparable<Car> {
         }
     }
     public Route getOptimalPath() {
+        System.out.println("CHAR");
         
         this.clearOccupations();
         this.resetCarUsedOcc();
         
-        System.out.println("\n\n\n\n");
-        System.out.println("cccdebug");
+        //System.out.println("\n\n\n\n");
+        //System.out.println("cccdebug");
         for(int i=0;i<myGrid.getMyPaths().size();i++){
-            myGrid.getMyPaths().get(i).printOcc();
+            //myGrid.getMyPaths().get(i).printOcc();
         }
-        System.out.println("\n\n\n\n");
+        //System.out.println("\n\n\n\n");
         
         
         
@@ -234,10 +236,10 @@ p.cleanup();
         }
         if(endOrientation){this.start=curPath.getEnd();}
         else{this.start=curPath.getStart();}
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        //System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         this.start.nodify(startTime,this,null,startTime);
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("error is not in nodify");
+        //System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        //System.out.println("error is not in nodify");
         for (Intersection i: myGrid.getMyIntersections()) {
             i.update();
         }
@@ -250,11 +252,16 @@ p.cleanup();
             System.out.println("UNSOLVABLE");//CCC
         }
         //ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
-        System.out.println("destination: "+(Point)d1);
-        ArrayList<Double> ald;
+        //System.out.println("destination: "+(Point)d1);
+        ArrayList<Double> ald=new ArrayList<Double>();
         theRoute=d1.prepareRoute(this.start,this,this.startTime,0,ald);
+        ExtraMethods.printAL(ald);
+        System.out.print("SHTEEZIE ");
         theRoute.addIntersectionTimes(ald);
-        System.out.println("error is not in prepare route");
+        //System.out.println("error is not in prepare route");
+        
+        System.out.print("Times: ");
+        theRoute.printTimes();
         
         
         /*if (!startIsInt) {
@@ -344,6 +351,11 @@ return theRoute;
         for(int i=0;i<usedOccupations.size();i++){
             usedOccupationsP.get(i).removeLSOcc(usedOccupations.get(i));
         }
+    }
+    
+    public void addDouble(Double d){
+        System.out.println("DAUDU"+d);
+        ald.add(d);
     }
     
 

@@ -91,4 +91,7 @@ public class Route{
     public void addIntersectionTimes(ArrayList<Double> ald){
         this.intersectionTime=ald;
     }
+    public void printTimes(){
+        ExtraMethods.printAL(this.intersectionTime);
+    }
 }
