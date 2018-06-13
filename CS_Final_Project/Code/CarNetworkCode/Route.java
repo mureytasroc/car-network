@@ -22,7 +22,7 @@ public class Route{
         myGrid=c.getGrid();
     }
     public boolean advance(){
-        if(done){//offset=myRoute.get(inc).getSpeedMap().get(0).getBeginning()-myGrid.getTime(); done=false;
+        if(done){offset=myRoute.get(inc).getSpeedMap().get(0).getBeginning()-myGrid.getTime(); done=false;
                 //System.out.println("work");
                 }
         if(myRoute.get(inc).advance(0)){
