@@ -25,7 +25,7 @@ public class Route{
         if(done){offset=myRoute.get(inc).getSpeedMap().get(0).getBeginning()-myGrid.getTime(); done=false;
                 //System.out.println("work");
                 }
-        if(myRoute.get(inc).advance(0)){
+        if(myRoute.get(inc).advance(offset)){
             //System.out.println(myRoute.get(inc));
             inc++;
             done=true;

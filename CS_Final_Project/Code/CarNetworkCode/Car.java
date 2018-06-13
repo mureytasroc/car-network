@@ -10,7 +10,7 @@ public class Car implements Comparable<Car> {
     private ArrayList<Path> usedOccupationsP=new ArrayList<Path>();
     private Route theRoute=new Route(this);
 	private Path curPath;
-	private double speed=500.0;
+	private double speed=50.0;
 	private Destination destination;
     private Intersection start;
 	private int inc=0;
@@ -236,6 +236,7 @@ p.cleanup();
         else{this.start=curPath.getStart();}
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         this.start.nodify(startTime,this,null,startTime);
+        StdDraw.show();
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         System.out.println("error is not in nodify");
         for (Intersection i: myGrid.getMyIntersections()) {
