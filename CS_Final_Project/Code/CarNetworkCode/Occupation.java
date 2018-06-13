@@ -239,12 +239,18 @@ public class Occupation{
                     if (holder==null){
                         System.out.println("holder is null");
                     }
-                    if(holder==null||!curSeg.isInRange(holder.getX())){
+                    if(holder==null){
                         System.out.println("NO SPACE FOR PROPER TRAILING DISTANCE");
                         this.endTime=Double.POSITIVE_INFINITY;
                         System.out.println(232);
                     keep=false;
                         break;
+                    }
+                    else if(!curSeg.isInRange(holder.getX())){
+                        System.out.println("NO SPACE FOR PROPER TRAILING DISTANCE");
+                        this.endTime=Double.POSITIVE_INFINITY;
+                    keep=false;
+                        break
                     }
                     lineSegs.add(new LineSegment(curStart,holder));
                     curStart=holder;
