@@ -99,17 +99,9 @@ public class Occupation{
         else{
   //there are existing occupations
         Point curStart=new Point(start);
-<<<<<<< HEAD
             
         
 
-=======
-            if(curStart.getX()<enterTime||curStart.getY()>p.getDistance()){
-                this.lineSegs.add(curSeg);
-                endTime=end.getX();
-            }
-            else{
->>>>>>> parent of 2f721b0... m
         boolean keep=true;
             Line finishLine;
             if(dir){
