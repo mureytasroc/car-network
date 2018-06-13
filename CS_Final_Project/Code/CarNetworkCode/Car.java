@@ -198,7 +198,17 @@ public class Car implements Comparable<Car> {
     }
     public Route getOptimalPath() {
         
+        this.clearOccupations();
         this.resetCarUsedOcc();
+        
+        System.out.println("\n\n\n\n");
+        System.out.println("cccdebug");
+        for(int i=0;i<myGrid.getMyPaths().size();i++){
+            myGrid.getMyPaths().get(i).printOcc();
+        }
+        System.out.println("\n\n\n\n");
+        
+        
         
         this.startTime=this.myGrid.getTime();//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
      //System.out.println(this.myGrid.getTime());

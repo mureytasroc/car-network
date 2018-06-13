@@ -306,6 +306,9 @@ public class Occupation{
     public void removeLS(LineSegment ls){
         this.lineSegs.remove(ls);
     }
+    public String toString(){
+        return ExtraMethods.getLSarrayString(this.lineSegs);
+    }
     
     
 }

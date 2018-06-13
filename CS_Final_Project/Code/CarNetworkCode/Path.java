@@ -394,5 +394,9 @@ public class Path extends LineSegment{
         }
     }
     
+    public void printOcc(){
+        System.out.println(this.occupation);
+    }
+    
     
 }
