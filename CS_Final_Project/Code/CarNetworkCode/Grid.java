@@ -19,12 +19,12 @@ public class Grid {
     private double time;//in seconds
     private int SadiTime=0;//in frame units
 
-	Grid(){
+	public Grid(){
         this.janTime=System.currentTimeMillis();
         this.time=(double)(System.currentTimeMillis()-janTime)/1000.0;
 		StdDraw.setCanvasSize(700,700);
-		StdDraw.setXscale(0,800);
-        StdDraw.setYscale(0,800);
+		StdDraw.setXscale(0,150);
+        StdDraw.setYscale(0,150);
 		StdDraw.enableDoubleBuffering();
 		this.myCars = new ArrayList<Car>();
 		this.deleteQueue = new ArrayList<Car>();
@@ -36,6 +36,7 @@ public class Grid {
 	}
 	
 	public void setup() {
+        
         Collections.sort(myCars);
     //time=System.nanoTime();
 	this.time=(double)(System.currentTimeMillis()-janTime)/1000.0;
@@ -59,14 +60,20 @@ public class Grid {
 	
 	 //This is the update loop like in FishTank
 }
+        
 	for(int i=myIntersections.size()-1;i>=0;i--) {
 		for (int j=0;j<i;j++) {
 			myIntersections.get(i).tryToEat(myIntersections.get(j));
 		}
 	}
 	this.removeDelayedInt();
-	
-	
+    /*for(Path p: myPaths) {
+        p.show();
+		System.out.println((Location)(p.getStart())+" , "+(Location)(p.getEnd()));
+	}
+        StdDraw.show();
+	while(System.currentTimeMillis()>0){}*/
+        
 }
 	public void removeDelayedInt() {
 		
@@ -78,15 +85,19 @@ public class Grid {
     
     
 	public void update() {
+         
         Collections.sort(myCars);
         this.time=(double)(System.currentTimeMillis()-janTime)/1000.0;
         
         
             
 		this.show();
+        
 		for(int i=myPaths.size()-1;i>=0;i--) {
-		myPaths.get(i).update();
+		  myPaths.get(i).update();
 		}
+        System.out.println("pathsize: "+myPaths.size());
+        //StdDraw.show();
 		for(int i=myIntersections.size()-1;i>=0;i--) {
 			myIntersections.get(i).update();
 			//System.out.println(myIntersections.get(i).nodeValue());

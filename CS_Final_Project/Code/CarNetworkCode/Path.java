@@ -217,9 +217,9 @@ public class Path extends LineSegment{
 	public double getSlope() {
 		return( (this.end.getLoc().getPos()[1]-this.start.getLoc().getPos()[1])/(this.end.getLoc().getPos()[0]-this.start.getLoc().getPos()[0]));
 	}
-	private void show() {
+	public void show() {
 		//StdDraw.setPenColor((int)(Math.random()*200),(int)(Math.random()*200),(int)(Math.random()*200));
-		StdDraw.setPenRadius(0.01);
+		StdDraw.setPenRadius(0.1);
 		StdDraw.setPenColor(0,(int)(255*this.speedLim/5.0),(int)(255*this.speedLim/5.0));
 		StdDraw.line(this.start.getLoc().getPos()[0], this.start.getLoc().getPos()[1], this.end.getLoc().getPos()[0], this.end.getLoc().getPos()[1]);
 		StdDraw.setPenColor(0,255,255);

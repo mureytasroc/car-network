@@ -210,7 +210,7 @@ public class Intersection extends Location implements Comparable{
 	}
 	public void show() {
 		StdDraw.setPenColor(col);
-		StdDraw.filledRectangle(this.loc.getPos()[0], this.loc.getPos()[1], 13, 13);
+		StdDraw.filledRectangle(this.loc.getPos()[0], this.loc.getPos()[1], 2, 2);
 		if(!this.edible) {StdDraw.setPenColor(255,255,0); StdDraw.filledRectangle(this.loc.getPos()[0], this.loc.getPos()[1], 15, 15);}
 		StdDraw.setPenColor(0,0,0);
         StdDraw.setPenRadius(0.03);

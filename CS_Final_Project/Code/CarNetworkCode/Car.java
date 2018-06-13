@@ -200,7 +200,7 @@ public class Car implements Comparable<Car> {
      //System.out.println(this.myGrid.getTime());
 for (Intersection i: myGrid.getMyIntersections()) {
 i.setup();
-}
+}       
         for (Path p: myGrid.getMyPaths()) {
 p.cleanup();
 }
