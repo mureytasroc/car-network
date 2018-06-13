@@ -185,7 +185,7 @@ public class Path extends LineSegment{
         
     }*/
     
-    public ArrayList<LineSegment> confirm(boolean direction, double startTime){//add pio
+    public ArrayList<LineSegment> confirm(Car c, boolean direction, double startTime){//add pio
         //c.setPathOccupation(pathNum,this.possibleOccupation);
         ArrayList<Occupation> dirRightPaths = new ArrayList<Occupation>();
         for(int i=0;i<possibleOccupation.size();i++){
@@ -209,10 +209,8 @@ public class Path extends LineSegment{
         this.occupation.add(closestOcc);//WTF RETURNED THIS.OCCUPATION
         ArrayList<LineSegment> alls = new ArrayList<LineSegment>(closestOcc.getLS());
         PIO pio = closestOcc.getPio();
-        System.out.println(" 212:" + closestOcc.getEndTime());
-        System.out.println(pio);
-        System.out.println("print+ "+pio.getIntersection());
         pio.getIntersection().confirmPIO(pio);
+        c.addCarUsedOcc(closestOcc, pio, this);
         this.confirmedOccupation=this.occupation;//confirmedOcc is only for debugging
         return alls;///WTF why return lineSeg
         
@@ -389,6 +387,12 @@ public class Path extends LineSegment{
     }
 
     public Grid getGrid(){return this.myGrid;}
+    
+    public void removeLSOcc(ArrayList<LineSegment> ls){
+        for(int i=0;i<ls.size();i++){
+            this.occupation.removeLS(ls.get(i));
+        }
+    }
     
     
 }

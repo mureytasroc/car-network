@@ -303,6 +303,9 @@ public class Occupation{
     public void addLS(LineSegment ls){
         lineSegs.add(new LineSegment(ls));
     }
+    public void removeLS(LineSegment ls){
+        this.lineSegs.remove(ls);
+    }
     
     
 }

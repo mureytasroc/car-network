@@ -123,7 +123,7 @@ public class Intersection extends Location implements Comparable{
             //System.out.println(myRoute.getRoute().size());
             //System.out.println(nodeValue()+" and "+direction);
             //this.leadingPath.printData();
-            myRoute.addModule(new RouteModule(this.leadingPath.confirm(direction,startTime),this.leadingPath,direction,c));
+            myRoute.addModule(new RouteModule(this.leadingPath.confirm(c, direction,startTime),this.leadingPath,direction,c));
             //System.out.println("hasdfk;hk"+this.leadingPath);
             return myRoute;
         }

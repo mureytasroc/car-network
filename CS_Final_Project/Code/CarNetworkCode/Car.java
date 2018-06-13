@@ -5,7 +5,9 @@ public class Car implements Comparable<Car> {
 	private Location loc;
 	private ArrayList<Path> myRoute;
 	private ArrayList<Boolean> directions;
-    private ArrayList<ArrayList<LineSegment>> speedProfile=new ArrayList<ArrayList<LineSegment>>();//speed profile for each 
+    private ArrayList<ArrayList<LineSegment>> speedProfile=new ArrayList<ArrayList<LineSegment>>();//speed profile for each
+    private ArrayList<ArrayList<LineSegment>> usedOccupations=new ArrayList<ArrayList<LineSegment>>();
+    private ArrayList<Path> usedOccupationsP=new ArrayList<Path>();
     private Route theRoute=new Route(this);
 	private Path curPath;
 	private double speed=500.0;
@@ -196,6 +198,8 @@ public class Car implements Comparable<Car> {
     }
     public Route getOptimalPath() {
         
+        this.resetCarUsedOcc();
+        
         this.startTime=this.myGrid.getTime();//set start time to be 3 seconds from query time -- we can play with this delay as we test our system
      //System.out.println(this.myGrid.getTime());
 for (Intersection i: myGrid.getMyIntersections()) {
@@ -232,16 +236,12 @@ p.cleanup();
         Intersection d2=destination.getInts().get(1);
         //this.directions = new ArrayList<Boolean>();
         
-        if(Math.abs(d1.nodeValue())>Double.MAX_VALUE-10000){
+        if(d1.nodeValue()==Double.POSITIVE_INFINITY){
             System.out.println("UNSOLVABLE");//CCC
         }
-        
         //ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
         System.out.println("destination: "+(Point)d1);
         theRoute=d1.prepareRoute(this.start,this,this.startTime,0);
-        if(theRoute.getPaths().size()==0){
-            System.out.println("unsolvable, no paths in route")
-        }
         System.out.println("error is not in prepare route");
         
         
@@ -309,6 +309,30 @@ return theRoute;
         }
 		
 	}
+    
+    public void addCarUsedOcc(Occupation occ, PIO pio, Path p){
+        ArrayList<LineSegment> addor = new ArrayList<LineSegment>();
+        ArrayList<LineSegment> ls1 = occ.getLS();
+        LineSegment ls2 = pio.getLS();
+        for(int i=0;i<ls1.size();i++){
+            addor.add(ls1.get(i));
+        }
+        addor.add(ls2);
+        
+        usedOccupations.add(addor);
+        usedOccupationsP.add(p);
+    }
+        
+        public void resetCarUsedOcc(){
+            this.usedOccupations=new ArrayList<ArrayList<LineSegment>>();
+            usedOccupationsP=new ArrayList<Path>();
+        }
+    
+    public void clearOccupations(){
+        for(int i=0;i<usedOccupations.size();i++){
+            usedOccupationsP.get(i).removeLSOcc(usedOccupations.get(i));
+        }
+    }
     
 
 }
