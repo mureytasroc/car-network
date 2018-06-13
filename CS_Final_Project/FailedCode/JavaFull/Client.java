@@ -1,3 +1,4 @@
+// A Java program for a Client
 import java.net.*;
 import java.io.*;
 
@@ -5,7 +6,7 @@ public class Client
 {
     // initialize socket and input output streams
     private Socket socket            = null;
-    private DataInputStream  input   = null;
+    private DataInputStream dIn   = null;
     private OutputStream out     = null;
 
     // constructor to put ip address and port
@@ -18,7 +19,7 @@ public class Client
             System.out.println("Connected");
 
             // takes input from terminal
-            input  = new DataInputStream(System.in);
+            dIn = new DataInputStream(socket.getInputStream());
 
             // sends output to the socket
             out    = new DataOutputStream(socket.getOutputStream());
@@ -34,15 +35,21 @@ public class Client
 
         // string to read message from input
         String line = "";
+        String toSend="gah";
 
         // keep reading until "Over" is input
-        while (!line.equals("Over"))
+        while (toSend.length()>0)
         {
+            //System.out.println("lll");
             try
             {
-                line = input.readLine();
-    byte[] b = line.getBytes();
+                line = dIn.readLine();
+                
+    byte[] b = toSend.getBytes();
+                toSend="";
                 out.write(b);
+                
+                System.out.println(line);
             }
             catch(IOException i)
             {
@@ -53,7 +60,7 @@ public class Client
         // close the connection
         try
         {
-            input.close();
+            dIn.close();
             out.close();
             socket.close();
         }
@@ -65,6 +72,6 @@ public class Client
 
     public static void main(String args[])
     {
-        Client client = new Client("192.168.1.13", 5000);
+        Client client = new Client("192.168.1.237", 5000);
     }
 }
