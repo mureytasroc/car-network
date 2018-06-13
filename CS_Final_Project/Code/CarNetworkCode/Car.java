@@ -8,7 +8,6 @@ public class Car implements Comparable<Car> {
     private ArrayList<ArrayList<LineSegment>> speedProfile=new ArrayList<ArrayList<LineSegment>>();//speed profile for each
     private ArrayList<ArrayList<LineSegment>> usedOccupations=new ArrayList<ArrayList<LineSegment>>();
     private ArrayList<Path> usedOccupationsP=new ArrayList<Path>();
-    ArrayList<Double> ald=new ArrayList<Double>();//used for debugging
     private Route theRoute=new Route(this);
 	private Path curPath;
 	private double speed=500.0;
@@ -206,7 +205,11 @@ public class Car implements Comparable<Car> {
         //System.out.println("\n\n\n\n");
         //System.out.println("cccdebug");
         for(int i=0;i<myGrid.getMyPaths().size();i++){
-            //myGrid.getMyPaths().get(i).printOcc();
+            System.out.println("HERERER");
+            myGrid.getMyPaths().get(i).removeOcc();
+            myGrid.getMyPaths().get(i).printOcc();
+            System.out.println("ender");
+            
         }
         //System.out.println("\n\n\n\n");
         
@@ -255,13 +258,6 @@ p.cleanup();
         //System.out.println("destination: "+(Point)d1);
         ArrayList<Double> ald=new ArrayList<Double>();
         theRoute=d1.prepareRoute(this.start,this,this.startTime,0,ald);
-        ExtraMethods.printAL(ald);
-        System.out.print("SHTEEZIE ");
-        theRoute.addIntersectionTimes(ald);
-        //System.out.println("error is not in prepare route");
-        
-        System.out.print("Times: ");
-        theRoute.printTimes();
         
         
         /*if (!startIsInt) {
@@ -355,7 +351,7 @@ return theRoute;
     
     public void addDouble(Double d){
         System.out.println("DAUDU"+d);
-        ald.add(d);
+        //ald.add(d);
     }
     
 
