@@ -240,7 +240,7 @@ p.cleanup();
         System.out.println("destination: "+(Point)d1);
         theRoute=d1.prepareRoute(this.start,this,this.startTime,0);
         if(theRoute.getPaths().size()==0){
-            System.out.println("unsolvable, no paths in route");
+            System.out.println("unsolvable, no paths in route")
         }
         System.out.println("error is not in prepare route");
         
