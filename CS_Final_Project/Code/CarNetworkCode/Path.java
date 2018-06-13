@@ -10,8 +10,12 @@ public class Path extends LineSegment{
     private ArrayList<Occupation> possibleOccupation = new ArrayList<Occupation>();
     private Occupation confirmedOccupation;
     private double startT=-1;
+<<<<<<< HEAD
     ArrayList<String> savedD=new ArrayList<String>();
     ArrayList<PIO> pioList=new ArrayList<PIO>();
+=======
+    double savedD=-1;
+>>>>>>> parent of 2f721b0... m
 	
 	//ArrayList<Car> myCars; //Experimental -- should each path have a list of cars? prob no
 	
@@ -174,7 +178,7 @@ public class Path extends LineSegment{
     
     /*public void confirmPossibleOccupation(Car c, int pathNum, boolean direction){
         
-        //System.out.println(startT);
+        System.out.println(startT);
         
         //c.setPathOccupation(pathNum,this.possibleOccupation);
         this.occupation.add(possibleOccupation);
@@ -359,12 +363,12 @@ public class Path extends LineSegment{
 		
 	}
     
-    public void saveData(String s){
-        this.savedD.add(s);
+    public void saveData(double s){
+        this.savedD=s;
     }
     
     public void printData(){
-        System.out.println(savedD);
+        System.out.println("Path327, "+savedD);
     }
     public void cleanup(){
         pioList=new ArrayList<PIO>();

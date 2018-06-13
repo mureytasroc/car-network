@@ -84,6 +84,7 @@ public class Intersection extends Location implements Comparable{
               direction=Boolean.valueOf(true);
             }
             
+<<<<<<< HEAD
                 if(source==0){
                     //System.out.println("LLL");
                 }
@@ -93,6 +94,10 @@ public class Intersection extends Location implements Comparable{
                 
                 
                 p.getOther(this).nodify((nodeValue+p.getTime(c,this,direction,source)),c,p,startTime);
+=======
+                p.saveData(source);
+                p.getOther(this).nodify((nodeValue+p.getTime(c,this,direction,startTime+source)),c,p,startTime);
+>>>>>>> parent of 2f721b0... m
                 
                 //getDistance(c,this,source) //where this defines directionality
 			}
@@ -127,8 +132,12 @@ public class Intersection extends Location implements Comparable{
         
             //System.out.println(myRoute.getRoute().size());
             //System.out.println(nodeValue()+" and "+direction);
+<<<<<<< HEAD
             //this.leadingPath.printData();
             myRoute.addModule(new RouteModule(this.leadingPath.confirm(c, direction,startTime),this.leadingPath,direction,c));
+=======
+            myRoute.addModule(new RouteModule(this.leadingPath.confirm(),this.leadingPath,direction,c));
+>>>>>>> parent of 2f721b0... m
             //System.out.println("hasdfk;hk"+this.leadingPath);
             return myRoute;
         }
@@ -150,7 +159,7 @@ public class Intersection extends Location implements Comparable{
           	if(leadingPath.getEnd()==this){
               direction=Boolean.valueOf(true);
             }
-            
+            this.leadingPath.printData();
             this.leadingPath.confirmPossibleOccupation(c,myList.size()-1,direction);
             //new Occupation(this.leadingPath,this.leadingPath.getOther(this).nodeValue(),direction,c);
           dirs.add(direction);
