@@ -10,7 +10,7 @@ public class Car implements Comparable<Car> {
     private ArrayList<Path> usedOccupationsP=new ArrayList<Path>();
     private Route theRoute=new Route(this);
 	private Path curPath;
-	private double speed=500.0;
+	private double speed=50.0;
 	private Destination destination;
     private Intersection start;
 	private int inc=0;

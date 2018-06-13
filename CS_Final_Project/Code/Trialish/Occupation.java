@@ -57,12 +57,7 @@ public class Occupation{
     public Occupation(Path p,Occupation existingOcc,double enterTime,Boolean dir,double sp, Car c){ //continuous occupation constructor from Path getTime
         this.entarTime=enterTime;
         continuous=true;
-<<<<<<< HEAD
         ArrayList<LineSegment>EOlineSegs=new ArrayList<LineSegment>(existingOcc.getLS());
-=======
-        lineSegs=new ArrayList<LineSegment>();
-        EOlineSegs=existingOcc.getLS();
->>>>>>> parent of 60add33... fdsa
         this.beginTime=enterTime;
         this.direction=dir;
         this.myPath=p;
