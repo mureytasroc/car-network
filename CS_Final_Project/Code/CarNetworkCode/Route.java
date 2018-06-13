@@ -6,6 +6,7 @@ public class Route{
     private boolean done=true;
     private double offset;
     private Grid myGrid;
+    private ArrayList<Double> intersectionTime=new ArrayList<Double>();
     public Route(Car c,ArrayList<RouteModule> a){
         this.c=c;
         myRoute=new ArrayList<RouteModule>(a);
@@ -25,7 +26,7 @@ public class Route{
         if(done){offset=myRoute.get(inc).getSpeedMap().get(0).getBeginning()-myGrid.getTime(); done=false;
                 //System.out.println("work");
                 }
-        if(myRoute.get(inc).advance(offset)){
+        if(myRoute.get(inc).advance(0)){
             //System.out.println(myRoute.get(inc));
             inc++;
             done=true;
@@ -86,5 +87,8 @@ public class Route{
             myRoute.get(i).getPath().getPO().printEnterTime();}
         }
         System.out.println("\n\n\n\n");
+    }
+    public void addIntersectionTimes(ArrayList<Double> ald){
+        this.intersectionTime=ald;
     }
 }
