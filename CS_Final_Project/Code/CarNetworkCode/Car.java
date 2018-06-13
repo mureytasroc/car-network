@@ -232,12 +232,16 @@ p.cleanup();
         Intersection d2=destination.getInts().get(1);
         //this.directions = new ArrayList<Boolean>();
         
-        if(d1.nodeValue()==Double.POSITIVE_INFINITY){
+        if(Math.abs(d1.nodeValue())>Double.MAX_VALUE-10000){
             System.out.println("UNSOLVABLE");//CCC
         }
+        
         //ArrayList<Path> path = destination.collectRoute(this.start,directions,this,startTime);
         System.out.println("destination: "+(Point)d1);
         theRoute=d1.prepareRoute(this.start,this,this.startTime,0);
+        if(theRoute.getPaths().size()==0){
+            System.out.println("unsolvable, no paths in route")
+        }
         System.out.println("error is not in prepare route");
         
         

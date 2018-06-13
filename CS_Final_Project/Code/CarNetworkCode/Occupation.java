@@ -250,7 +250,7 @@ public class Occupation{
                         System.out.println("NO SPACE FOR PROPER TRAILING DISTANCE");
                         this.endTime=Double.POSITIVE_INFINITY;
                     keep=false;
-                        break
+                        break;
                     }
                     lineSegs.add(new LineSegment(curStart,holder));
                     curStart=holder;

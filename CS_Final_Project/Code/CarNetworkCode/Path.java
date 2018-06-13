@@ -209,6 +209,9 @@ public class Path extends LineSegment{
         this.occupation.add(closestOcc);//WTF RETURNED THIS.OCCUPATION
         ArrayList<LineSegment> alls = new ArrayList<LineSegment>(closestOcc.getLS());
         PIO pio = closestOcc.getPio();
+        System.out.println(" 212:" + closestOcc.getEndTime());
+        System.out.println(pio);
+        System.out.println("print+ "+pio.getIntersection());
         pio.getIntersection().confirmPIO(pio);
         this.confirmedOccupation=this.occupation;//confirmedOcc is only for debugging
         return alls;///WTF why return lineSeg
