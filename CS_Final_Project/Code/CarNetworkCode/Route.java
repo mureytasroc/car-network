@@ -38,8 +38,8 @@ public class Route{
         if (inc==myRoute.size()){
             inc=0;
             this.clear();
-            //System.out.println("done");
-            
+            //System.out.println("route over");
+        
             return true;
         }
         return false;

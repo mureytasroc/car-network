@@ -76,9 +76,9 @@ public class Occupation{
             end = new Point(enterTime+p.getDistance()/sp,0);
         }
         LineSegment curSeg=new LineSegment(start,end);
-        System.out.println("line segs size="+EOlineSegs.size());
+        
         if(EOlineSegs.size()==0){//if there are no existing occupations
-        System.out.println("yipeeeeeeeeeee");
+            
         this.lineSegs.add(curSeg);
         //System.out.println("hey"+curSeg);
             
@@ -129,11 +129,9 @@ public class Occupation{
             LineSegment collider=curSeg.first(EOlineSegs);
             
             //System.out.println("hey");
-            
             if (collider==null){
                 keep=false;
-                lineSegs.add(curSeg);
-                /*if(segReachedEnd){
+                if(segReachedEnd){
                     if(ppio==null){
                         Point csr = new Point(curSeg.rightEndPoint());
                         
@@ -202,7 +200,7 @@ public class Occupation{
                     endOfFollow=false;
                     segReachedEnd=true;
                     
-                }*/
+                }
             }
             else{
                 segReachedEnd=false;
@@ -228,21 +226,30 @@ public class Occupation{
                 else{
                     
                     Point collision=collider.getIntersection(curSeg);
+                    if (collider==null){System.out.println("collider is null");}
+                    if (collision==null){
+                        System.out.println("collision is null");
+                    }
+                                    
+                    System.out.println(c.getBufferData());               
                     Point holder=curSeg.endPointMinus(c.getBufferData().get(0), collider);
-                    /*if(!curSeg.isInRange(holder.getX())){
+                    if (curSeg==null){
+                        System.out.println("curSeg is null");
+                    }
+                    if (holder==null){
+                        System.out.println("holder is null");
+                    }
+                    if(holder==null||!curSeg.isInRange(holder.getX())){
                         System.out.println("NO SPACE FOR PROPER TRAILING DISTANCE");
                         this.endTime=Double.POSITIVE_INFINITY;
                         System.out.println(232);
                     keep=false;
                         break;
-                    }*/
-                    System.out.println(collision+" bla "+holder);
-                    lineSegs.add(new LineSegment(curStart,collision));
-                    curStart=collision;
+                    }
+                    lineSegs.add(new LineSegment(curStart,holder));
+                    curStart=holder;
                            temp = new Line(curStart,collider.getSlope());
-                        //end=temp.getPointByX(collider.rightEndPoint().getX());//
-                        end=finishLine.getIntersection(temp);
-                    if (end==null){System.out.println("null");}
+                        end=temp.getPointByX(collider.rightEndPoint().getX());//finishLine.getIntersection(temp);
                     curSeg=new LineSegment(curStart,end);
 
                     endOfFollow=true;

@@ -221,11 +221,11 @@ public class Path extends LineSegment{
 		//StdDraw.setPenColor((int)(Math.random()*200),(int)(Math.random()*200),(int)(Math.random()*200));
 		StdDraw.setPenRadius(0.1);
 		StdDraw.setPenColor(0,(int)(255*this.speedLim/5.0),(int)(255*this.speedLim/5.0));
-		StdDraw.line(this.start.getLoc().getPos()[0], this.start.getLoc().getPos()[1], this.end.getLoc().getPos()[0], this.end.getLoc().getPos()[1]);
+		//StdDraw.line(this.start.getLoc().getPos()[0], this.start.getLoc().getPos()[1], this.end.getLoc().getPos()[0], this.end.getLoc().getPos()[1]);
 		StdDraw.setPenColor(0,255,255);
 		double[] x = { this.start.getLoc().getPos()[0],  (this.start.getLoc().getPos()[0]+this.end.getLoc().getPos()[0])/2-40,this.end.getLoc().getPos()[0], (this.start.getLoc().getPos()[0]+this.end.getLoc().getPos()[0])/2 };
         double[] y = { this.start.getLoc().getPos()[1],(this.start.getLoc().getPos()[1]+this.end.getLoc().getPos()[1])/2+4, this.end.getLoc().getPos()[1], (this.start.getLoc().getPos()[1]+this.end.getLoc().getPos()[1])/2};
-        //StdDraw.filledPolygon(x, y);
+        StdDraw.filledPolygon(x, y);
 	}
 	public Intersection getStart() {
 		return this.start;
@@ -329,7 +329,12 @@ public class Path extends LineSegment{
 		System.out.println("("+x1+","+y1+") to ("+x2+","+y2+")");
 		System.out.println("("+px1+","+py1+") to ("+px2+","+py2+")");
 		}*/
-		if(    ((x1>x&&x>x2)||(x2>x&&x>x1)||(x2==x&&x==x1))  &&  ((px1>x&&x>px2)||(px2>x&&x>px1)||(px2==x&&x==px1))  &&  ((y1>y&&y>y2)||(y2>y&&y>y1)||(y2==y&&y==y1)) &&  ((py1>y&&y>py2)||(py2>y&&y>py1)||(py2==y&&y==py1))  ) {
+        System.out.println();
+        System.out.print(((Point)new Location(myGrid,x,y)+" ka "));
+        System.out.print("("+x1+","+y1+")-"+"("+x2+","+y2+") and "+ "("+px1+","+py1+")-"+"("+px2+","+py2+")");
+		/*if(    ((x1>x&&x>x2)||(x2>x&&x>x1)||(x2==x&&x==x1))  &&  ((px1>x&&x>px2)||(px2>x&&x>px1)||(px2==x&&x==px1))  &&  ((y1>y&&y>y2)||(y2>y&&y>y1)||(y2==y&&y==y1)) &&  ((py1>y&&y>py2)||(py2>y&&y>py1)||(py2==y&&y==py1))  ) {*/
+        if(    ((x1>=x&&x>=x2)||(x2>=x&&x>=x1))  &&  ((px1>=x&&x>=px2)||(px2>=x&&x>=px1))  &&  ((y1>=y&&y>=y2)||(y2>=y&&y>=y1)) &&  ((py1>=y&&y>=py2)||(py2>=y&&y>=py1))  ) {
+            System.out.print(" success");
 		Location l=new Location(myGrid,x,y);
 		Intersection i=new Intersection(l);
 		crosses.add(i);
@@ -349,6 +354,7 @@ public class Path extends LineSegment{
 			for (int i=0; i<crosses.size()-1;i++) {
 				myGrid.delayAddPath(new Path(crosses.get(i),crosses.get(i+1),sl,false));
 			}
+        System.out.println("I have "+crosses.size()+ " crosses");
 		
 	}
     
