@@ -25,6 +25,9 @@ class LineSegment implements Comparable{
             this.p2=new Point(p1.getX()+dX,p1.getY()+dY);
         }
     }
+    public double getDistance(){
+      return p1.getDist(p2);
+    }
     public Point getP1(){
         return this.p1;
     }

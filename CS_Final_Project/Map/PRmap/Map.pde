@@ -4,11 +4,13 @@ import java.util.*;
 class Map{
     ArrayList<Path> myPaths;
     ArrayList<Intersection> myIntersections;
+    ArrayList<Car>myCars;
     private double lineWidth;
     
     
     public Map(double lw){
       this.lineWidth=lw;
+        myCars=new ArrayList<Car>();
         myPaths=new ArrayList<Path>();
         myIntersections=new ArrayList<Intersection>();
     }
@@ -126,5 +128,8 @@ class Map{
         }
 
 
+    }
+    public void addCar(Car c){
+      this.myCars.add(c);
     }
 }

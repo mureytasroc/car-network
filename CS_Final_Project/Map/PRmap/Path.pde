@@ -9,17 +9,32 @@ class Path{
     private double wid;
     private Map map;
     private ArrayList<Marker> myMarks;
+    private Intersection start;
+    private Intersection end;
     
     Path(Map m,Point p1, Point p2,double w){
         this.myMarks=new ArrayList<Marker>();
         this.map=m;
         this.wid=w;
         this.lineSeg=new LineSegment(p1,p2);
+        this.start;
+        this.end;
         this.leftColor = new Color(255,0,0);
         this.rightColor = new Color(0,255,0);
         this.lmColor = new Color(255,0,255);
         this.rmColor = new Color(0,255,255);
     }
+    public double getTime(Car c,boolean direction,double source,this){
+      return this.lineSeg.getDistance()/c.getSpeed();
+    }
+    public Intersection getStart(){
+      return this.start;
+    }
+    
+    public Intersection getEnd(){
+      return this.start;
+    }
+    
     public void show(){
       
       
@@ -77,5 +92,13 @@ class Path{
       myMarks.get(i).drawMarker(); 
      }
     }
+    public Intersection getOther(Intersection i) {
+    if(i==this.start) {
+      return this.end;
+    }
+    else {
+      return this.start;
+    }
+  }
     
 }

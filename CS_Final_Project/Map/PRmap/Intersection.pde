@@ -3,6 +3,8 @@ public class Intersection{
   ArrayList<Path> myPaths;
   ArrayList<Marker> myMarkers;
   Map map;
+  Path leadingPath;
+  double nodeValue=Double.MAX_VALUE;
  Intersection(Map m, Point p, ArrayList<Path> myp){
    this.map=m;
    myMarkers = new ArrayList<Marker>();
@@ -11,6 +13,9 @@ public class Intersection{
  }
  public void addPath(Path p){
    myPaths.add(p);
+ }
+ public Point getPoint(){
+   return point;
  }
  public void setMarkers(double dist){
 
@@ -45,6 +50,24 @@ public class Intersection{
      myMarkers.get(myMarkers.size()-1).drawMarker();
    }
    
+ }
+ 
+ public void nodify(double source, Car c, Path inPath){
+    if (source<this.nodeValue) {
+            this.leadingPath=inPath;
+      nodeValue=source;
+      for (int i=0; i<this.myPaths.size();i++) {
+        Path p=myPaths.get(i);
+ 
+                Boolean direction=Boolean.valueOf(false);
+            if(p.getStart()==this){
+              direction=Boolean.valueOf(true);
+            }
+                p.getOther(this).nodify((nodeValue+p.getTime(c,direction,source)),c,p);
+      }
+    }
+        else{
+        } 
  }
  
 
