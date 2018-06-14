@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.awt.*;
 
-class Point implements Comparable{
+class Point{ //implements Comparable{
     private double x;
     private double y;
     public Point(double xIn, double yIn){
@@ -43,7 +43,7 @@ class Point implements Comparable{
         String ys=Double.toString((this.y));
         return ("("+xs+", "+ys+")");
     }
-    public int compareTo(Object o) {
+    /*public int compareTo(Object o) {
     int out=1;
     if (o instanceof Point) {
       Point i=((Point)o);
@@ -54,8 +54,10 @@ class Point implements Comparable{
       out=-1;
     }
     }
+    System.out.println("POINT 48: COMPARED OBJECT IS NOT A POINT");
     return out;
-  }
+  }*/
+  
   public Point getClosest(Point a, Point b){
     double distA = this.getDist(a);
     double distB = this.getDist(b);

@@ -28,3 +28,27 @@ void draw(){
 //void split(11,17,11,7){
  // for(int i=0;i<
 //}
+
+void occupationTest(){
+  
+  ArrayList<LineSegment> ls = new ArrayList<LineSegment>();
+        ls.add(new LineSegment(new Point(-1,0), new Point(3,5)));
+        ls.add(new LineSegment(new Point(3,5), new Point(8,7)));
+        ls.add(new LineSegment(new Point(8,7), new Point(20,10)));
+        ls.add(new LineSegment(new Point(19.5,10), new Point(23,10)));
+        
+        System.out.println(ls);
+        System.out.println("\n\n\n");
+        /*ls.add(new LineSegment(new Point(-1,10), new Point(3,5)));
+        ls.add(new LineSegment(new Point(3,5), new Point(8,3)));
+        ls.add(new LineSegment(new Point(8,3), new Point(20,0)));*/
+        
+        
+        Occupation occ = new Occupation(ls);
+        
+        Occupation next = new Occupation(new Path(10),occ,5,true,2,new Car(0.5,2));
+        System.out.println(next.getLS());
+        System.out.println(next.getEndTime());
+        System.out.println(next.getPio().getLS());
+  
+}
