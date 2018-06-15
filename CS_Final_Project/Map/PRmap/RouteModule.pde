@@ -11,7 +11,7 @@ public class RouteModule {
     path=p;
     myCar=c;
   }
-  public String toString(boolean b){
+  public String toString(){
     ArrayList<LineSegment> ls =lineSegs;
     String str="";
         for(int i=0;i<ls.size();i++){
@@ -24,7 +24,7 @@ public class RouteModule {
         return str;
   }
   
-  public String toString(){
+  public String toString(boolean b){
      return path.getStart().toString();
   }
   
@@ -46,6 +46,9 @@ public class RouteModule {
   }
   public boolean getDirection(){
     return direction;
+  }
+  public double getEndTime(){
+    return endTime;
   }
 
 }

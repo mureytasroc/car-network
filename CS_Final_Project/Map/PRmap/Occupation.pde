@@ -79,15 +79,15 @@ public class Occupation {
 
       boolean endOfFollow=false;
       Line temp;
-      boolean segReachedEnd=false;
+      boolean segReachedEnd=true;
       long counter=0;
       LineSegment ppio=null;
 
       boolean keep=true;
       while (keep) {
         counter++;
-        if (counter>50) {
-          System.out.println("Occupation 122");
+        if (counter>20) {
+          System.out.println("Occupation 90");
           //this.endTime=Double.POSITIVE_INFINITY;
           //keep=false;
           //break;
@@ -162,6 +162,9 @@ public class Occupation {
 
             endOfFollow=false;
             segReachedEnd=true;
+          }
+          else{
+            System.out.println("OCCUPATION 167");
           }
         } else {
           segReachedEnd=false;

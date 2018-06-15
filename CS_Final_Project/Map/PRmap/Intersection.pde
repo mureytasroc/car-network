@@ -54,7 +54,7 @@ public class Intersection {
    return this.nodeValue; 
   }
 
-  public void nodify(double source, Car c, Path inPath) {
+  public void nodify(double source, Car c, Path inPath,Path restrictedPath) {
     if (source<this.nodeValue) {
       this.leadingPath=inPath;
       nodeValue=source;
@@ -65,7 +65,7 @@ public class Intersection {
         if (p.getStart()==this) {
           direction=true;
         }
-        p.getOther(this).nodify((nodeValue+p.getTime(c, direction, nodeValue)), c, p);
+        p.getOther(this).nodify((nodeValue+p.getTime(c, direction, nodeValue,restrictedPath)), c, p, restrictedPath);
       }
     }
   }
@@ -78,8 +78,6 @@ public class Intersection {
       ArrayList<RouteModule> arrm = this.leadingPath.getOther(this).prepareRoute(start, c);
       //print(leadingPath);
       boolean direction=false;
-      print("lp: "+leadingPath.getEnd()+", ");
-      println(this);
       if (leadingPath.getEnd().equals(this)) {
         direction=true;
       }

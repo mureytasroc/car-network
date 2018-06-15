@@ -7,7 +7,7 @@ class Map {
   ArrayList<Car>myCars;
   private double lineWidth;
   private long janTime;
-
+double speedLim=100;
 
   public Map(double lw) {
     janTime=System.currentTimeMillis();
@@ -47,7 +47,7 @@ class Map {
         x1+= lineWidth/2.0;
         x2-= lineWidth/2.0;
 
-        this.addPath(new Path(this, new Point(x1, y), new Point(x2, y), lineWidth, 25));
+        this.addPath(new Path(this, new Point(x1, y), new Point(x2, y), lineWidth, speedLim));
 
         for (int b=1; b<=vertMarkers; b++) {
           double pathWidth=x2-x1;
@@ -75,7 +75,7 @@ class Map {
 
         int interIndex=(vertRoads+2)*s+i;
 
-        this.addPath(new Path(this, new Point(x, y1), new Point(x, y2), lineWidth, 25));
+        this.addPath(new Path(this, new Point(x, y1), new Point(x, y2), lineWidth, speedLim));
 
         for (int b=1; b<=horMarkers; b++) {
           double pathWidth=y2-y1;
@@ -136,5 +136,13 @@ class Map {
   }
   public void addCar(Car c) {
     this.myCars.add(c);
+  }
+  public boolean isDestinationBad(Intersection in){
+    for(int i=0;i<myCars.size();i++){
+      if(in==myCars.get(i).getDestination()){
+        return true;
+      }
+    }
+    return false;
   }
 }

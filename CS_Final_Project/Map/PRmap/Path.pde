@@ -37,26 +37,29 @@ class Path {
    return this.lineSeg.getP1().getDist(this.lineSeg.getP2())/c.getMaxSpeed();
    }*/
 
-  public double getTime(Car c, boolean direction, double source) {
-
-
-    double s=Math.abs(c.getMaxSpeed());
-    if (s>speedLimit) {
-      s=this.speedLimit;
-    }
-    double projected=Math.abs((this.getDistance()/s));
-
-    this.possibleOccupation.add(new Occupation(this, this.occupation, source, direction, s, c));
-
-    double et=this.possibleOccupation.get(possibleOccupation.size()-1).getEndTime();
-    if (et>=Double.MAX_VALUE) {
-      System.out.println("INFINITE TIME PATH 53");
-      projected=Double.POSITIVE_INFINITY;
+  public double getTime(Car c, boolean direction, double source, Path restrictedPath) {
+    if (this==restrictedPath) {
+      return Double.POSITIVE_INFINITY;
     } else {
-      projected=this.possibleOccupation.get(possibleOccupation.size()-1).getEndTime()-source;
-    }
 
-    return projected;
+      double s=Math.abs(c.getMaxSpeed());
+      if (s>speedLimit) {
+        s=this.speedLimit;
+      }
+      double projected=Math.abs((this.getDistance()/s));
+
+      this.possibleOccupation.add(new Occupation(this, this.occupation, source, direction, s, c));
+
+      double et=this.possibleOccupation.get(possibleOccupation.size()-1).getEndTime();
+      if (et>=Double.MAX_VALUE) {
+        System.out.println("INFINITE TIME PATH 53");
+        projected=Double.POSITIVE_INFINITY;
+      } else {
+        projected=this.possibleOccupation.get(possibleOccupation.size()-1).getEndTime()-source;
+      }
+
+      return projected;
+    }
   }
 
 
@@ -160,32 +163,12 @@ class Path {
     return this.distance;
   }
 
-  public double getTime(Car c, Intersection origin, Boolean direction, double enterTime) {
-    //this.startT=enterTime;
-    //System.out.println("here"+this.start.getLoc().getPos()[0]+" or "+this.end.getLoc().getPos()[0]);
-
-    double s=Math.abs(c.getMaxSpeed());
-    if (s>this.speedLimit) {
-      s=this.speedLimit;
-    }
-    double projected=Math.abs((this.distance/s));
-
-    this.possibleOccupation.add(new Occupation(this, this.occupation, enterTime, direction, Math.abs(s), c));
-
-
-    projected=this.possibleOccupation.get(possibleOccupation.size()-1).getEndTime()-enterTime;
-    //this.getOther(origin).addPotentialOccupation(this,projected);
-    //System.out.println("projected: "+projected);
-    print(this.possibleOccupation.get(possibleOccupation.size()-1).getLS());
-    return projected;
-  }
 
   public void Setup() {
     possibleOccupation=new ArrayList<Occupation>();
   }
 
   public RouteModule confirm(Car c, boolean direction, double endTime) {
-    print(direction);
     ArrayList<Occupation> dirRightPaths = new ArrayList<Occupation>();
     for (int i=0; i<possibleOccupation.size(); i++) {
       if (possibleOccupation.get(i).getDirection()==direction) {

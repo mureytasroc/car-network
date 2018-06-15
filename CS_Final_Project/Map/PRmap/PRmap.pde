@@ -18,7 +18,9 @@ void setup() {
   m.Setup();
 
 println(m.getIntersections().get(1));
-  m.addCar(new Car(m.getIntersections().get(1), m.getPaths().get(1), m, 20));
+  m.addCar(new Car(m.getIntersections().get(1), m.getPaths().get(1), m, 50));
+  m.addCar(new Car(m.getIntersections().get(4), m.getPaths().get(1), m, 50));
+  //m.addCar(new Car(m.getIntersections().get(7), m.getPaths().get(1), m, 50));
 
   save("11x17(11,7).jpg");
 }

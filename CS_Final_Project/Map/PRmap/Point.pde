@@ -84,6 +84,9 @@ class Point { //implements Comparable{
   public double getDist(Point p) {
     return (Math.sqrt(Math.pow(p.getX()-this.getX(), 2)+Math.pow(p.getY()-this.getY(), 2)));
   }
+  public boolean appxEquals(Point p){
+    return this.getDist(p)<0.1;
+  }
 }
 
 //m=double.MAX_VALUE
