@@ -106,6 +106,16 @@ class Map{
       
     }
     
+    public void Setup(){
+      for(int i=0;i<myIntersections.size();i++){
+        myIntersections.get(i).setupPaths();
+      }
+      for(int i=0;i<myPaths.size();i++){
+        myPaths.get(i).printIntersections();
+      }
+      
+    }
+    
     public ArrayList<Path> getPaths(){
         return this.myPaths;
     }
@@ -122,7 +132,7 @@ class Map{
             myPaths.get(i).show();
             myPaths.get(i).drawMarkers();
         }
-        System.out.println("\n\n\n\n");
+        //System.out.println("\n\n\n\n");
         for(int i=0;i<myIntersections.size();i++){
          myIntersections.get(i).setMarkers(markerDist); 
         }

@@ -1,6 +1,6 @@
-public class Route{
+public class RouteModule{
     Car myCar;
-    Route(Car c){
+    RouteModule(Car c){
       myCar=c;
     }
   

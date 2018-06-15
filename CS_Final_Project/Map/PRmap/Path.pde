@@ -17,16 +17,16 @@ class Path{
         this.map=m;
         this.wid=w;
         this.lineSeg=new LineSegment(p1,p2);
-        this.start;
-        this.end;
+        this.start=null;
+        this.end=null;
         this.leftColor = new Color(255,0,0);
         this.rightColor = new Color(0,255,0);
         this.lmColor = new Color(255,0,255);
         this.rmColor = new Color(0,255,255);
     }
-    public double getTime(Car c,boolean direction,double source,this){
+    /*public double getTime(Car c,boolean direction,double source,this){
       return this.lineSeg.getDistance()/c.getSpeed();
-    }
+    }*/
     public Intersection getStart(){
       return this.start;
     }
@@ -100,5 +100,35 @@ class Path{
       return this.start;
     }
   }
+  public void setIntersections(Intersection i){
+    if(this.start==null){
+      this.start=i;
+    }
+    else{
+      if(Math.abs(start.getPoint().getX()-i.getPoint().getX())<0.001){
+        if(start.getPoint().getY()<i.getPoint().getY()){
+          end=i;
+        }
+        else{
+          end=start;
+          start=i;
+        }
+      }
+      else{
+        if(start.getPoint().getX()<i.getPoint().getX()){
+          end=i;
+        }
+        else{
+          end=start;
+          start=i;
+        }
+      }
+        
+    }
+  }
+  public void printIntersections(){//for debugging
+    System.out.println(start+", "+end);
+  }
     
 }
+    

@@ -15,10 +15,11 @@ System.out.println((8*height/lineWidth/12.0));
         
         m.drawGrid(2,1,2,2,markerWidth);
         
+        m.Setup();
+        
         m.addCar(new Car(new Point(50,50)));
     
     save("11x17(11,7).jpg");
-    System.out.println("dun");
     
     
 }

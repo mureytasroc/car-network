@@ -52,7 +52,7 @@ public class Intersection{
    
  }
  
- public void nodify(double source, Car c, Path inPath){
+ /*public void nodify(double source, Car c, Path inPath){
     if (source<this.nodeValue) {
             this.leadingPath=inPath;
       nodeValue=source;
@@ -68,6 +68,15 @@ public class Intersection{
     }
         else{
         } 
+ }*/
+ public void setupPaths(){
+   for(int i=0;i<myPaths.size();i++){
+     myPaths.get(i).setIntersections(this);
+   }
+ }
+ 
+ public String toString(){
+   return this.point.toString();
  }
  
 
