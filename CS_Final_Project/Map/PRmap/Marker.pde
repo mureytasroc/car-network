@@ -5,8 +5,6 @@ import java.util.*;
 public class Marker{
   private Point point;
   private double distance;
-  private double drawDist;
-  private Point drawPoint;
   private Path path;
   private Map map;
  Marker(Map m,Point p, double dist, Path pa){
