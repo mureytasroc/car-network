@@ -16,8 +16,9 @@ public class Car {
   Intersection destination;
   Intersection nextStart;
   Intersection nextDestination;
-  Intersection nextNextStart;
-  Intersection nextNextDestination;
+  Intersection avoidIntersection;
+  
+
 
   boolean newRequestArmed=true;
 
@@ -35,24 +36,25 @@ public class Car {
 
     intersectionBufferTime=trailingDistance/this.maxSpeed-0.1;
     if (intersectionBufferTime<=0) {
-      intersectionBufferTime=0;
+      intersectionBufferTime=0.01;
     }
-    intersectionOccupationTime=0.1;
+    intersectionOccupationTime=0;
   }
 
-  Car(Intersection initialInt, Path initialPath, Map m, double ms) {
+  Car(Intersection initialInt, Intersection initialOtherInt, Map m, double ms) {
 
 
     this.trailingDistance=20;
     intersectionBufferTime=trailingDistance/this.maxSpeed-0.1;
     if (intersectionBufferTime<=0) {
-      intersectionBufferTime=0;
+      intersectionBufferTime=0.01;
     }
-    intersectionOccupationTime=0.1;
+    intersectionOccupationTime=0;
     map=m;
     maxSpeed=ms;
 
     startTime=this.map.getTime();
+    avoidIntersection=initialOtherInt;
 
 
 
@@ -72,6 +74,9 @@ public class Car {
     gopReady=false;
     this.getOptimalPath();
     //print(theRoute);
+    print(this.theRoute.get(0).getLS());
+    //print(this.theRoute.get(1).getLS());
+    
   }
 
   public ArrayList<Double> getBufferData() {
@@ -108,7 +113,9 @@ public class Car {
 
           nextStart=destination;
           nextDestination=nextStart;
-          while (nextDestination==nextStart||nextDestination==theRoute.get(theRoute.size()-1).getPath().getOther(nextStart)||map.isDestinationBad(nextDestination)) {
+          avoidIntersection=theRoute.get(theRoute.size()-1).getPath().getOther(nextStart);
+          
+          while (nextDestination==nextStart||map.isDestinationBad(nextDestination)){
             Random r = new Random();
             int ind= r.nextInt(m.getIntersections().size());
             nextDestination=m.getIntersections().get(ind);
@@ -166,23 +173,56 @@ public class Car {
     } else {
       start.nodify(st, this, null, theRoute.get(theRoute.size()-1).getPath());
     }
+    
+
+
+
+          ArrayList<Intersection> checked = new ArrayList<Intersection>();
+          checked.add(destination);
+          checked.add(start);
     if (destination.getNV()>=Double.MAX_VALUE) {
-      System.out.println("ERROR CAR 69");
+      //System.out.println("INFINITE TIME CAR 69");
+      for(int ind=0;ind<m.getIntersections().size();ind++){
+          if(!(map.isDestinationBad(destination)||checked.contains(destination))){
+      destination=m.getIntersections().get(ind);
+      gopDestination=destination;
+    }
+    if(destination.getNV()<Double.MAX_VALUE){
+      
+      break;
+    }
+    else{
+      checked.add(m.getIntersections().get(ind));
+    }
+      }
       //do another path
-    } else {
+    }
+        if(destination.getNV()>=Double.MAX_VALUE){
+      map.stopAll();
+    }
+    
+    
+    
+    
+    
+    
       //println(destination.getNV());
       if (!preemptive) {
         theRoute=destination.prepareRoute(start, this);
       } else {
         nextRoute=destination.prepareRoute(start, this);
       }
-    }
+    
 
 
     if (firstRoute) {
       firstRoute=false;
     }
     gopReady=true;
+    
+    
+    
+    
   }
   public RouteModule getRouteModule(double time) {
     RouteModule result=null;
@@ -197,4 +237,9 @@ public class Car {
   public Intersection getDestination() {
     return this.destination;
   }
+  public Intersection avoid(){
+    return this.avoidIntersection;
+  }
+  
+ 
 }

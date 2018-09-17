@@ -48,6 +48,11 @@ public class Intersection {
       myMarkers.add(new Marker(this.map, p, d, myPaths.get(i)));
       myMarkers.get(myMarkers.size()-1).drawMarker();
     }
+    
+    /*fill(255);
+    textSize(32);
+    text(String.valueOf(map.getIntInd(this)), (float)this.point.getX(), (float)this.point.getY()); */
+    
   }
   
   public double getNV(){
@@ -60,12 +65,14 @@ public class Intersection {
       nodeValue=source;
       for (int i=0; i<this.myPaths.size(); i++) {
         Path p=myPaths.get(i);
-
+        if(c.avoid()!=p.getOther(this)){
         boolean direction=false;
         if (p.getStart()==this) {
           direction=true;
         }
         p.getOther(this).nodify((nodeValue+p.getTime(c, direction, nodeValue,restrictedPath)), c, p, restrictedPath);
+        }
+        
       }
     }
   }

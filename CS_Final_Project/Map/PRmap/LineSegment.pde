@@ -419,4 +419,7 @@ class LineSegment { //implements Comparable{
       return new Point(fr.rightEndPoint());
     }
   }
+  public Point getMidpoint(){
+    return new Point((this.p1.getX()+this.p2.getX())/2.0,(this.p1.getY()+this.p2.getY())/2.0);
+  }
 }

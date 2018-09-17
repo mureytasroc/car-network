@@ -52,7 +52,7 @@ class Path {
 
       double et=this.possibleOccupation.get(possibleOccupation.size()-1).getEndTime();
       if (et>=Double.MAX_VALUE) {
-        System.out.println("INFINITE TIME PATH 53");
+        //System.out.println("INFINITE TIME PATH 55");
         projected=Double.POSITIVE_INFINITY;
       } else {
         projected=this.possibleOccupation.get(possibleOccupation.size()-1).getEndTime()-source;
@@ -104,7 +104,12 @@ class Path {
     /*StdDraw.setPenColor(StdDraw.BLACK);
      StdDraw.setPenRadius(0.005);
      StdDraw.line(lineSeg.getP1().getX(),lineSeg.getP1().getY(),lineSeg.getP2().getX(),lineSeg.getP2().getY());*/
-  }
+  
+    /*fill(255);
+    textSize(32);
+    text(String.valueOf(map.getPathInd(this)), (float)this.lineSeg.getMidpoint().getX(), (float)this.lineSeg.getMidpoint().getY());*/
+
+}
   public Color getLMC() {
     return this.lmColor;
   }
@@ -193,7 +198,7 @@ class Path {
       PIO pio = closestOcc.getPio();
       pio.getIntersection().confirmPIO(pio);
       //c.addCarUsedOcc(closestOcc, pio, this);
-      alls.add(pio.getLS());
+      //alls.add(pio.getLS());
       return new RouteModule(c, this, alls, et, dir);
     }
     return null;

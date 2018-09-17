@@ -57,15 +57,17 @@ public class Occupation {
       //System.out.println("hey"+curSeg);
 
       LineSegment pio = new LineSegment(new Point(end.getX()-c.getBufferData().get(1), end.getY()), new Point(end.getX()+c.getBufferData().get(1)+c.getBufferData().get(2), end.getY()));
-      endTime=pio.rightEndPoint().getX();//end.getX()+c.getBufferData().get(1)+c.getBufferData().get(2);
+      endTime=end.getX()+c.getBufferData().get(2);//end.getX()+c.getBufferData().get(1)+c.getBufferData().get(2);
       if (dir) {
         myPio = new PIO(p, p.getEnd(), pio);
       } else {
         myPio = new PIO(p, p.getStart(), pio);
       }
+      this.lineSegs.add(new LineSegment(end, new Point(endTime,p.getDistance())));
     } else {
       //there are existing occupations
       Point curStart=new Point(start);
+      
 
 
 
@@ -87,7 +89,7 @@ public class Occupation {
       while (keep) {
         counter++;
         if (counter>20) {
-          System.out.println("Occupation 90");
+          System.out.println("Occupation 90, occupation timeout");
           //this.endTime=Double.POSITIVE_INFINITY;
           //keep=false;
           //break;
@@ -120,7 +122,7 @@ public class Occupation {
               }
               if (breakOut) {
                 this.endTime=Double.POSITIVE_INFINITY;
-                System.out.println("Occupation 123");
+                System.out.println("Occupation 123 breakout timeout");
                 keep=false;
                 break;
               }
@@ -136,7 +138,8 @@ public class Occupation {
               if (dir) {
                 //p.getEnd().addPIO(ppio);
                 myPio = new PIO(p, p.getEnd(), ppio);
-              } else {
+              } 
+              else {
                 //p.getStart().addPIO(ppio);
                 myPio = new PIO(p, p.getStart(), ppio);
               }
@@ -171,17 +174,17 @@ public class Occupation {
           //System.out.println(c.getTD());
           if ((collider.isOppositeSlope(curSeg))) {
             this.endTime=Double.POSITIVE_INFINITY;
-            System.out.println("Occupation 171");
+            //System.out.println("Occupation 174");
             keep=false;
             break;
           } else if (curSeg.getSlope()<0&&collider.getSlope()<curSeg.getSlope()) {
             this.endTime=Double.POSITIVE_INFINITY;
-            System.out.println("Occupation 176");
+            //System.out.println("Occupation 179");
             keep=false;
             break;
           } else if (curSeg.getSlope()>0&&collider.getSlope()>curSeg.getSlope()) {
             this.endTime=Double.POSITIVE_INFINITY;
-            System.out.println("Occupation 181");
+            //System.out.println("Occupation 184");
             keep=false;
             break;
           } else {
@@ -195,7 +198,7 @@ public class Occupation {
             if (holder==null) {
               System.out.println("NO SPACE FOR PROPER TRAILING DISTANCE");
               this.endTime=Double.POSITIVE_INFINITY;
-              System.out.println("Occupation 195");
+              System.out.println("Occupation 198");
               keep=false;
               break;
             } else if (!curSeg.isInRange(holder.getX())) {

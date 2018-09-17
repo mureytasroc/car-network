@@ -1,5 +1,11 @@
 import java.awt.*;
 import java.util.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
 
 class Map {
   ArrayList<Path> myPaths;
@@ -7,7 +13,10 @@ class Map {
   ArrayList<Car>myCars;
   private double lineWidth;
   private long janTime;
+  private boolean stopAll=false;
 double speedLim=100;
+public ServerEcho se;
+public String outgoing="";
 
   public Map(double lw) {
     janTime=System.currentTimeMillis();
@@ -15,6 +24,8 @@ double speedLim=100;
     myCars=new ArrayList<Car>();
     myPaths=new ArrayList<Path>();
     myIntersections=new ArrayList<Intersection>();
+    try{se = new ServerEcho(3000);}catch (Exception e){;}
+    
   }
 
   public void drawGrid(int horRoads, int vertRoads, int horMarkers, int vertMarkers, double markerDist) {
@@ -116,7 +127,8 @@ double speedLim=100;
   public double getLineWidth() {
     return this.lineWidth;
   }
-  public void update(double markerDist) {
+  public void update(double markerDist) throws UnknownHostException, IOException {
+    if(!stopAll){
     background(0);
     for (int i=0; i<myPaths.size(); i++) {
       myPaths.get(i).show();
@@ -129,7 +141,15 @@ double speedLim=100;
     for (int i=0; i<myCars.size(); i++) {
       myCars.get(i).update();
       myCars.get(i).show();
+    }}
+    else{
+      System.out.println("STOPPED");
     }
+    
+    if(se.available()){
+        System.out.print(se.getIncoming());
+            se.sendOutput("deez");}
+    
   }
   public double getTime() {
     return (double)(System.currentTimeMillis()-janTime)/1000.0;
@@ -144,5 +164,15 @@ double speedLim=100;
       }
     }
     return false;
+  }
+  
+  public void stopAll(){
+    stopAll=true;
+  }
+  public int getIntInd(Intersection i){
+    return myIntersections.indexOf(i);
+  }
+  public int getPathInd(Path p){
+    return myPaths.indexOf(p);
   }
 }
