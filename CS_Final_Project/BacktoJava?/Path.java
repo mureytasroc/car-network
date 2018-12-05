@@ -74,7 +74,7 @@ class Path {
   public void show() {
 
 
-    StdDraw.setPenRadius((float)(this.wid*1.0/2.0));
+    StdDraw.setPenRadius((float)(this.wid*1.0/2.0/500));
     //strokeCap(SQUARE);
 
     double perpSlope;
@@ -94,12 +94,14 @@ class Path {
     Point leftEnd = p2PerpLSL.getP2();
     LineSegment p2PerpLSR = new LineSegment(lineSeg.getP2(), perpSlope, -this.wid/4.0);
     Point rightEnd = p2PerpLSR.getP2();
-
+      //System.out.println("dodraw path 98");
+      
     StdDraw.setPenColor(rightColor.getRed(), rightColor.getGreen(), rightColor.getBlue());
     StdDraw.line((float)leftStart.getX(), (float)leftStart.getY(), (float)leftEnd.getX(), (float)leftEnd.getY());
 
     StdDraw.setPenColor(leftColor.getRed(), leftColor.getGreen(), leftColor.getBlue());
     StdDraw.line((float)rightStart.getX(), (float)rightStart.getY(), (float)rightEnd.getX(), (float)rightEnd.getY());
+      //StdDraw.show();
 
     /*StdDraw.setPenColor(StdDraw.BLACK);
      StdDraw.setPenRadius(0.005);

@@ -120,13 +120,14 @@ double speedLim=100;
   }
   public void update(double markerDist) {
     StdDraw.clear(new Color(0,0,0));
-    for (int i=0; i<myPaths.size(); i++) {
-      myPaths.get(i).show();
-      myPaths.get(i).drawMarkers();
-    }
+    
     //System.out.println("\n\n\n\n");
     for (int i=0; i<myIntersections.size(); i++) {
       myIntersections.get(i).setMarkers(markerDist);
+    }
+      for (int i=0; i<myPaths.size(); i++) {
+      myPaths.get(i).show();
+      myPaths.get(i).drawMarkers();
     }
     for (int i=0; i<myCars.size(); i++) {
       myCars.get(i).update();

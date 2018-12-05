@@ -86,10 +86,11 @@ public class Car {
 
   public void show() {
     if (location!=null) {
+        System.out.println("car 89");
       StdDraw.setPenRadius(6); 
       StdDraw.setPenColor(255, 255, 255);
       StdDraw.setPenColor(0, 0, 255);
-      StdDraw.ellipse((float)location.getX(), (float)location.getY(), 25, 25);
+      StdDraw.filledEllipse((float)location.getX(), (float)location.getY(), 25, 25);
       //noStroke();
     }
   }

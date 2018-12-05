@@ -1,5 +1,5 @@
 import java.util.*;
-
+import java.awt.*;
 public class PRmap{
     public static double lineWidth;
 public static double markerWidth;
@@ -10,11 +10,11 @@ public static double height=640;
 public static void main(String[] args) {
     StdDraw.setCanvasSize(600,640);
 		StdDraw.setXscale(0,600);
-        StdDraw.setYscale(640,0);
+        StdDraw.setYscale(0,640);
 		StdDraw.enableDoubleBuffering();
   /*size(600, 640);//for 11 by 17 595x605 for 8.5x11 //for 10x16 
   background(0);*/
-  lineWidth=40*(double)height/595.0;//=8 inches in real life
+  lineWidth=40*(double)height/595000.0;//=8 inches in real life
   //System.out.println((8*width/lineWidth/12.0));
   //System.out.println((8*height/lineWidth/12.0));
   m= new Map(lineWidth);
@@ -26,9 +26,9 @@ public static void main(String[] args) {
   m.Setup();
 
 System.out.println(m.getIntersections().get(1));
-  m.addCar(new Car(m.getIntersections().get(1), m.getPaths().get(1), m, 500));
-  m.addCar(new Car(m.getIntersections().get(4), m.getPaths().get(1), m, 500));
-  m.addCar(new Car(m.getIntersections().get(2), m.getPaths().get(1), m, 500));
+  m.addCar(new Car(m.getIntersections().get(1), m.getPaths().get(1), m, 50));
+  m.addCar(new Car(m.getIntersections().get(4), m.getPaths().get(1), m, 50));
+  m.addCar(new Car(m.getIntersections().get(2), m.getPaths().get(1), m, 50));
   //m.addCar(new Car(m.getIntersections().get(7), m.getPaths().get(1), m, 50));
 
   //save("11x17(11,7).jpg");
@@ -41,6 +41,8 @@ System.out.println(m.getIntersections().get(1));
 //}
 public static void draw() {
   m.update(markerWidth);
+    StdDraw.setPenColor(new Color(0,0,255));
+    StdDraw.filledRectangle(0,0,10,10);
     StdDraw.show();
 }
 //(12,8) for 10x16
